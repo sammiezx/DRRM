@@ -1050,3 +1050,23 @@ nav.toc>ol>li>a .cnt{
   background:linear-gradient(145deg,var(--graphite-700),var(--graphite-900)) !important;
   opacity:.75;
 }
+
+/* ---------------- question bank score ---------------- */
+#quizScore{
+  position:fixed;left:50%;transform:translateX(-50%) translateY(20px);
+  bottom:calc(70px + env(safe-area-inset-bottom));z-index:60;
+  padding:8px 16px;border-radius:20px;
+  background:var(--graphite-surface);color:var(--on-graphite);
+  font-family:var(--sans);font-size:13px;font-weight:700;
+  box-shadow:var(--shadow-2);
+  opacity:0;visibility:hidden;transition:opacity .2s,transform .2s;
+  pointer-events:none;white-space:nowrap;
+}
+#quizScore.on{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+@media print{ #quizScore{display:none} }
+.tbtn{
+  font-family:var(--sans);font-size:13.5px;font-weight:700;
+  padding:9px 16px;border-radius:var(--r-sm);cursor:pointer;
+  background:var(--bg-3);color:var(--ink);border:1px solid var(--line);
+}
+.tbtn:hover{background:var(--graphite-100)}

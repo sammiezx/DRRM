@@ -447,55 +447,88 @@ $$('.checkself .a').forEach(function (el) {
 
 /* ---------------- flashcard decks ---------------- */
 const DECKS = {
-  /* Cards are harvested from the written sessions, never invented separately.
-     Acts III-V are added as those sessions are written. */
+  /* Harvested from the written sessions \u2014 never invented separately. */
   "Definitions": [
-    ["Factor of safety","Resisting force divided by driving force on an assumed failure surface. FoS = 1.0 means the slope IS moving, not that it is about to."],
-    ["Effective stress","Total normal stress minus pore water pressure, (\u03c3 \u2212 u). Friction is mobilised by this, not by total stress \u2014 which is why rain weakens a slope without making it heavier."],
-    ["Matric suction","Apparent cohesion from surface tension in partly saturated pores. Holds a cut face up through the dry season, and disappears entirely on saturation."],
-    ["Debris flow","A moving mass in which the sediment IS the flow and water makes it mobile. Solids over half the volume; density roughly 1.8\u20132.3 t/m\u00b3."],
-    ["Entrainment","A flow scouring the channel bed and banks as it travels, so the volume arriving at the fan can be many times what detached at the source."],
-    ["Avulsion","A stream abandoning its channel and taking a new path across a fan. Predicted by a channel perched above the surrounding fan surface."],
-    ["Rock mass","Blocks separated by discontinuities \u2014 not intact rock. What governs a cut is the orientation of those surfaces, not the strength of the rock."],
-    ["Kinematic test","Asking whether a block can physically get out, given the joint geometry. If movement is not permitted, the failure mode is impossible regardless of strength."],
-    ["Susceptibility","WHERE a landslide can occur \u2014 terrain only. No timing, no consequence. Not the same as hazard, and not remotely the same as risk."],
-    ["Hazard (vs susceptibility)","Susceptibility plus magnitude and probability \u2014 where, how big, how often."],
-    ["Risk","Hazard plus exposure and vulnerability. A steep uninhabited hillside has high susceptibility and no risk."]
+    ["Factor of safety","Resisting force \u00f7 driving force on an assumed failure surface. FoS = 1.0 means the slope IS moving, not that it is about to."],
+    ["Effective stress","\u03c3 \u2212 u. Friction is mobilised by this, not by total stress \u2014 which is why rain weakens a slope without making it heavier."],
+    ["Matric suction","Apparent cohesion from surface tension in partly saturated pores. Holds a cut face up through the dry season, and vanishes on saturation."],
+    ["Debris flow","A moving mass in which the sediment IS the flow and water makes it mobile. Density roughly 1.8\u20132.3 t/m\u00b3."],
+    ["Entrainment","A flow scouring bed and banks as it travels, so what arrives at the fan can be many times what detached at the source."],
+    ["Avulsion","A river abandoning its channel for a lower path. A breach mechanism, not a capacity failure \u2014 the Koshi, 2008."],
+    ["Aggradation vs degradation","Aggradation: supply exceeds capacity, bed rises, waterway shrinks. Degradation: capacity exceeds supply, bed falls, foundations are undermined."],
+    ["Time of concentration","Time for runoff from the most remote point to reach the outlet. The critical storm has duration equal to it."],
+    ["Contraction scour","Bed lowering caused by YOUR structure narrowing the waterway. The scour component you control directly."],
+    ["Launching apron","Sacrificial stone laid flat beyond the toe, designed to slide into the developing scour hole and armour it. Moving is its function."],
+    ["Outflanking","The river going round the END of protective works. The second great killer after toe scour."],
+    ["Non-stationarity","The flood distribution itself changing, so a historic record no longer describes the future."],
+    ["Mass balance","Matching cut to fill along an alignment so there is no spoil to dispose of. The core Green Road principle."],
+    ["Dormant landslide","Has moved before under conditions that still exist. The most dangerous activity state, because it looks like ordinary stable ground."],
+    ["Susceptibility vs hazard vs risk","Susceptibility: WHERE, terrain only. Hazard: adds magnitude and probability. Risk: adds exposure and vulnerability."],
+    ["Soft storey","Open ground floor beneath infilled floors, so all seismic drift concentrates in one level. The most lethal configuration defect in Nepal."],
+    ["Unseating","A span displacing off its bearing \u2014 the dominant seismic collapse mechanism for simply supported bridges. Seat width and restrainers prevent it."]
   ],
   "Nepal events": [
-    ["Jure landslide","2 August 2014, ~2:30 am, Sindhupalchok. Roughly 156 killed, Araniko Highway severed, and the Sunkoshi dammed \u2014 the landslide-dam outburst threat lasted weeks."],
-    ["Melamchi","15 June 2021. A debris flow, not a flood \u2014 buried parts of Melamchi Bazar, took bridges, damaged the water supply headworks. The arriving event was out of all proportion to the rainfall."],
-    ["Why the two differ","Jure was a rock slide: sudden, local, and it dammed a river. Melamchi was a debris flow: it travelled far beyond its source and rebuilt the valley floor as it went."]
+    ["Jure landslide","2 August 2014, Sindhupalchok. ~156 killed, Araniko Highway severed, and it dammed the Sunkoshi \u2014 the outburst threat lasted weeks."],
+    ["Melamchi","15 June 2021. A debris flow, not a flood. What arrived was out of all proportion to the rainfall, because the flow grew as it travelled."],
+    ["Koshi avulsion","18 August 2008, at Kusaha. The river left its course at a discharge WELL BELOW barrage capacity \u2014 aggradation had perched the bed and the embankment breached."],
+    ["Dig Tsho GLOF","4 August 1985. Destroyed the nearly complete Thame hydropower plant, bridges and trails. No rain, no warning."],
+    ["Thame GLOF","August 2024. The same valley again \u2014 the hazard source population is growing as glaciers retreat."],
+    ["Gorkha earthquake","25 April 2015, M7.8, ~9,000 dead. Triggered on the order of 25,000 landslides, and did NOT release the locked segment to the west."],
+    ["Bihar\u2013Nepal earthquake","15 January 1934, ~M8.0, ~10,000 dead. Larger than 2015 \u2014 so 7.8 is not the maximum this system produces."],
+    ["Jajarkot earthquake","3 November 2023, ~M6.4, ~150 dead. Lethal largely because of mud-mortar stone housing without bands or through-stones."],
+    ["The 1505 gap","Far-western Nepal has no great earthquake in the record since 1505. Five centuries of convergence, stored."]
   ],
   "Field indicators": [
-    ["Tension cracks at the crown","The most reliable early sign \u2014 and also a cause, because an open crack drains surface water straight to the slip surface. Seal them and date them."],
-    ["Trees tilted backwards into the slope","Rotational movement \u2014 the mass has rotated on a curved surface, tipping its upper part back."],
-    ["Trees tilted downslope, or bent at the base","Translational movement or creep. The bend records ground moving while the tree kept growing vertically."],
-    ["A spring that has moved, appeared or dried","The most diagnostic single sign. Movement disrupts internal drainage paths, so changed water means deformed ground."],
-    ["A roadside drain that keeps silting for no reason","It is probably no longer level \u2014 toe heave from a slope moving beneath the road. A displacement symptom, not a maintenance failure."],
-    ["Straight things that stopped being straight","Terraces, walls, channels, road crest. Humans build straight lines; the ground does not. A free displacement gauge somebody installed years ago."],
-    ["Boulders larger than the present stream could move","Evidence of past debris flows, and a rough gauge of the magnitude to design for."],
-    ["A stream perched above the fan surface","Aggrading and prone to avulsion. Today's channel is not where the next flow will go."],
-    ["Talus block shape at a rock cut toe","Slabs point to planar sliding, triangular blocks to wedges, long columns to toppling. The ground has already run the analysis."]
+    ["Tension cracks at the crown","The most reliable early sign \u2014 and also a cause, because an open crack drains surface water straight to the slip surface. Seal and date them."],
+    ["Trees tilted back into the slope","Rotational movement. Downslope tilt, or bent at the base with a straight upper trunk, means translational movement or creep."],
+    ["A spring that moved, appeared or dried","The most diagnostic single sign. Movement disrupts internal drainage, so changed water means deformed ground."],
+    ["A drain that keeps silting for no reason","It is probably no longer level \u2014 toe heave beneath the road. A displacement symptom, not a maintenance failure."],
+    ["Straight things that stopped being straight","Terraces, walls, channels, road crest. A free displacement gauge somebody installed years ago."],
+    ["Boulders the present stream could not move","Evidence of past debris flows, and a rough gauge of the magnitude to design for."],
+    ["A stream perched above its fan","Aggrading and prone to avulsion. Today's channel is not where the next flow will go."],
+    ["Talus block shape at a rock cut","Slabs \u2192 planar sliding. Triangular blocks \u2192 wedges. Long columns \u2192 toppling. The ground has already run the analysis."],
+    ["Damp patch and settlement over a culvert","Piping \u2014 water tracking along the OUTSIDE of the barrel, carrying fines. Serious and frequently missed."],
+    ["Failures clustered near drain outlets","The fingerprint of a manufactured problem. A natural hazard has no reason to prefer your outlets."],
+    ["Scour hole below a culvert outlet","No apron, or a failed one. It erodes headward, undermines the outlet and then takes the embankment."]
   ],
   "Failure modes": [
-    ["Fall","Detaches and travels through the air \u2014 no shear surface. Extremely fast. Often best managed by catching it, not preventing it."],
-    ["Topple","Rotates forward about a point near its base. Steep joints dipping INTO the face \u2014 which is why it is the mode most often misread as favourable."],
-    ["Slide","Coherent mass on one distinct shear surface. Rotational (curved) or translational (planar). The only family where a factor of safety means something."],
-    ["Spread","A stiff layer breaks up and extends over a softer one beneath. Uncommon in Nepal's hills."],
-    ["Flow","Moves as a fluid, shearing internally with no single surface. Travels furthest, kills most, and cannot be analysed by limit equilibrium."],
-    ["Planar rock failure \u2014 three conditions","Joint dips out of the face and roughly parallel to it (within ~20\u00b0); dips less steeply than the face, so it daylights; dips more steeply than its friction angle, so it is driven."],
-    ["Wedge failure","Two joint sets intersect and the block slides along the line of intersection. Easy to miss \u2014 neither set alone looks threatening."],
-    ["Slide becoming flow","The commonest Nepali sequence. Classify by what it will be when it reaches your road, not by how it started at the crown."]
+    ["Fall","Detaches and travels through the air \u2014 no shear surface. Often best managed by catching it, not preventing it."],
+    ["Topple","Rotates forward about its base. Steep joints dipping INTO the face \u2014 which is why it is misread as favourable."],
+    ["Slide","Coherent mass on one shear surface. The only family where a factor of safety means anything."],
+    ["Flow","Shears internally throughout, no single surface. Travels furthest, kills most, cannot be analysed by limit equilibrium."],
+    ["Planar rock failure \u2014 three conditions","Dips out of the face, within ~20\u00b0 of it; dips less steeply than the face so it daylights; dips more steeply than its friction angle so it is driven."],
+    ["Wedge failure","Two joint sets intersecting; the block slides along the line of intersection. Neither set alone looks threatening."],
+    ["Slide becoming flow","The commonest Nepali sequence. Classify by what it will BE when it reaches your road, not by how it started."],
+    ["Gabion wall lying tilted in the river, intact","The wall did not fail \u2014 the bed beneath it did. Toe undermining, the standard bank protection failure."],
+    ["Wall founded above the slip surface","A passenger. It will be carried along with everything else. A 4 m wall on a 15 m slide is decoration."],
+    ["Short column","Shortened by partial infill, so stiffer, attracts more force, and has less height to deform over. Fails in brittle shear."],
+    ["Approach embankment loss","The most-lost bridge element. Outflanking, overtopping and breach, or a settlement step that stops traffic."]
   ],
   "Numbers": [
-    ["Debris flow density","Roughly 1.8\u20132.3 t/m\u00b3 against water's 1.0 \u2014 about twice the impact force at the same velocity, before any boulder strike."],
-    ["Shallow vs deep-seated","Shallow is roughly under 3 m. It responds to rainfall intensity within hours; deep-seated responds to accumulated rainfall over days to weeks."],
-    ["Typical target factor of safety","About 1.5 for permanent slopes where the data is good; lower is accepted on temporary works. A 1.5 on a guessed water table is worth less than a 1.3 where the water is known."],
-    ["Planar sliding \u2014 face parallelism","The joint must dip within about 20\u00b0 of the face direction."]
+    ["Kirpich","t\u1d9c = 0.0195 L^0.77 S^\u22120.385. Minutes, metres, slope as a ratio. Hill kholas come out at 10\u201330 minutes."],
+    ["Rational method","Q = 0.278 C I A. Q m\u00b3/s, I in mm/hr AT DURATION t\u1d9c, A in km\u00b2."],
+    ["Risk of exceedance","1 \u2212 (1 \u2212 1/T)\u207f. T=50 over 50 years = 64%. More likely than not."],
+    ["Lacey regime scour","d\u209b\u2098 = 1.34 (q\u00b2/f)^(1/3), below HFL. Note d\u209b\u2098 \u221d q^(2/3) \u2014 narrowing the waterway costs you at the two-thirds power."],
+    ["Silt factor","f = 1.76 \u221ad\u2085\u2080, with d\u2085\u2080 IN MILLIMETRES. The commonest units slip in the whole calculation."],
+    ["Pier nose scour factor","2.0 \u00d7 d\u209b\u2098. Straight reach 1.27, severe bend 1.75. Read from the current code, not from memory."],
+    ["Well foundation grip","At least one third of the maximum scour depth below HFL, taken below max scour level."],
+    ["Debris raft effect","Local scour \u221d pier width^0.65. A 3\u00d7 effective width roughly DOUBLES local scour (\u00d72.04)."],
+    ["Debris flow density","~1.8\u20132.3 t/m\u00b3 against water's 1.0 \u2014 about twice the impact force at the same velocity, before boulders."],
+    ["Shallow vs deep-seated","~3 m. Shallow responds to rainfall intensity in hours; deep-seated to accumulation over days to weeks."],
+    ["Root zone depth","~0.5\u20131.5 m for grasses and shrubs. Below it, bio-engineering reaches nothing."],
+    ["India\u2013Tibet convergence","~18\u201320 mm/yr, locked on the Main Himalayan Thrust."],
+    ["Monsoon concentration","~80% of annual rainfall in four months, June to September."]
   ],
   "Standards & clauses": [
-    ["Placeholder","Filled as Acts III\u2013V are written \u2014 DoR and DoLI standards, NBC, and IRC where adopted."]
+    ["DRRM Act 2074 (2017)","The disaster framework. Created NDRRMA and committees at national, province, district (DDMC) and local (LDMC) level."],
+    ["Local Government Operation Act 2074","Devolved local infrastructure \u2014 the reason most new hill road length is now decided in a rural municipality office."],
+    ["Nepal Rural Road Standard","Governs the local road network, which is most hill track construction. The least-opened document that matters most."],
+    ["Nepal Road Standard / DoR standards","Strategic Road Network geometry, plus DoR bridge standards with IRC codes as adopted."],
+    ["Environment Protection Act, IEE and EIA","The formal hook on which spoil disposal, drainage and slope obligations actually hang. The paperwork with teeth."],
+    ["NBC 105 : 2020","Seismic design of buildings in Nepal, substantially revised from the 1994 edition. Always ask WHICH EDITION a design used."],
+    ["Mandatory Rules of Thumb","Buildable rules \u2014 member sizes, reinforcement, wall lengths \u2014 for small buildings without an engineer's analysis."],
+    ["Masonry rules that save lives","Bands at plinth, sill, LINTEL and roof; corner reinforcement; through-stones; gable band; limits on wall length and openings."],
+    ["The edition rule","Every standard here is revised. Cite edition and date. An argument won with a superseded clause is a loss with a delay on it."]
   ]
 };
 

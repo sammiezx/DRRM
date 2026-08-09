@@ -7,8 +7,8 @@ written for a **practising road and highway engineer in Nepal**.
 
 📖 **[Read it here](https://sammiezx.github.io/DRRM/)**
 
-> **Status — Phase 2 (writing).** Live and deploying, with **12 of 32 sessions written**.
-> Act II complete; Act III in progress. The rest are empty shells.
+> **Complete.** All 32 sessions, the Fast Track and the Practice Kit are written and live —
+> ~58,000 words, 20 figures, 36 self-test questions, 70 flashcards.
 > **[PLAN.md](PLAN.md)** — how it teaches. **[SCOPE.md](SCOPE.md)** — what it covers and why.
 
 ---
