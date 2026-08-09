@@ -1589,103 +1589,928 @@ with the eye from session 9.</p>
 </div>
 
 <h3 class="chap" id="s13">13 · The catchment</h3>
-<p class="sesstime ui">Session 13 · core · <span class="todo-inline">reading time to be set</span></p>
+<p class="sesstime ui">Session 13 · core · 14 min</p>
+
+<p class="hook">The bridge over the main river is still there. It is the culvert eight
+kilometres back, on a khola nobody has ever named, that took the road out. This is the
+ordinary pattern on hill roads, and it offends the intuition — the big river gets the
+engineering, the survey, the hydrological study and the review panel, while the small
+catchment gets a standard pipe from a schedule of rates. Yet
+<strong>the small steep catchment is the one that behaves violently</strong>, and the
+reason is a single quantity that most cross-drainage design never calculates.</p>
+
 <div class="box def">
   <span class="lbl">The idea</span>
-  <p>How a hill catchment behaves. Time of concentration, and why small catchments are the ones that kill roads.</p>
+  <p>A catchment's response time — how long runoff takes to reach the outlet — decides what
+  storm it is vulnerable to. Small and steep means minutes, and rainfall intensity over
+  minutes is far higher than over hours. Design a fast catchment on a slow storm and you
+  will undersize it every time.</p>
 </div>
-<p class="todo">Hook, body and figures — Phase 2.</p>
+
+<h4>Time of concentration</h4>
+
+<p><strong>Time of concentration (t<sub>c</sub>)</strong> is the time for runoff from the
+hydraulically most remote point in the catchment to arrive at the outlet. It is the single
+most useful number in small-catchment hydrology, because of what follows from it:</p>
+
+<p class="tw" style="text-align:center"><strong>The critical storm is the one whose duration equals t<sub>c</sub>.</strong></p>
+
+<p>Shorter than t<sub>c</sub> and the whole catchment is never contributing at once.
+Much longer and the average intensity has dropped. The peak arrives when the storm
+duration and the catchment's response time match.</p>
+
+<p>The Kirpich relation is the usual quick estimate for small steep catchments:</p>
+
+<p class="tw" style="text-align:center">t<sub>c</sub> = 0.0195 · L<sup>0.77</sup> · S<sup>−0.385</sup></p>
+
+<p>with t<sub>c</sub> in minutes, L the flow path length in metres, and S the average slope
+as a ratio. Note what the exponents are telling you: <strong>slope matters
+disproportionately.</strong> Steepen a catchment and t<sub>c</sub> collapses.</p>
+
+<p>Run it once for a typical hill khola — say a 900 m flow path falling 300 m, so S = 0.33
+— and you get something in the region of <strong>ten to fifteen minutes</strong>. That is
+the storm duration your culvert is actually exposed to. Now ask what rainfall intensity is
+used in most small cross-drainage design in practice, and you will usually find a figure
+derived from a 24-hour depth. A 24-hour average intensity and a 15-minute intensity are not
+the same number, and they are not close.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 640 300" role="img" aria-label="Two catchments receiving the same rainfall, producing very different hydrographs">
+  <g font-family="system-ui,sans-serif">
+  <!-- catchment sketches -->
+  <text x="16" y="22" font-size="14" font-weight="800" fill="var(--ink)">Small, steep</text>
+  <path d="M16 96 L60 40 L104 96 Z" fill="var(--orange-500)" opacity="0.22" stroke="var(--orange-600)" stroke-width="2"/>
+  <text x="16" y="118" font-size="13" fill="var(--ink-3)">t𝒸 ≈ 15 min</text>
+
+  <text x="16" y="164" font-size="14" font-weight="800" fill="var(--ink)">Large, gentle</text>
+  <path d="M16 250 L70 206 L140 250 Z" fill="var(--ink-3)" opacity="0.22" stroke="var(--ink-3)" stroke-width="2"/>
+  <text x="16" y="272" font-size="13" fill="var(--ink-3)">t𝒸 ≈ 6 hours</text>
+
+  <!-- axes -->
+  <path d="M220 250 L620 250" stroke="var(--ink-2)" stroke-width="2.5"/>
+  <path d="M220 250 L220 40" stroke="var(--ink-2)" stroke-width="2.5"/>
+  <text x="560" y="274" font-size="14" fill="var(--ink-3)">time</text>
+  <text x="196" y="40" font-size="14" fill="var(--ink-3)" text-anchor="end">Q</text>
+
+  <!-- flashy hydrograph -->
+  <path d="M228 250 L250 246 L272 70 L300 176 L340 222 L400 240 L500 248 L616 250" fill="none" stroke="var(--orange-600)" stroke-width="3.5"/>
+  <text x="278" y="60" font-size="14" font-weight="800" fill="var(--orange-600)">steep: high, early, brief</text>
+
+  <!-- attenuated hydrograph -->
+  <path d="M228 250 Q320 246 400 186 Q470 138 520 176 Q570 220 616 246" fill="none" stroke="var(--ink-3)" stroke-width="3.5" stroke-dasharray="8 6"/>
+  <text x="440" y="126" font-size="14" font-weight="800" fill="var(--ink-3)">gentle: low, late, long</text>
+
+  <!-- same rainfall bar -->
+  <path d="M228 46 L268 46" stroke="var(--ink-2)" stroke-width="7"/>
+  <text x="276" y="34" font-size="13" fill="var(--ink-3)">same storm</text>
+  </g>
+</svg>
+<figcaption>The same rainfall over two catchments. The steep one converts it into a short,
+violent peak; the gentle one spreads it out. <b>Both may carry the same total volume</b> —
+but a culvert is sized on peak discharge, not on volume, and only one of these will
+overtop.</figcaption>
+</figure>
+
+<h4>The rational method, and where it earns its keep</h4>
+
+<p>For small catchments the workhorse is still:</p>
+
+<p class="tw" style="text-align:center"><strong>Q = 0.278 · C · I · A</strong></p>
+
+<p>Q in m³/s, C the runoff coefficient, I the rainfall intensity in mm/hr <em>for a storm of
+duration t<sub>c</sub></em>, and A the catchment area in km². The method is crude, and it is
+crude in a way worth understanding: it assumes uniform rainfall over the whole catchment,
+a constant C, and that the peak occurs when the whole area contributes. Those assumptions
+hold reasonably for small areas and fail progressively as the catchment grows. Beyond a few
+square kilometres you should be reaching for a regional method or a unit hydrograph, which
+is session 14.</p>
+
+<p>Two of the three inputs are usually wrong in practice, and they are wrong in the same
+direction:</p>
+
+<ul>
+  <li><strong>I is taken at the wrong duration.</strong> If you use a 24-hour intensity for
+    a fifteen-minute catchment, you have understated the design storm severely. Intensity
+    rises steeply as duration falls — this is the single most common error in hill
+    cross-drainage.</li>
+  <li><strong>C is taken from the land cover on the survey drawing</strong>, not the land
+    cover that will exist. Runoff coefficients rise with compaction, deforestation,
+    terracing and — above all — <strong>the road itself</strong>. Your road adds impermeable
+    or compacted surface and a drainage network to a catchment that had neither. You are
+    part of C.</li>
+</ul>
+
+<h4>What else the catchment's shape is telling you</h4>
+
+<div class="tw">
+<table>
+<thead><tr><th>Property</th><th>What it does to the peak</th></tr></thead>
+<tbody>
+<tr><td><strong>Area</strong></td><td>Sets total volume. Rises roughly linearly; peak discharge per unit area <em>falls</em> as area grows, because a big catchment never receives its design storm all at once</td></tr>
+<tr><td><strong>Slope</strong></td><td>Shortens t<sub>c</sub> sharply. The dominant control on hill roads</td></tr>
+<tr><td><strong>Shape</strong></td><td>A compact, fan-shaped catchment delivers everything at once — high peak. A long thin one staggers arrivals — lower peak, longer duration</td></tr>
+<tr><td><strong>Drainage density</strong></td><td>More channels per km² means faster collection and a flashier response</td></tr>
+<tr><td><strong>Land cover</strong></td><td>Sets C and modifies t<sub>c</sub>. Forest slows and absorbs; bare, compacted or burnt ground does neither</td></tr>
+<tr><td><strong>Stored debris</strong></td><td>Not a hydrological property, but the one that decides whether what arrives is water or a debris flow. Back to session 8</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="caveat">
+<p><b>The catchment you design for is not the catchment you surveyed.</b> Over the life of a
+structure the land cover will change, more roads will be cut above it, terraces will be
+abandoned or extended, and the drainage density will rise. Every one of those pushes C up
+and t<sub>c</sub> down — both in the direction of a higher peak. A culvert sized exactly to
+today's catchment is sized for the most benign conditions it will ever see. This is one of
+the few places where deliberate generosity is cheap: a larger pipe costs a little more once,
+and blocks less often forever.</p>
+</div>
+
 <div class="box key">
   <span class="lbl">Judgment</span>
-  <p class="todo">To be written.</p>
+  <p>Before sizing any cross-drainage, spend ten minutes on the catchment above it: pace or
+  measure the flow path, estimate the fall, and get a t<sub>c</sub>. If it comes out under
+  half an hour — which on hill ground it usually will — then insist that the rainfall
+  intensity used matches that duration. This one habit will change more of your structures
+  than any refinement of the discharge formula. And when you are deciding between two pipe
+  sizes on a steep khola, remember that you are not just sizing for water. You are sizing
+  for water carrying whatever the catchment has been storing, which is why session 22 argues
+  that blockage, not discharge, is the real design case.</p>
 </div>
+
 <div class="assign">
   <span class="lbl">Field assignment</span>
-  <p class="todo">To be written — 15 minutes, outside.</p>
+  <p>Pick one culvert on a hill road you know. Standing at it, look up at what drains to it
+  and estimate three things — roughly is fine:</p>
+  <ol>
+    <li>The <strong>flow path length</strong> from the top of the catchment to the culvert.</li>
+    <li>The <strong>fall</strong> over that length, so you have S.</li>
+    <li>Run Kirpich. What is t<sub>c</sub>?</li>
+  </ol>
+  <p>Then ask the harder question: what rainfall duration was that culvert most likely
+  designed on?</p>
+  <p class="found"><b>What you probably found:</b> a t<sub>c</sub> of ten to thirty minutes,
+  and no way of telling what storm the culvert was designed for — because it was almost
+  certainly picked from a standard drawing rather than calculated at all. That is not
+  negligence so much as the normal condition of small cross-drainage everywhere. It is also
+  why so much of it fails.</p>
 </div>
+
 <div class="checkself">
   <span class="lbl">Check yourself</span>
-  <p class="todo">3–5 questions, tap to reveal.</p>
+  <p class="q">1 · Why is the critical storm duration equal to the time of concentration?</p>
+  <p class="a"><span>Shorter than t𝒸 and the whole catchment never contributes simultaneously, so the peak is limited by area. Longer than t𝒸 and the average intensity has fallen. The peak discharge occurs where the two effects cross — when storm duration matches the catchment's response time.</span></p>
+  <p class="q">2 · A designer uses a 24-hour rainfall depth for a catchment with t𝒸 of fifteen minutes. Which way is the error, and is it small?</p>
+  <p class="a"><span>It underestimates, and badly. Rainfall intensity rises steeply as duration shortens, so a 15-minute intensity is several times the 24-hour average. The structure is undersized for the storm it is actually exposed to — the commonest error in hill cross-drainage.</span></p>
+  <p class="q">3 · Two catchments have the same area and the same total rainfall, but one is steep and compact and the other long and gentle. Which needs the larger culvert?</p>
+  <p class="a"><span>The steep compact one. Volume is the same, but a culvert is sized on peak discharge — and a short t𝒸 with simultaneous arrival from all parts of the catchment produces a much higher, briefer peak.</span></p>
+  <p class="q">4 · In what way is the road itself an input to the rational method?</p>
+  <p class="a"><span>It raises the runoff coefficient C by adding compacted or impermeable surface, and it shortens t𝒸 by adding a drainage network that collects and accelerates flow. The engineer is modifying the catchment that the design is based on.</span></p>
+  <p class="q">5 · Why is a structure sized precisely to today's catchment sized optimistically?</p>
+  <p class="a"><span>Because land cover degrades, more roads get cut above it and drainage density rises over the structure's life — all of which push C up and t𝒸 down, and both raise the peak. Today's catchment is the most benign version the structure will ever face.</span></p>
 </div>
 
 <h3 class="chap" id="s14">14 · The number you are judged on</h3>
-<p class="sesstime ui">Session 14 · core · <span class="todo-inline">reading time to be set</span></p>
+<p class="sesstime ui">Session 14 · core · 15 min</p>
+
+<p class="hook">Somewhere in every bridge or culvert design there is a single figure — the
+design discharge — and everything downstream of it is arithmetic. Waterway, foundation
+depth, apron size, freeboard, cost. If that number is wrong, no amount of careful detailing
+recovers the situation. And here is the uncomfortable part:
+<strong>on most Nepali catchments it is an estimate made without gauge data</strong>, by a
+regional method, to a precision the underlying information cannot support. Knowing how
+wrong it might be is not pessimism. It is what tells you where to put your margin.</p>
+
 <div class="box def">
   <span class="lbl">The idea</span>
-  <p>Rainfall-runoff, return periods, design discharge. Choosing it, and defending it.</p>
+  <p>Design discharge is a decision about acceptable risk dressed up as a calculation.
+  Choose the return period consciously, know which method you used and what it assumes, and
+  put your margin where the uncertainty actually is — which is almost never in the third
+  significant figure.</p>
 </div>
-<p class="todo">Hook, body and figures — Phase 2.</p>
+
+<h4>Choosing the return period</h4>
+
+<p>A return period T does not mean "once every T years". It means an annual exceedance
+probability of 1/T. The consequence people rarely compute:</p>
+
+<p class="tw" style="text-align:center">P(at least one exceedance in n years) = 1 − (1 − 1/T)<sup>n</sup></p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Design return period</th><th>Chance of being exceeded in a 50-year life</th></tr></thead>
+<tbody>
+<tr><td>25 years</td><td><strong>87 %</strong></td></tr>
+<tr><td>50 years</td><td><strong>64 %</strong></td></tr>
+<tr><td>100 years</td><td><strong>39 %</strong></td></tr>
+<tr><td>200 years</td><td><strong>22 %</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Read that table properly, because it reframes the whole exercise. A structure on a
+50-year flood is <em>more likely than not</em> to see its design event exceeded within its
+service life. That is not a design failure — it is the deal you struck. The real question
+is not "will it be exceeded" but <strong>"what happens when it is"</strong>, and that
+question deserves an answer in the design, not a silence.</p>
+
+<p>Typical practice scales the return period with consequence — culverts and minor
+cross-drainage at the lower end, important bridges at 100 years and sometimes beyond,
+with the highest values reserved for structures whose loss would sever a district. Take
+the actual figures from the current DoR bridge and road standards rather than from memory
+or from the last project, because these values are revised, and an out-of-date return
+period is the easiest possible thing to be caught on.</p>
+
+<p>Two adjustments worth arguing for on their merits:</p>
+
+<ul>
+  <li><strong>Redundancy should shift the number.</strong> A crossing with a viable
+    alternative route ten kilometres away is a different risk proposition from the only
+    link to a district headquarters, even if the two bridges are identical. The standard
+    sets a floor, not a ceiling.</li>
+  <li><strong>Check the extreme case separately.</strong> Design for the standard event;
+    then ask what a much larger one does. If the answer is "the approaches wash out and we
+    rebuild them in a fortnight", that is an acceptable structure. If it is "the pier is
+    undermined and the deck is in the river", it is not — whatever the design return period
+    says.</li>
+</ul>
+
+<h4>Getting the number when there is no gauge</h4>
+
+<p>Most hill catchments in Nepal are ungauged. In rough order of how much you should trust
+them:</p>
+
+<ol>
+  <li><strong>Frequency analysis on a long local record.</strong> Fit Gumbel or log-Pearson
+    III to annual maxima at a nearby gauge and transfer by area ratio. Best when the record
+    is long and the gauge is genuinely on a comparable catchment. Be honest about
+    <em>long</em>: extrapolating a hundred-year flood from a twenty-year record is an
+    extrapolation, not an analysis, and the confidence interval is wider than the answer.</li>
+  <li><strong>Regional methods.</strong> In Nepal the WECS/DHM regional approach is the
+    standard fallback for ungauged basins, estimating flood magnitudes from catchment area
+    and elevation characteristics. Use the current published coefficients — do not carry
+    them in your head — and note that regional methods describe the region, so a catchment
+    that is atypical of its region will be badly served.</li>
+  <li><strong>Rational method.</strong> Session 13. Sound for small catchments, degrades as
+    area grows.</li>
+  <li><strong>Empirical area formulae</strong> of the Dickens or Ryves type. Fast, and
+    genuinely useful only as a sanity check on something else.</li>
+</ol>
+
+<p><strong>Always use two methods.</strong> Not to average them — averaging two estimates
+of unknown quality produces a third estimate of unknown quality. Use the second one to find
+out whether you have made an error of a factor of two, which is the error that actually
+happens. If they agree within a reasonable band, proceed. If one is triple the other, stop
+and find out why <em>before</em> you pick, because the reason is usually a mistake in
+catchment area, units, or an intensity taken at the wrong duration.</p>
+
+<h4>Where the uncertainty really lives</h4>
+
+<p>This is the part that separates a competent designer from a careful one. Rank the things
+that can make your waterway inadequate:</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Source</th><th>Rough effect on required waterway</th></tr></thead>
+<tbody>
+<tr><td><strong>Blockage by debris</strong> — trees, boulders, a collapsed bank upstream</td><td>Can remove <em>most</em> of the opening. Dominates everything else</td></tr>
+<tr><td><strong>Bed aggradation</strong> over the structure's life</td><td>Steadily reduces the opening; on a Himalayan river this is routine, not exceptional</td></tr>
+<tr><td><strong>Choice of return period</strong></td><td>Tens of per cent</td></tr>
+<tr><td><strong>Choice of estimation method</strong></td><td>Tens of per cent, sometimes a factor of two</td></tr>
+<tr><td><strong>Refining the coefficients within a method</strong></td><td>A few per cent</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The list is in that order for a reason, and the reason is a design instruction: effort
+spent refining the discharge estimate below its own uncertainty is wasted, while effort
+spent on <strong>blockage, aggradation and freeboard</strong> pays directly. A generously
+sized, well-aligned opening with real freeboard and a maintainable inlet will outperform a
+precisely calculated one that silts.</p>
+
+<div class="caveat">
+<p><b>Say what you assumed, in the drawing.</b> Note the design discharge, the return
+period, the method and the date on the structural drawing itself — not only in a report
+that will be lost. In fifteen years somebody will be assessing this structure after a flood
+that exceeded it, and the difference between "the design was inadequate" and "the design
+was for a 50-year event and this was larger" is a line of text you can write today. It also
+protects the next engineer from assuming a capacity that was never there.</p>
+</div>
+
 <div class="box key">
   <span class="lbl">Judgment</span>
-  <p class="todo">To be written.</p>
+  <p>Treat the design flood as two questions, not one. First: what event am I designing for,
+  and does the return period match the consequence of losing this crossing — including
+  whether there is another way round? Second, and the one most designs skip:
+  <em>what does this structure do when that event is exceeded?</em> Aim for structures that
+  fail gracefully — approaches that wash out and are rebuilt cheaply, decks that overtop
+  without being lifted, aprons that launch instead of undermining. Then put your remaining
+  margin into opening size and freeboard rather than into decimal places, because the thing
+  that will actually reduce your waterway is a tree.</p>
 </div>
+
 <div class="assign">
   <span class="lbl">Field assignment</span>
-  <p class="todo">To be written — 15 minutes, outside.</p>
+  <p>Take one bridge or major culvert you know and reconstruct its design decision:</p>
+  <ol>
+    <li>Estimate the catchment area above it — from a map or imagery is fine.</li>
+    <li>Estimate a design discharge by <strong>two</strong> different methods.</li>
+    <li>Compare them. If they differ by more than about a factor of two, find the reason.</li>
+    <li>Then look at the structure and ask: what happens if the flood is twice your larger
+      number? Does it overtop and survive, or does it lose a pier?</li>
+  </ol>
+  <p class="found"><b>What you probably found:</b> that the two methods disagreed by a
+  substantial margin — which is normal and is exactly why you run two — and that the
+  question about graceful failure was the one that changed your opinion of the structure.
+  Most crossings look adequate until you ask what they do on the day they are exceeded.</p>
 </div>
+
 <div class="checkself">
   <span class="lbl">Check yourself</span>
-  <p class="todo">3–5 questions, tap to reveal.</p>
+  <p class="q">1 · A bridge is designed for the 50-year flood and has a 50-year life. What is the chance the design event is exceeded, and what does that mean?</p>
+  <p class="a"><span>About 64 % — from 1 − (1 − 1/50)⁵⁰. It is more likely than not. That is not a design failure but the risk that was accepted, which is precisely why the design must also answer what happens when it is exceeded.</span></p>
+  <p class="q">2 · Why use two estimation methods, if you are not going to average them?</p>
+  <p class="a"><span>To detect gross error. Averaging two estimates of unknown quality just gives a third of unknown quality. The second method's job is to reveal a factor-of-two discrepancy — usually caused by a wrong catchment area, a units slip, or an intensity taken at the wrong duration — before it reaches the drawing.</span></p>
+  <p class="q">3 · What is the single largest threat to a waterway's adequacy, and where does refining the discharge estimate rank against it?</p>
+  <p class="a"><span>Blockage by debris, which can remove most of the opening — far outweighing any refinement of Q. Bed aggradation comes next. Refining coefficients within a method changes the answer by a few per cent and is the least valuable place to spend effort.</span></p>
+  <p class="q">4 · Two identical bridges, same river, same discharge. One is the only link to a district headquarters; the other has a diversion ten kilometres away. Should they be designed the same?</p>
+  <p class="a"><span>No. Return period should scale with the consequence of losing the crossing, and consequence includes redundancy. The standard sets a floor; the absence of an alternative route is a legitimate argument for going above it.</span></p>
+  <p class="q">5 · Why should the design discharge, return period, method and date appear on the drawing itself?</p>
+  <p class="a"><span>Because someone will assess the structure after an exceedance, and the difference between "inadequate design" and "designed for a 50-year event, this was larger" is that line of text. It also stops the next engineer assuming a capacity the structure never had.</span></p>
 </div>
 
 <h3 class="chap" id="s15">15 · Rivers behave</h3>
-<p class="sesstime ui">Session 15 · core · <span class="todo-inline">reading time to be set</span></p>
+<p class="sesstime ui">Session 15 · core · 15 min</p>
+
+<p class="hook">On <strong>18 August 2008</strong> the Koshi breached its eastern embankment
+near Kusaha, a few kilometres above the barrage, and left. It did not overtop in a record
+flood — the discharge that day was well below the barrage's capacity. It simply took a
+lower path across a plain it had spent decades building up, swung tens of kilometres east
+of its engineered course, and displaced a great many people in Nepal and Bihar who lived
+nowhere near the river. <strong>A structure can be perfectly adequate for the water and
+still be irrelevant, because the river is no longer there.</strong></p>
+
 <div class="box def">
   <span class="lbl">The idea</span>
-  <p>Sediment, braiding, aggradation, avulsion, bank erosion. Nepal's rivers are not textbook rivers.</p>
+  <p>A Himalayan river is a sediment conveyor that happens to contain water. Design for the
+  water alone and you will be right about the hydraulics and wrong about the river — because
+  the bed level, the channel position and the plan form all move, and all of them move
+  faster than your structure's design life.</p>
 </div>
-<p class="todo">Hook, body and figures — Phase 2.</p>
+
+<h4>The sediment, first</h4>
+
+<p>The Himalaya is young, rising, steep and heavily rained on, and it is shedding itself into
+the plains at a rate among the highest anywhere on earth. Every river issue you will meet
+follows from that. Sediment travels in three ways, and the distinction is practical:</p>
+
+<ul>
+  <li><strong>Bed load</strong> — rolling, sliding and hopping along the bed. Coarse. It is
+    what builds bars, fills your waterway, and determines whether the bed rises or falls.
+    This is the fraction that matters most to a bridge.</li>
+  <li><strong>Suspended load</strong> — held up by turbulence. What makes the river brown.
+    Mostly passes through.</li>
+  <li><strong>Wash load</strong> — the finest fraction, effectively never deposited in the
+    channel. Irrelevant to your structure and highly relevant to a reservoir.</li>
+</ul>
+
+<p>Transport capacity rises very steeply with velocity, which produces the behaviour that
+catches people out: <strong>almost all the year's sediment moves in a few days.</strong> The
+river you survey in March is not doing the work. It is resting between shifts.</p>
+
+<h4>Aggradation and degradation</h4>
+
+<p>Whether the bed rises or falls is a simple balance — sediment supplied from upstream
+against sediment the river can carry away. Where supply exceeds capacity the bed
+<strong>aggrades</strong>; where capacity exceeds supply it <strong>degrades</strong>.</p>
+
+<p>Both are engineering problems, and they are opposite ones:</p>
+
+<div class="tw">
+<table>
+<thead><tr><th></th><th>Aggradation</th><th>Degradation</th></tr></thead>
+<tbody>
+<tr><td>Typical cause</td><td>Heavy upstream sediment yield — landslides, debris flows, a catchment being disturbed. Or a reduction in slope or velocity: the plains, a backwater, a barrage</td><td>Sediment cut off upstream (a dam), or extraction — sand and gravel mining</td></tr>
+<tr><td>What it does to you</td><td>Reduces waterway. Raises flood levels. Buries aprons and drains. Perches the channel above its floodplain</td><td>Lowers the bed beneath your foundations. Undermines piers, aprons, spurs, protection works</td></tr>
+<tr><td>Where in Nepal</td><td>The rule on most rivers leaving the hills, and pronounced above any barrage</td><td>Increasingly common downstream of extraction reaches near urban demand</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Note that unregulated gravel extraction near a bridge causes degradation exactly where
+you can least afford it, and it is often happening a few hundred metres from a structure
+whose owner has no idea. It is worth looking for on every site visit.</p>
+
+<h4>Plan form: what the river looks like from above</h4>
+
+<figure class="fig">
+<svg viewBox="0 0 640 280" role="img" aria-label="Braided, meandering and avulsing river plan forms with the point of attack marked">
+  <g font-family="system-ui,sans-serif">
+  <!-- BRAIDED -->
+  <text x="14" y="22" font-size="15" font-weight="800" fill="var(--ink)">Braided</text>
+  <path d="M14 60 L200 60 M14 130 L200 130" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="5 5"/>
+  <g stroke="var(--orange-500)" stroke-width="3" fill="none">
+    <path d="M14 96 q34 -22 68 0 q34 22 68 0 q26 -16 50 4"/>
+    <path d="M14 96 q34 22 68 0 q34 -22 68 0 q26 16 50 -4"/>
+    <path d="M50 84 q30 12 60 0"/>
+  </g>
+  <text x="14" y="156" font-size="13" fill="var(--ink-3)">many shifting channels,</text>
+  <text x="14" y="174" font-size="13" fill="var(--ink-3)">high sediment. The active</text>
+  <text x="14" y="192" font-size="13" fill="var(--ink-3)">channel moves between floods</text>
+
+  <!-- MEANDERING -->
+  <text x="226" y="22" font-size="15" font-weight="800" fill="var(--ink)">Meandering</text>
+  <path d="M226 96 q40 -46 80 0 q40 46 80 0" fill="none" stroke="var(--orange-500)" stroke-width="7"/>
+  <!-- attack on outer bend -->
+  <circle cx="266" cy="70" r="9" fill="none" stroke="var(--orange-600)" stroke-width="3"/>
+  <path d="M266 52 L266 40" stroke="var(--orange-600)" stroke-width="2.5"/>
+  <text x="222" y="34" font-size="13" font-weight="800" fill="var(--orange-600)">attack</text>
+  <!-- deposition inner bend -->
+  <path d="M296 112 q10 10 22 12" fill="none" stroke="var(--good-line)" stroke-width="4"/>
+  <text x="300" y="146" font-size="13" fill="var(--good)">deposition</text>
+  <text x="226" y="174" font-size="13" fill="var(--ink-3)">erodes the outer bank,</text>
+  <text x="226" y="192" font-size="13" fill="var(--ink-3)">deposits on the inner.</text>
+  <text x="226" y="210" font-size="13" fill="var(--ink-3)">It migrates — always</text>
+
+  <!-- AVULSION -->
+  <text x="440" y="22" font-size="15" font-weight="800" fill="var(--ink)">Avulsion</text>
+  <!-- perched old channel -->
+  <path d="M440 76 L620 76" stroke="var(--ink-3)" stroke-width="6" opacity="0.45"/>
+  <text x="440" y="66" font-size="12.5" fill="var(--ink-3)">old, perched, aggraded</text>
+  <!-- breach -->
+  <path d="M508 80 L488 128" stroke="var(--orange-600)" stroke-width="4"/>
+  <!-- new course -->
+  <path d="M488 128 q40 12 132 6" fill="none" stroke="var(--orange-500)" stroke-width="7"/>
+  <text x="440" y="174" font-size="13" fill="var(--ink-3)">the bed rises above the</text>
+  <text x="440" y="192" font-size="13" fill="var(--ink-3)">floodplain until the river</text>
+  <text x="440" y="210" font-size="13" fill="var(--ink-3)">breaks out and takes a</text>
+  <text x="440" y="228" font-size="13" fill="var(--ink-3)">new, lower path</text>
+  <!-- your bridge, now on dry land -->
+  <path d="M556 62 L556 90" stroke="var(--ink)" stroke-width="4"/>
+  <text x="540" y="50" font-size="12.5" font-weight="800" fill="var(--ink)">bridge</text>
+  </g>
+</svg>
+<figcaption>Three behaviours to recognise from a map before you ever visit. The one that
+ends careers is the third: <b>avulsion does not damage your bridge — it abandons it</b>,
+leaving a sound structure spanning dry ground while the river runs past the end of your
+approach embankment.</figcaption>
+</figure>
+
+<p><strong>Braided.</strong> Multiple channels around shifting bars, characteristic of high
+sediment load, steep slope and erodible banks — which describes most Nepali rivers where
+they leave the hills. The engineering consequence is blunt: <em>you cannot site a structure
+on "the channel", because there isn't one.</em> The active thread this year is not the
+active thread in ten years. You must either span the whole braid belt or accept that you
+are committing to guide bunds and training works forever.</p>
+
+<p><strong>Meandering.</strong> A single sinuous channel that erodes the outer bank of each
+bend and deposits on the inner. It migrates continuously — that is not a malfunction, it is
+what meandering <em>is</em>. Siting an abutment on an outer bend without protection is
+siting it at the point of attack.</p>
+
+<p><strong>Avulsion.</strong> The one from the top of this session. A river that aggrades
+eventually perches its bed above the surrounding floodplain, held in by its own levees or
+by yours. At that point it is a river looking for a lower path, and it will find one — often
+in a flood well below the design event, because the mechanism is not capacity, it is a
+breach.</p>
+
+<h4>Reading a river before you design in it</h4>
+
+<p>Almost all of the following is available from imagery and an afternoon, and it is worth
+more than an extra decimal place on Q:</p>
+
+<ul>
+  <li><strong>Compare old and recent imagery.</strong> Twenty years of images shows you
+    migration rate and direction directly. This is the single most valuable half hour in
+    river work.</li>
+  <li><strong>Map the abandoned channels.</strong> They define the belt the river considers
+    its own. Anything inside it is at risk, whatever it looks like today.</li>
+  <li><strong>Look at the banks.</strong> Fresh vertical scarps mean active attack. Sloped
+    vegetated banks mean stability, for now.</li>
+  <li><strong>Look at the bed.</strong> Compare bed level with old bridge soffits, apron
+    levels or a known datum. Rising or falling, and how fast?</li>
+  <li><strong>Ask about extraction.</strong> Where is sand and gravel being taken, and how
+    close to your crossing?</li>
+</ul>
+
+<div class="caveat">
+<p><b>Confinement moves the problem, it does not remove it.</b> Embankments, guide bunds and
+spurs constrain a river to a narrower path. That raises velocity and flood level inside the
+constraint, cuts off the floodplain sediment sink so the bed aggrades faster, and transfers
+attack downstream to whoever is next. Sometimes it is still the right answer. But it should
+be chosen knowing that a confined aggrading river is being loaded towards the day it breaks
+out — which is the Koshi story in a sentence.</p>
+</div>
+
 <div class="box key">
   <span class="lbl">Judgment</span>
-  <p class="todo">To be written.</p>
+  <p>Before fixing any crossing point, put twenty years of imagery side by side and ask
+  where the river has been, not where it is. Then site for the <strong>belt</strong>, not
+  the channel — span the braid, stand off the outer bend, keep abutments and approaches out
+  of the migration corridor. Where you cannot, be explicit that you have bought a permanent
+  training-works commitment and make sure somebody is funded for it, because unmaintained
+  training works fail faster than no training works. And treat any perched, aggrading,
+  embanked reach as a standing avulsion risk regardless of how well the embankment is
+  built.</p>
 </div>
+
 <div class="assign">
   <span class="lbl">Field assignment</span>
-  <p class="todo">To be written — 15 minutes, outside.</p>
+  <p>Pick a river crossing you know and open the oldest and newest satellite imagery you can
+  find of it. Then:</p>
+  <ol>
+    <li>Trace the active channel in each. How far has it moved, and in which direction?</li>
+    <li>Mark every abandoned channel you can see. Sketch the outer envelope — that is the
+      belt.</li>
+    <li>Where does the structure and its approach embankment sit relative to that envelope?</li>
+  </ol>
+  <p class="found"><b>What you probably found:</b> more movement than you expected, and an
+  approach embankment — not the bridge — sitting inside the belt. Approaches are where these
+  rivers actually take roads out. The span gets the design attention and the embankment gets
+  outflanked.</p>
 </div>
+
 <div class="checkself">
   <span class="lbl">Check yourself</span>
-  <p class="todo">3–5 questions, tap to reveal.</p>
+  <p class="q">1 · The Koshi left its course in 2008 at a discharge well below the barrage's capacity. What does that tell you about the failure mechanism?</p>
+  <p class="a"><span>That it was not a capacity failure. Years of aggradation had perched the bed above the surrounding plain, so the river was held in by its embankments and looking for a lower path. It breached rather than overtopped — which is why a structure adequate for the water was irrelevant to the outcome.</span></p>
+  <p class="q">2 · Which sediment fraction matters most to a bridge, and why?</p>
+  <p class="a"><span>Bed load. It is coarse, it builds bars, it fills the waterway and it governs whether the bed aggrades or degrades. Suspended load mostly passes through and wash load never deposits in the channel — they matter to a reservoir, not to your foundation.</span></p>
+  <p class="q">3 · Why is a braided river fundamentally different to site a structure on?</p>
+  <p class="a"><span>Because there is no single channel to site on — the active thread shifts between floods across the whole braid belt. You either span the belt or you commit permanently to guide bunds and training works to hold the river where you want it.</span></p>
+  <p class="q">4 · Gravel is being extracted 300 m downstream of a bridge. What is the concern?</p>
+  <p class="a"><span>Degradation. Removing sediment lowers the bed, and the effect propagates upstream, undermining pier foundations, aprons and protection works. It is a slow, invisible reduction in the scour margin the foundations were designed with.</span></p>
+  <p class="q">5 · Name the trade-off in confining a river with embankments and guide bunds.</p>
+  <p class="a"><span>Confinement raises velocity and flood level within the constraint, cuts off the floodplain as a sediment sink so the bed aggrades faster, and passes the attack downstream. It can still be right — but a confined, aggrading river is being loaded steadily towards avulsion.</span></p>
 </div>
 
 <h3 class="chap" id="s16">16 · Flood, flash flood, GLOF</h3>
-<p class="sesstime ui">Session 16 · core · <span class="todo-inline">reading time to be set</span></p>
+<p class="sesstime ui">Session 16 · core · 14 min</p>
+
+<p class="hook">On <strong>4 August 1985</strong>, Dig Tsho — a moraine-dammed lake above
+Thame in the Khumbu — released. The wave went down the Bhote Koshi and destroyed the
+hydropower plant at Thame that was within weeks of commissioning, along with bridges, trails
+and farmland for tens of kilometres. It had not rained. In
+<strong>August 2024</strong> the same valley was hit again, when lakes above Thame burst and
+ran through the village. A flood is normally something you can see coming in the sky.
+<strong>These are floods with no weather attached</strong> — and if your mental model of
+flooding is "heavy rain, rising river", you will not plan for them at all.</p>
+
 <div class="box def">
   <span class="lbl">The idea</span>
-  <p>Three different problems with three different warnings. Thame 2024, Melamchi 2021.</p>
+  <p>Three different things get called flooding, and they differ in the one variable that
+  decides what you can do about them: <strong>warning time</strong>. Days, minutes, or none.
+  That difference, not the depth of water, should drive your response.</p>
 </div>
-<p class="todo">Hook, body and figures — Phase 2.</p>
+
+<h4>The three, sorted by what you get to do</h4>
+
+<div class="tw">
+<table>
+<thead><tr><th></th><th>Riverine flood</th><th>Flash flood</th><th>GLOF / LDOF</th></tr></thead>
+<tbody>
+<tr><td><strong>Driver</strong></td><td>Prolonged basin-wide rainfall</td><td>Intense rain on a small steep catchment</td><td>Failure of a natural dam — moraine or landslide</td></tr>
+<tr><td><strong>Where</strong></td><td>Terai, large valley floors</td><td>Hill kholas, alluvial fans</td><td>High valleys, propagating far downstream</td></tr>
+<tr><td><strong>Warning</strong></td><td>Hours to days</td><td>Minutes to about an hour</td><td>Minutes, or none at all</td></tr>
+<tr><td><strong>Sediment</strong></td><td>Suspended; the water is the hazard</td><td>Often a debris flow — the sediment is the hazard</td><td>Enormous. Erodes its own channel and grows</td></tr>
+<tr><td><strong>What works</strong></td><td>Forecasting, embankments, evacuation, land use</td><td>Getting out of the way. Alignment and conveyance</td><td>Avoidance, lake monitoring, lowering, siren-based warning</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Read down the "warning" row and the design philosophy writes itself. Where warning is
+measured in days you can invest in forecasting and evacuation, and a person can be moved out
+of harm's way. Where it is measured in minutes, no warning system will save a structure and
+barely one will save a person who is not already close to high ground — so the money belongs
+in <strong>siting</strong> rather than in warning.</p>
+
+<h4>Riverine floods</h4>
+
+<p>The familiar one, and the one Nepal's institutional machinery is best set up for. Its
+distinguishing feature is that it is <em>observable upstream before it arrives</em>, which
+makes real warning possible. Community-based flood early warning systems on rivers such as
+the Karnali, Babai and the Rapti systems work on exactly this — an upstream gauge, a simple
+threshold, and a phone call or siren downstream.</p>
+
+<p>The honest limitation is worth knowing precisely: <strong>the lead time is only the
+travel time</strong>. On Nepal's rivers, from the hills to the Terai settlements, that is
+typically a few hours. It is enough to move people and livestock to a raised platform. It is
+not enough to move anything that requires machinery, and it is not enough to protect a
+structure. Design accordingly — a warning system is a life-safety measure, and it should
+never be counted as a substitute for freeboard.</p>
+
+<h4>Flash floods</h4>
+
+<p>Session 13's short time of concentration, expressed as a hazard. A steep catchment
+converts an intense burst into a violent peak within minutes, and in Nepal that peak very
+often arrives as a debris flow rather than as water — which is session 8.</p>
+
+<p>The practical consequences for a road engineer:</p>
+
+<ul>
+  <li>Warning is effectively impossible at the scale of an individual crossing. By the time
+    an upstream observer sees it, it has arrived.</li>
+  <li>The design event is not "the flood" but "the flood plus what it is carrying". A
+    culvert sized on clear-water discharge is sized for a fraction of the real problem.</li>
+  <li>The controllable variable is <strong>position</strong> — where the alignment crosses,
+    how high, and whether the structure is on the fan or above it.</li>
+</ul>
+
+<h4>Outburst floods: GLOF and LDOF</h4>
+
+<p>Two mechanisms, one behaviour. A natural dam impounds a lake, then fails.</p>
+
+<p><strong>GLOF</strong> — a glacial lake, usually behind a moraine left by a retreating
+glacier. The moraine is loose, unengineered material, often with buried ice in it, and it
+can be breached by overtopping, by piping through the dam, or by a wave from an
+ice or rock avalanche falling into the lake. As glaciers retreat, these lakes generally grow
+in number and volume, so <em>this hazard is not stationary</em> — it is increasing, which
+session 19 takes up.</p>
+
+<p><strong>LDOF</strong> — a landslide dam, the mechanism that made Jure so serious in
+session 6. A slide blocks a river, a lake forms behind it, and the dam is then either
+breached naturally or by intervention. Landslide dams tend to fail fast, and often within
+days or weeks of forming, which at least makes the danger period identifiable.</p>
+
+<p>What makes both far worse than their volume suggests is that the release
+<strong>entrains its own channel</strong>. It scours bed and banks as it travels and can
+arrive downstream several times larger than what left the lake, exactly as in session 8. A
+GLOF is a debris flow with a reservoir behind it.</p>
+
+<div class="caveat">
+<p><b>You cannot economically design a road structure for a GLOF.</b> Say this plainly, and
+early, because a great deal of money gets spent pretending otherwise. The peak discharge and
+the impact loads are far beyond anything a normal crossing can be built for. What you can
+do is real, and it is all in the layout: keep the alignment and the structure
+<em>above</em> the credible inundation and impact zone, keep piers out of the channel, avoid
+building on fans and outwash terraces below known lakes, and accept that if you must be low,
+the structure is expendable and should be cheap and quick to replace. Choosing where to be
+is the only economic defence.</p>
+</div>
+
+<h4>What to do with this, concretely</h4>
+
+<ol>
+  <li><strong>Find out what is upstream of you.</strong> For any alignment in a glaciated
+    valley, establish whether there are moraine-dammed lakes in the catchment. This
+    information exists — ICIMOD and the department inventories have mapped Nepal's glacial
+    lakes and flagged the potentially dangerous ones — and it should be a routine input to a
+    route decision, not a specialist study nobody commissions.</li>
+  <li><strong>Look for the evidence on the ground.</strong> Past outburst deposits are
+    written into the valley: boulder fields far above the present river, terraces of coarse
+    unsorted material, trim lines on the valley sides. Session 9's eye, applied to a valley
+    floor.</li>
+  <li><strong>Set your levels from the evidence, not the hydrology.</strong> If the deposits
+    say the flow was once eight metres above today's bed, that is your constraint, whatever
+    the frequency analysis says.</li>
+  <li><strong>Know the danger period after a landslide dam forms.</strong> When a slide
+    blocks a river anywhere upstream of your work, that is an immediate operational
+    question — who is downstream, what is the lake volume, and is anyone watching it.</li>
+</ol>
+
 <div class="box key">
   <span class="lbl">Judgment</span>
-  <p class="todo">To be written.</p>
+  <p>Classify the crossing before you design it. Ask what kind of flood threatens this
+  point, and then spend where that kind can actually be influenced: forecasting and levels
+  for riverine, siting and conveyance for flash, and for outburst floods, elevation and
+  expendability — because nothing else is affordable. The most common error is to apply a
+  riverine mindset everywhere, sizing a waterway from a frequency curve on a khola whose
+  real design event will be a wall of boulders that no frequency curve describes.</p>
 </div>
+
 <div class="assign">
   <span class="lbl">Field assignment</span>
-  <p class="todo">To be written — 15 minutes, outside.</p>
+  <p>Take a valley you know that drains from high country. On imagery, work upstream from a
+  road crossing and answer:</p>
+  <ol>
+    <li>Are there <strong>lakes</strong> in the catchment? Any behind moraine?</li>
+    <li>On the valley floor near the crossing, can you find <strong>boulders or terraces
+      well above the present river</strong> that today's flow could not have placed?</li>
+    <li>How high above the present bed is the highest such evidence — and how does that
+      compare with the soffit of the structure?</li>
+  </ol>
+  <p class="found"><b>What you probably found:</b> evidence of past flows above the level
+  anyone designs to, and a structure set by hydrology rather than by that evidence. The
+  valley keeps a longer record than the gauge does, and it is usually the more alarming of
+  the two.</p>
 </div>
+
 <div class="checkself">
   <span class="lbl">Check yourself</span>
-  <p class="todo">3–5 questions, tap to reveal.</p>
+  <p class="q">1 · Which single variable most usefully separates riverine, flash and outburst floods for design purposes?</p>
+  <p class="a"><span>Warning time — days, minutes, or none. It decides whether forecasting and evacuation can work at all, and therefore whether money belongs in warning systems or entirely in siting and levels.</span></p>
+  <p class="q">2 · A community flood warning system gives a few hours of lead time. What can and cannot that achieve?</p>
+  <p class="a"><span>It can move people and livestock to safe ground — it is a life-safety measure. It cannot protect a structure, and it cannot move anything needing machinery. Lead time equals the flood's travel time, so it must never be counted as a substitute for freeboard or siting.</span></p>
+  <p class="q">3 · Why is a GLOF's downstream impact often much larger than the lake volume implies?</p>
+  <p class="a"><span>Because the release entrains its channel — scouring bed and banks as it travels — so it grows on the way down and arrives as a debris flow rather than as water. It is a debris flow with a reservoir behind it.</span></p>
+  <p class="q">4 · Why is glacial lake outburst hazard described as non-stationary?</p>
+  <p class="a"><span>Because retreating glaciers are creating and enlarging moraine-dammed lakes, so the number and volume of potential sources is increasing over time. The historical record understates the future rate — you cannot infer the hazard from past frequency.</span></p>
+  <p class="q">5 · Your alignment must cross a valley below a known dangerous glacial lake. What is the design strategy?</p>
+  <p class="a"><span>Elevation and expendability, not strength. Keep the alignment and structure above the credible inundation and impact zone, keep piers out of the channel, avoid fans and outwash terraces — and where you must be low, make the structure cheap and quick to replace. You cannot economically build to resist the event.</span></p>
 </div>
 
 <h3 class="chap" id="s17">17 · Scour</h3>
-<p class="sesstime ui">Session 17 · core · <span class="todo-inline">reading time to be set</span></p>
+<p class="sesstime ui">Session 17 · core · 16 min</p>
+
+<p class="hook">Ask what takes bridges down in Nepal and most people will say earthquakes.
+The record says otherwise. Bridges are lost, year after year, to water — and specifically to
+the ground being removed from under a foundation that was perfectly adequate for every load
+it was designed to carry. What makes scour dangerous is not that it is difficult. It is that
+<strong>it is invisible</strong>. The hole opens during the flood, at night, under brown
+water nobody can see into, and by the time the river drops it has filled itself back in with
+loose sediment. You inspect at low water, find a bed that looks exactly as it should, and
+conclude that nothing happened.</p>
+
 <div class="box def">
   <span class="lbl">The idea</span>
-  <p>The single largest killer of bridges in Nepal. General, contraction and local — how to estimate it and what to do.</p>
+  <p>Scour is at its deepest at the peak of the flood and refills as the flood recedes. What
+  you can see at low water tells you almost nothing about what happened. Foundations must be
+  taken below the <em>total</em> scour depth, which is three separate mechanisms added
+  together.</p>
 </div>
-<p class="todo">Hook, body and figures — Phase 2.</p>
+
+<h4>Three mechanisms, and they add</h4>
+
+<figure class="fig">
+<svg viewBox="0 0 640 300" role="img" aria-label="A bridge crossing showing general degradation, contraction scour and local scour at a pier, added to give total scour">
+  <g font-family="system-ui,sans-serif">
+  <!-- banks -->
+  <path d="M14 90 L120 90 L160 140 L480 140 L520 90 L626 90" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
+  <!-- water line -->
+  <path d="M14 104 L626 104" stroke="var(--info-line)" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="20" y="98" font-size="12.5" fill="var(--ink-3)">flood level</text>
+
+  <!-- original bed -->
+  <path d="M160 140 L480 140" stroke="var(--ink-3)" stroke-width="2.5" stroke-dasharray="5 5"/>
+  <text x="486" y="136" font-size="13" fill="var(--ink-3)">original bed</text>
+
+  <!-- 1 general degradation -->
+  <path d="M160 168 L480 168" stroke="var(--orange-500)" stroke-width="2.5"/>
+  <text x="486" y="172" font-size="13" font-weight="700" fill="var(--orange-600)">1 general</text>
+
+  <!-- 2 contraction (narrower opening -> lower still) -->
+  <path d="M200 196 L440 196" stroke="var(--orange-500)" stroke-width="2.5"/>
+  <text x="446" y="200" font-size="13" font-weight="700" fill="var(--orange-600)">2 contraction</text>
+
+  <!-- pier -->
+  <rect x="300" y="60" width="34" height="150" fill="var(--graphite-100)" stroke="var(--ink-2)" stroke-width="2.5"/>
+  <!-- deck -->
+  <path d="M120 60 L520 60" stroke="var(--ink)" stroke-width="8"/>
+
+  <!-- 3 local scour hole -->
+  <path d="M262 196 Q300 268 372 196" fill="none" stroke="var(--orange-600)" stroke-width="3.5"/>
+  <text x="378" y="240" font-size="13" font-weight="700" fill="var(--orange-600)">3 local</text>
+
+  <!-- foundation must go below -->
+  <path d="M300 210 L334 210 L334 268 L300 268 Z" fill="none" stroke="var(--ink)" stroke-width="2" stroke-dasharray="4 4"/>
+  <path d="M240 282 L400 282" stroke="var(--ink)" stroke-width="2.5"/>
+  <path d="M240 276 L240 288 M400 276 L400 288" stroke="var(--ink)" stroke-width="2.5"/>
+  <text x="200" y="298" font-size="13.5" font-weight="800" fill="var(--ink)">founding level: below total scour + grip</text>
+  </g>
+</svg>
+<figcaption>The three mechanisms are cumulative, not alternatives. General lowering of the
+whole reach, plus extra lowering because the bridge narrows the flow, plus a hole gouged
+around the pier itself. <b>Your founding level must clear all three together</b>, with grip
+length below that.</figcaption>
+</figure>
+
+<p><strong>1 · General scour</strong> — the long-term change in bed level of the whole
+reach, and the short-term lowering during a flood. It has nothing to do with your bridge. It
+is session 15's degradation, plus any gravel extraction, plus the natural fluctuation of the
+bed during high flow. A bridge founded correctly in 1990 can be inadequate in 2025 because
+the reach has degraded, without a single thing about the bridge having changed.</p>
+
+<p><strong>2 · Contraction scour</strong> — the bed lowering caused by <em>your</em>
+structure narrowing the waterway. Squeeze the flow and velocity rises; raise velocity and
+transport capacity rises steeply; more sediment leaves the contracted section than enters
+it, so the bed drops until the two balance. This one is directly under your control, and it
+is the cost of a short bridge: every metre of waterway you save at the deck buys you depth
+you must pay for in the foundations. That trade is worth pricing honestly rather than
+assuming the shorter span is cheaper.</p>
+
+<p><strong>3 · Local scour</strong> — the hole around a pier or abutment. Flow striking a
+pier is driven downwards at the face, forming a <strong>horseshoe vortex</strong> that
+wraps around the base and excavates the bed. It is a highly localised, aggressive mechanism,
+and it is the one that most often takes the structure.</p>
+
+<h4>Estimating it</h4>
+
+<p>South Asian practice, including Nepali bridge design, builds on <strong>Lacey's regime
+theory</strong>. The regime scour depth is estimated from the discharge intensity and a silt
+factor representing the bed material, and then multiplied by factors depending on where you
+are — larger at a pier nose, larger still at a severe bend or a constriction. The IRC bridge
+codes set out the multipliers.</p>
+
+<p>Rather than reproduce numbers you should read from the current code, learn the shape of
+the relationships, because that is what lets you smell a wrong answer:</p>
+
+<ul>
+  <li>Scour depth increases with <strong>discharge intensity</strong> — discharge per metre
+    of waterway. Halve the waterway and you have more than doubled the depth you must find.</li>
+  <li>It decreases with <strong>coarser bed material</strong> — the silt factor. Fine sand
+    scours far deeper than shingle.</li>
+  <li>Local scour scales with <strong>pier width</strong>, and only weakly with everything
+    else. Pier width is the dominant variable you control, and it is why a slender pier is
+    worth real money.</li>
+  <li>It increases with <strong>skew</strong>. A pier at an angle to the flow presents a much
+    greater effective width — a modest skew can be equivalent to a far wider pier.</li>
+</ul>
+
+<div class="caveat">
+<p><b>The debris raft.</b> Trees and brushwood collect against a pier and form a raft, and
+that raft becomes part of the obstruction. Effective width can increase several times over,
+and local scour goes with it. On Nepali rivers in monsoon this is not an exceptional case —
+it is the normal condition of the flood peak. If your design considered a clean 1.5 m pier
+and the river presents it with a 6 m raft of timber, the scour you get bears no relation to
+the scour you calculated. Two conclusions follow: pier shape and spacing should discourage
+rafting, and the safest pier is the one that is not in the channel at all.</p>
+</div>
+
+<h4>Why low-water inspection misleads</h4>
+
+<p>This deserves its own heading because it is the mechanism behind a great many surprises.</p>
+
+<p>Scour depth peaks at the flood peak, when velocity is highest. As the flood recedes,
+velocity falls, the river's transport capacity collapses, and the material it is carrying
+drops out — much of it straight back into the hole. What refills the hole is
+<strong>loose, uncompacted sediment with almost no bearing capacity</strong>, but it looks
+exactly like bed.</p>
+
+<p>So a dry-season inspection can show a normal bed over a pier that was standing on
+a fraction of its intended embedment three months earlier. Three practical consequences:</p>
+
+<ul>
+  <li><strong>Do not take low-water bed level as evidence that scour is not occurring.</strong>
+    It is evidence of nothing.</li>
+  <li><strong>Use methods that see through the refill.</strong> Probing or sounding will
+    often push easily through loose infill and meet resistance at the true scoured level.
+    Repeat surveys at the same sections, year on year, are worth more than any single
+    measurement.</li>
+  <li><strong>Look at the apron, not the bed.</strong> Displaced, launched or missing apron
+    material is the surviving evidence of what the flood did, and unlike the bed it does not
+    tidy itself up.</li>
+</ul>
+
+<h4>What to do about it</h4>
+
+<ol>
+  <li><strong>Found below total scour, with grip.</strong> The primary defence, and the only
+    one that does not require maintenance. Everything else is secondary.</li>
+  <li><strong>Do not put piers in the channel</strong> if a single span will reach. This is
+    the highest-value decision available and it is made at concept stage or not at all.</li>
+  <li><strong>Give the river a generous waterway.</strong> Reduces contraction scour, reduces
+    afflux, and reduces the chance of blockage.</li>
+  <li><strong>Shape and align the piers.</strong> Round or streamlined noses, aligned with the
+    flow — and remember the flow direction at flood, which is not always the direction at
+    low water.</li>
+  <li><strong>Aprons and riprap.</strong> A launching apron is designed to fall into the
+    developing scour hole and armour it. It works, and it is a maintenance commitment: check
+    and replenish after every significant flood, or it is a one-shot defence that was already
+    spent years ago.</li>
+</ol>
+
 <div class="box key">
   <span class="lbl">Judgment</span>
-  <p class="todo">To be written.</p>
+  <p>Treat founding depth as the one thing you do not economise on. Every other scour
+  measure — apron, riprap, guide bund — depends on somebody maintaining it for the next
+  fifty years, and you have no control over that; founding depth depends on nobody. When you
+  are asked to shorten a span to save money, price the foundation depth that the extra
+  contraction scour will demand, and put both numbers in the same table. And on any existing
+  bridge you are responsible for, get a bed profile surveyed at the same sections every year
+  after monsoon. Three years of that is worth more than any calculation, because it is the
+  only way to see a trend that a single low-water inspection is designed to hide.</p>
 </div>
+
 <div class="assign">
   <span class="lbl">Field assignment</span>
-  <p class="todo">To be written — 15 minutes, outside.</p>
+  <p>Go to a bridge at low water — an older one, with piers in the channel. Then:</p>
+  <ol>
+    <li>Look at the <strong>apron</strong> around each pier. Is it intact, displaced, partly
+      launched, or gone? Photograph it.</li>
+    <li>Compare the bed level against a fixed reference on the pier — a construction joint,
+      a stain line, the top of the footing if visible. Is more or less of the pier showing
+      than you would expect?</li>
+    <li>If you can safely reach it, <strong>probe</strong> the bed beside the pier with a rod.
+      Does it push in easily, and how far before it meets resistance?</li>
+  </ol>
+  <p class="found"><b>What you probably found:</b> a bed that looked entirely normal, and a
+  rod that went in further beside the pier than away from it. That difference is the refilled
+  scour hole — loose sediment sitting where compact bed should be. It is the cheapest scour
+  investigation there is, and almost nobody does it.</p>
 </div>
+
 <div class="checkself">
   <span class="lbl">Check yourself</span>
-  <p class="todo">3–5 questions, tap to reveal.</p>
+  <p class="q">1 · Name the three components of total scour and say which one your design decisions control most directly.</p>
+  <p class="a"><span>General (long-term and flood-period lowering of the whole reach), contraction (caused by the bridge narrowing the waterway) and local (the hole around a pier or abutment). Contraction scour is the one you control most directly, through the waterway you provide.</span></p>
+  <p class="q">2 · Why can a dry-season inspection show a normal bed over a pier that was severely scoured months earlier?</p>
+  <p class="a"><span>Because scour peaks at the flood peak and refills as the flood recedes and transport capacity collapses. The hole fills with loose, uncompacted sediment that looks identical to bed but has almost no bearing capacity. Low-water bed level is evidence of nothing.</span></p>
+  <p class="q">3 · What is a debris raft and why does it invalidate a local scour calculation?</p>
+  <p class="a"><span>Trees and brushwood collecting against a pier, forming a much larger obstruction. Local scour scales with effective pier width, so a raft can multiply the width several times and produce scour bearing no relation to the calculated value. On Nepali rivers in monsoon it is the normal condition, not an exception.</span></p>
+  <p class="q">4 · A client asks you to shorten a bridge by removing one span. What must be in your reply?</p>
+  <p class="a"><span>That narrowing the waterway raises discharge intensity and therefore contraction scour, so the foundations must go deeper — and both costs belong in the same table. A shorter deck is not automatically a cheaper bridge; some of the saving is simply moved underground.</span></p>
+  <p class="q">5 · Why is founding depth privileged above aprons, riprap and guide bunds?</p>
+  <p class="a"><span>Because every other measure depends on somebody maintaining it for the structure's whole life, and you cannot control that. Founding depth requires nobody. It is the only scour defence that is not a maintenance commitment.</span></p>
 </div>
 
 <h3 class="chap" id="s18">18 · Training the river</h3>
