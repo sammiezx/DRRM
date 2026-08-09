@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10161b"/>
+      <stop offset="1" stop-color="#31414c"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.09"/>
+    </pattern>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#g)"/>
+  <rect width="512" height="512" rx="112" fill="url(#grid)"/>
+
+  <!-- the braced frame: the one idea the whole handbook is about -->
+  <g fill="none" stroke="#ffffff" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M136 396V152M376 396V152M122 152h268"/>
+  </g>
+  <path d="M136 396L376 152" fill="none" stroke="#dc5410" stroke-width="30" stroke-linecap="round"/>
+  <path d="M376 396L136 152" fill="none" stroke="#dc5410" stroke-width="30" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- ground -->
+  <path d="M96 424h320" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" opacity="0.9"/>
+</svg>

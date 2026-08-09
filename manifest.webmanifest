@@ -1,0 +1,14 @@
+{
+  "name": "Disaster Risk Reduction & Management — A Civil Engineer's Handbook",
+  "short_name": "DRRM",
+  "description": "Disaster risk reduction and management for practising civil engineers in Nepal — hazard, vulnerability, seismic design, retrofitting, preparedness and reconstruction.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#1d262d",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
