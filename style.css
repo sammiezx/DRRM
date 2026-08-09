@@ -21,7 +21,7 @@
 
   --ink:#151b20;
   --ink-2:#46525b;
-  --ink-3:#6c7982;
+  --ink-3:#616d76;   /* clears WCAG AA body contrast on bg-3, the worst case */
   --line:#dbe1e6;
   --line-2:#eaeef1;
   --bg:#ffffff;
@@ -54,7 +54,7 @@
 }
 
 html[data-theme="dark"]{
-  --ink:#e6eaee; --ink-2:#a9b4bd; --ink-3:#7e8a94;
+  --ink:#e6eaee; --ink-2:#a9b4bd; --ink-3:#8d99a3;
   --line:#2a343c; --line-2:#212a31;
   --bg:#0f1419; --bg-2:#161d23; --bg-3:#1e262d; --card:#161d23;
   --graphite-100:#212b33; --graphite-400:#94a4b0; --graphite-700:#c9d4dc;
@@ -1114,3 +1114,17 @@ h3.chap, h4, section.part, .ft, .mcq, details.deep, #contents{
   .stepper{flex-wrap:wrap}
   .stepper .tocjump{order:3;flex:1 1 100%}
 }
+
+/* A contents entry is a title plus a plain-language line saying what is in it. */
+a.toc-item{padding:12px 8px 11px}
+.toc-t{display:block}
+.toc-about{
+  display:block;margin-top:3px;
+  font-size:13px;font-weight:450;line-height:1.4;color:var(--ink-3);
+}
+a.toc-item:hover .toc-about{color:var(--ink-2)}
+a.toc-item.pend .toc-about{opacity:.75}
+
+/* Where you are: act, then position in the book. */
+.sesstime .where{color:var(--accent);font-weight:800}
+.sesstime .sep{margin:0 7px;opacity:.5}

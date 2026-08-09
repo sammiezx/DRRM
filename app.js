@@ -296,6 +296,56 @@ if (window.IntersectionObserver) {
   });
 }
 
+/* ---------------- what each session is actually about ----------------
+   The titles are deliberately memorable; these lines are deliberately plain.
+   A reader scanning the contents has to be able to tell what is inside a
+   session without opening it, and "The cascade" does not do that on its own. */
+var ABOUT = {
+  "s1":      "Nepal's earthquakes — why the far west is overdue, and why for a road it means landslides",
+  "s2":      "Hazard, exposure, vulnerability, capacity — and which of them you can actually change",
+  "s3":      "Geology, monsoon and uplift; the four belts from Terai to High Himalaya",
+  "s4":      "DRRM Act 2074, NDRRMA, who owns which road, and which standard binds it",
+  "s5":      "How one hazard triggers the next — landslide dams and outburst floods",
+  "s6":      "Factor of safety and pore pressure — why slopes fail days after the rain stops",
+  "s7":      "Fall, topple, slide, spread, flow — naming the mechanism, and why it decides the remedy",
+  "s8":      "Why a debris flow is not a flood, how it grows, and how to read a debris fan",
+  "s9":      "Six field signs of a moving slope, read from the crown downwards",
+  "s10":     "How cutting, spoil tipping and drainage create the landslides we blame on rain",
+  "s11":     "Rock cuts — joint orientation, and planar, wedge and toppling failure",
+  "s12":     "Susceptibility, hazard and risk maps — what each one can and cannot tell you",
+  "s13":     "Time of concentration and the rational method, for sizing cross-drainage",
+  "s14":     "Choosing a design discharge and return period — and defending the number",
+  "s15":     "Sediment, aggradation, braiding, bank erosion and channel migration",
+  "s16":     "Three kinds of flood, three warning times — riverine, flash and GLOF",
+  "s17":     "General, contraction and local scour; setting founding depth for a bridge",
+  "s18":     "Spurs, revetments, guide bunds and launching aprons — and how they fail",
+  "s19":     "Designing when the rainfall record no longer describes the catchment",
+  "s20":     "Choosing the route — the largest risk decision on any hill road",
+  "s21":     "Catch drains, side drains, turnouts and outlets — the four rules",
+  "s22":     "Culverts, causeways and fords — sizing for debris, not only discharge",
+  "s23":     "Gabion, dry stone and RCC walls — choosing one, and draining behind it",
+  "s24":     "Vegetation as a structural material — what roots do, and where they stop",
+  "s25":     "Labour-based hill road construction — mass balance and no side-tipping",
+  "s26":     "Bridge scour, approach embankments, abutments, bearings and seat width",
+  "s27":     "Comparing cheap against durable over twenty years, including closure cost",
+  "s28":     "Network thinking — critical links, redundancy and time to reopen",
+  "s29":     "Assessment, triage and temporary access in the days after a disaster",
+  "s30":     "Load path, soft storey, NBC 105 and masonry rules — buildings in one session",
+  "s31":     "Reconstruction after 2015, and the short window to change an alignment",
+  "s32":     "Risk-sensitive land use, maintenance funding and local disaster funds",
+  "pk1":     "Slope, drainage, culvert, bridge and day-one checklists for site use",
+  "pk2":     "Every formula and number in the book, with its session and its source",
+  "pk3":     "36 questions with explanations, covering all five acts",
+  "pk4":     "Definitions and abbreviations used throughout",
+  "pk5":     "Where to download every Act, standard and reference cited",
+  "sources": "How this book was compiled, and what is study aid rather than code",
+  "ft1":     "Act I in one card — the ground, and why risk is built",
+  "ft2":     "Act II in one card — reading slopes and terrain",
+  "ft3":     "Act III in one card — catchments, rivers, floods and scour",
+  "ft4":     "Act IV in one card — alignment, drainage, walls and bridges",
+  "ft5":     "Act V in one card — networks, response, recovery and land use"
+};
+
 /* ---------------- the contents page ----------------
    Built from the document itself, so it lists every act, every session and
    every heading inside them, and can never drift out of step with the book. */
@@ -346,7 +396,16 @@ function buildContents() {
       var a = document.createElement('a');
       a.className = 'toc-item';
       a.href = '#' + item.id;
-      a.textContent = item.label;
+      var t = document.createElement('span');
+      t.className = 'toc-t';
+      t.textContent = item.label;
+      a.appendChild(t);
+      if (ABOUT[item.id]) {
+        var about = document.createElement('span');
+        about.className = 'toc-about';
+        about.textContent = ABOUT[item.id];
+        a.appendChild(about);
+      }
       if (item.el.classList && item.el.classList.contains('pending')) a.classList.add('pend');
       if (prog.read && prog.read[item.id]) a.classList.add('done');
       li.appendChild(a);
