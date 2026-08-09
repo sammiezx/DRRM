@@ -1502,6 +1502,166 @@ decimal.</p>
   <p class="a"><span>That the surface tells you nothing about a deep-seated mass, which may still be gaining pore pressure. Look for crown cracks above the road, fresh seepage, tilted poles or trees, and offsets in the drain line. Clear weather is not the all-clear — for the deep failures it is often the middle of the event.</span></p>
 </div>
 
+<details class="deep" id="d6">
+<summary>Go deeper — factor of safety worked, and what a drain is actually worth<span class="hint">≈ 15 min · at a desk</span></summary>
+<div class="deepbody">
+
+<h5>The infinite slope model</h5>
+
+<p>For the shallow failures that dominate hill roads — a skin of soil or colluvium on a
+longer slope — you do not need a slip-circle analysis. The failure surface is essentially
+parallel to the ground and much longer than it is deep, so the forces on any slice are the
+same as on any other, the end effects cancel, and the whole problem collapses to one
+equation.</p>
+
+<p>For a slope at angle β, with a failure surface at depth z, unit weight γ, and a water
+table at height z<sub>w</sub> above the surface (water flowing parallel to the slope):</p>
+
+<div class="eq">FoS = [ c′ + (γz cos²β − γ<sub>w</sub> z<sub>w</sub> cos²β) tan φ′ ] ÷ [ γ z sinβ cosβ ]
+<span class="where">c′ effective cohesion (kPa) · φ′ effective friction angle · γ soil unit
+weight (kN/m³) · γ<sub>w</sub> = 9.81 kN/m³ · z depth to the surface · z<sub>w</sub> height of
+water above it, measured perpendicular to the slope</span></div>
+
+<p>Two special cases are worth memorising, because they bracket everything:</p>
+
+<ul>
+  <li><strong>Dry, cohesionless</strong> (c′ = 0, z<sub>w</sub> = 0): FoS = tan φ′ / tan β.
+    The slope stands at its friction angle and nothing else matters.</li>
+  <li><strong>Fully saturated, cohesionless</strong> (z<sub>w</sub> = z):
+    FoS ≈ (1 − γ<sub>w</sub>/γ) · tan φ′ / tan β. With γ ≈ 19, that bracket is about
+    <strong>0.48</strong> — <em>saturation roughly halves the factor of safety.</em></li>
+</ul>
+
+<p>That second line is the single most useful number in slope work. Full saturation costs you
+about half your margin, and it is the reason drainage is not a refinement.</p>
+
+<div class="worked">
+<h6>Worked example · a cut slope above a road, dry season to monsoon</h6>
+<div class="inner">
+
+<p><strong>The brief.</strong> A colluvial slope above a hill road. Shallow movement was
+reported last monsoon. You want to know how close it is, and what a catch drain would buy.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Given</th><th>Value</th><th>From</th></tr></thead>
+<tbody>
+<tr><td>Slope angle, β</td><td>30°</td><td>Clinometer</td></tr>
+<tr><td>Depth to failure surface, z</td><td>2.0 m</td><td>Scarp height and exposed surface in the scar</td></tr>
+<tr><td>Unit weight, γ</td><td>19 kN/m³</td><td>Typical for moist colluvium</td></tr>
+<tr><td>Effective cohesion, c′</td><td>3 kPa</td><td>Small — previously moved material</td></tr>
+<tr><td>Friction angle, φ′</td><td>32°</td><td>Granular colluvium</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="step"><strong>Set up the constants.</strong><br>
+cos 30° = 0.866, so cos²β = 0.750 · sin 30° = 0.500<br>
+Driving term: γ z sinβ cosβ = 19 × 2.0 × 0.500 × 0.866 = <strong>16.45 kPa</strong><br>
+tan 32° = 0.625</p>
+
+<p class="step"><strong>Dry season — no water on the surface (z<sub>w</sub> = 0).</strong><br>
+Normal term: γ z cos²β = 19 × 2.0 × 0.750 = 28.5 kPa<br>
+Resisting: 3 + 28.5 × 0.625 = 3 + 17.81 = 20.81 kPa<br>
+FoS = 20.81 / 16.45 = <strong>1.26</strong></p>
+
+<p class="step"><strong>Monsoon — fully saturated (z<sub>w</sub> = z = 2.0 m).</strong><br>
+Uplift term: γ<sub>w</sub> z<sub>w</sub> cos²β = 9.81 × 2.0 × 0.750 = 14.72 kPa<br>
+Effective normal: 28.5 − 14.72 = 13.78 kPa<br>
+Resisting: 3 + 13.78 × 0.625 = 3 + 8.61 = 11.61 kPa<br>
+FoS = 11.61 / 16.45 = <strong>0.71</strong></p>
+
+<p class="ans"><b>Answer:</b> 1.26 dry, <b>0.71 saturated.</b> Below 1.0 means it moves — which
+matches the reported movement, and confirms the model rather than the other way round. The
+slope is not marginal in the monsoon; it is <em>failing</em>, and it will keep failing every
+year that it saturates.</p>
+
+<p class="src">Infinite slope analysis with flow parallel to the slope. Parameters
+illustrative — c′ and φ′ should come from testing or from back-analysis of the existing
+failure, which is often the better source.</p>
+</div>
+</div>
+
+<h5>What a drain is worth, in numbers</h5>
+
+<p>Now the question the session was really asking. Suppose a catch drain and surface works
+prevent full saturation, holding the water table down to half the failure depth
+(z<sub>w</sub> = 1.0 m). Same slope, same soil, same geometry:</p>
+
+<p>Uplift: 9.81 × 1.0 × 0.750 = 7.36 kPa · Effective normal: 28.5 − 7.36 = 21.14 kPa<br>
+Resisting: 3 + 21.14 × 0.625 = 16.21 kPa · <strong>FoS = 16.21 / 16.45 = 0.99</strong></p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Condition</th><th>z<sub>w</sub></th><th>FoS</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Dry season</td><td>0</td><td><strong>1.26</strong></td><td>Standing, with modest margin</td></tr>
+<tr><td>Half-saturated (drained)</td><td>1.0 m</td><td><strong>0.99</strong></td><td>At the point of movement</td></tr>
+<tr><td>Fully saturated</td><td>2.0 m</td><td><strong>0.71</strong></td><td>Moving</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Two conclusions, and the second is the useful one:</p>
+
+<ol>
+  <li><strong>Drainage alone does not fix this slope.</strong> Halving the water table takes
+    it from 0.71 to 0.99 — from failing to marginal, which is not good enough. Anyone
+    promising that a drain will solve it is overselling.</li>
+  <li><strong>But look at the size of the effect.</strong> Water alone moved the factor of
+    safety by 0.55, from 1.26 to 0.71. No structure you could afford changes a shallow slope
+    by that much for that money. Drainage plus a modest geometry change — flattening the cut
+    to reduce β — is very likely to get above 1.3, and that combination costs a fraction of
+    a wall.</li>
+</ol>
+
+<h5>Changing the geometry instead</h5>
+
+<p>Keep it fully saturated, the honest design case, but flatten the slope from 30° to 25°:</p>
+
+<p>cos 25° = 0.906, cos²β = 0.821 · sin 25° = 0.423<br>
+Driving: 19 × 2.0 × 0.423 × 0.906 = 14.55 kPa<br>
+Normal: 19 × 2.0 × 0.821 = 31.21; uplift 9.81 × 2.0 × 0.821 = 16.12; effective = 15.09<br>
+Resisting: 3 + 15.09 × 0.625 = 12.43 kPa · <strong>FoS = 0.85</strong></p>
+
+<p>Better than 0.71 and still not enough on its own. <strong>Combine both</strong> — 25° and
+drained to z<sub>w</sub> = 1.0 m:</p>
+
+<p>Uplift: 9.81 × 1.0 × 0.821 = 8.06; effective normal = 31.21 − 8.06 = 23.15<br>
+Resisting: 3 + 23.15 × 0.625 = 17.47 kPa · <strong>FoS = 17.47 / 14.55 = 1.20</strong></p>
+
+<p>That is the real lesson of the arithmetic, and it is why session 23 insists on asking
+whether a wall is the answer: <strong>on shallow failures, geometry and drainage together
+move the number far more than either alone, and far more than a wall would for the same
+money.</strong> Here they take it from 0.71 to 1.20 — and getting the last step to 1.3 is now
+a small intervention rather than a large one.</p>
+
+<div class="caveat">
+<p><b>Where this model stops.</b> Infinite slope applies to shallow, planar, slope-parallel
+failures. Use a proper limit equilibrium method — Bishop, Janbu, Morgenstern–Price — when the
+failure is deep-seated, rotational, or where the geometry, layering or loading varies along
+the surface. And remember from the session that the answer is only as good as c′, φ′ and the
+assumed water table. Here the most defensible parameters are those <em>back-calculated from
+the existing failure</em>: you know FoS was 1.0 when it moved, which is one equation you can
+solve rather than a value you have to guess.</p>
+</div>
+
+<h5>Sources and where to look next</h5>
+
+<ul>
+  <li><strong>Any standard soil mechanics text</strong> — Craig, or Das — for the infinite
+    slope derivation and the limit equilibrium methods it hands over to.</li>
+  <li><strong>DoR roadside bio-engineering reference manual</strong> — for typical Nepali
+    colluvium parameters and slope treatment practice.</li>
+  <li><strong>Back-analysis</strong> as a technique: setting FoS = 1.0 at the moment of
+    observed failure and solving for the parameter you least trust. Frequently the most
+    reliable source of c′ and φ′ available on a hill site.</li>
+</ul>
+
+</div>
+</details>
+
+
 <h3 class="chap" id="s7">7 · The five ways ground moves</h3>
 <p class="sesstime ui">Session 7 · core · 14 min</p>
 
@@ -2790,6 +2950,144 @@ and blocks less often forever.</p>
   <p class="q">5 · Why is a structure sized precisely to today's catchment sized optimistically?</p>
   <p class="a"><span>Because land cover degrades, more roads get cut above it and drainage density rises over the structure's life — all of which push C up and t𝒸 down, and both raise the peak. Today's catchment is the most benign version the structure will ever face.</span></p>
 </div>
+
+<details class="deep" id="d13">
+<summary>Go deeper — a culvert sized from the catchment up<span class="hint">≈ 15 min · at a desk</span></summary>
+<div class="deepbody">
+
+<h5>Getting t<sub>c</sub> right</h5>
+
+<p>Kirpich was calibrated on small agricultural catchments in Tennessee, which should make
+you cautious, but it holds up reasonably for the steep, short, well-defined flow paths of a
+hill khola and it needs only two measurements:</p>
+
+<div class="eq">t<sub>c</sub> = 0.0195 · L<sup>0.77</sup> · S<sup>−0.385</sup>
+<span class="where">t<sub>c</sub> minutes · L the hydraulically longest flow path in metres ·
+S = H/L, the average slope along it as a ratio</span></div>
+
+<p>Two practical notes. <strong>L is the flow path, not the straight-line distance</strong> —
+follow the channel. And S is the average over the whole path; on a catchment with a steep
+head and a flat fan, that average understates the response of the steep part, so treat the
+answer as an upper bound on t<sub>c</sub> and therefore a lower bound on intensity.</p>
+
+<div class="worked">
+<h6>Worked example · a box culvert on a hill khola</h6>
+<div class="inner">
+
+<p><strong>The brief.</strong> A local road crosses an unnamed khola. There is no gauge,
+no hydrological study, and a standard drawing on the table showing a 900 mm pipe.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Given</th><th>Value</th><th>From</th></tr></thead>
+<tbody>
+<tr><td>Catchment area, A</td><td>0.85 km²</td><td>Traced on imagery</td></tr>
+<tr><td>Longest flow path, L</td><td>1,450 m</td><td>Followed the channel, not the crow line</td></tr>
+<tr><td>Fall along it, H</td><td>470 m</td><td>Contours: 1,890 m at the head, 1,420 m at the road</td></tr>
+<tr><td>Cover</td><td>Degraded scrub, terraces, two tracks cut across it</td><td>Site visit</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="step"><strong>Average slope.</strong><br>
+S = H / L = 470 / 1450 = <strong>0.324</strong> — steep, as hill catchments are.</p>
+
+<p class="step"><strong>Time of concentration.</strong><br>
+L<sup>0.77</sup>: ln(1450) = 7.279; × 0.77 = 5.605; e<sup>5.605</sup> ≈ 272<br>
+S<sup>−0.385</sup>: ln(0.324) = −1.127; × −0.385 = 0.434; e<sup>0.434</sup> ≈ 1.543<br>
+t<sub>c</sub> = 0.0195 × 272 × 1.543 = <strong>8.2 minutes</strong></p>
+
+<p class="step"><strong>Stop and read that number.</strong><br>
+Eight minutes. The design storm for this crossing is an eight-minute burst. Any intensity
+derived from a daily rainfall figure is describing a completely different event.</p>
+
+<p class="step"><strong>Rainfall intensity at that duration.</strong><br>
+Take it from an intensity–duration–frequency relation for the region, at the chosen return
+period and a duration of t<sub>c</sub>. For this example assume the IDF gives
+<strong>I = 145 mm/hr</strong> at 10 minutes for the 25-year event.<br>
+<em>Compare:</em> a 200 mm daily total spread over 24 hours averages 8.3 mm/hr — a factor of
+about seventeen lower. That factor is the error being made when a daily figure is used.</p>
+
+<p class="step"><strong>Runoff coefficient.</strong><br>
+Degraded scrub and terraces on steep ground, with tracks cut across it. Take
+<strong>C = 0.55</strong>, and note that the tracks are pushing it upwards over time.</p>
+
+<p class="step"><strong>Peak discharge.</strong><br>
+Q = 0.278 · C · I · A = 0.278 × 0.55 × 145 × 0.85<br>
+= 0.278 × 0.55 = 0.1529; × 145 = 22.17; × 0.85 = <strong>18.8 m³/s</strong></p>
+
+<p class="ans"><b>Answer: about 19 m³/s.</b> A 900 mm pipe running full at a typical hill
+gradient passes on the order of 1–2 m³/s. <b>The standard drawing is out by an order of
+magnitude</b> — and this is the single most common defect in Nepali hill cross-drainage.</p>
+
+<p class="src">Method: Kirpich for t<sub>c</sub>, rational method for Q. The IDF intensity is
+assumed for illustration — obtain the real one from DHM records for your region and return
+period. C from standard tables, adjusted for observed condition.</p>
+</div>
+</div>
+
+<h5>What the answer is sensitive to</h5>
+
+<div class="tw">
+<table>
+<thead><tr><th>Change</th><th>New Q</th><th>Comment</th></tr></thead>
+<tbody>
+<tr><td><strong>Base case</strong></td><td>18.8 m³/s</td><td>t<sub>c</sub> = 8.2 min, I = 145, C = 0.55</td></tr>
+<tr><td>Intensity taken from a 24-hour average (8.3 mm/hr)</td><td><strong>1.1 m³/s</strong></td><td>The order-of-magnitude error. This is how the 900 mm pipe gets specified</td></tr>
+<tr><td>C rises to 0.70 as the catchment degrades further</td><td>24.0 m³/s</td><td>Over the structure's life, not a hypothetical</td></tr>
+<tr><td>Catchment area mis-traced, 0.85 → 1.2 km²</td><td>26.6 m³/s</td><td>Why two people should trace it independently</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Note the ranking. Getting the <em>duration</em> right matters more than everything else
+combined, and it costs nothing.</p>
+
+<h5>Sizing from Q — and why you do not stop there</h5>
+
+<p>Converting 19 m³/s into an opening is straightforward hydraulics: choose a box, check it
+runs at an acceptable depth at the design flow, and check the afflux upstream. What
+session 22 insists on is that you then apply the corrections the arithmetic does not
+contain:</p>
+
+<ul>
+  <li><strong>Debris.</strong> This catchment has two cut tracks in it, so it is delivering
+    material. Size the opening so that a substantial partial blockage still passes the flow.</li>
+  <li><strong>Maintainability.</strong> Nothing smaller than a person can enter and clean.</li>
+  <li><strong>The blockage case.</strong> Choose where the road overtops if it blocks anyway,
+    and armour that point.</li>
+</ul>
+
+<h5>Checking without the formulae</h5>
+
+<ol>
+  <li><strong>Is t<sub>c</sub> plausible?</strong> Small steep hill catchments come out at
+    roughly 5–30 minutes. Hours means you have used a straight-line distance, mis-measured
+    the fall, or the catchment is much larger than you think.</li>
+  <li><strong>Does Q per unit area make sense?</strong> Here 18.8 / 0.85 ≈ 22 m³/s per km².
+    For a steep monsoon catchment at a moderate return period this is a reasonable order.
+    Below about 5 or above about 50 deserves a second look.</li>
+  <li><strong>What does the channel look like?</strong> The khola itself is evidence. Bank
+    height, boulder size and flood marks tell you what it has actually carried. If your
+    computed Q would not fill the channel you are standing in, you are wrong.</li>
+</ol>
+
+<h5>Sources and where to look next</h5>
+
+<ul>
+  <li><strong>DHM</strong> (dhm.gov.np) — rainfall records and the basis for regional
+    intensity–duration–frequency relations. The input that matters most here.</li>
+  <li><strong>Nepal Rural Road Standard</strong> — minimum cross-drainage sizes and spacing
+    for local roads.</li>
+  <li><strong>DoR hydrology guidance and IRC practice</strong> for larger crossings, where
+    the rational method gives way to regional and unit-hydrograph approaches.</li>
+  <li>Kirpich (1940) for the original derivation, if you want to see the catchments it was
+    fitted to and judge the transfer for yourself.</li>
+</ul>
+
+</div>
+</details>
+
 
 <h3 class="chap" id="s14">14 · The number you are judged on</h3>
 <p class="sesstime ui">Session 14 · core · 15 min</p>
