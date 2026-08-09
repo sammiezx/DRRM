@@ -25,8 +25,13 @@ var body = document.body;
 
 /* ---------------- back to top ---------------- */
 var toTop = $('#toTop');
+toTop.setAttribute('aria-label', 'Top of this session');
 toTop.addEventListener('click', function () {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  /* From 60,000 words in, the cover is rarely where you meant to go — and in
+     standalone mode there is no browser back to undo it. */
+  var h = lastPos && document.getElementById(lastPos.id);
+  if (h) h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  else window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 /* ---------------- lightbox ---------------- */
@@ -50,6 +55,8 @@ if (lbCloseBtn) lbCloseBtn.addEventListener('click', closeLb);
 
 /* ---------------- progress + scroll spy + bar title ---------------- */
 var pbar = $('#progress i'), barTitle = $('#barTitle');
+var lastBarT = null;
+var lastPos = null;
 var defaultTitle = barTitle.innerHTML;
 var spyTargets = $$('section.part, h3.chap');
 var ticking = false;
@@ -71,22 +78,42 @@ function onScroll() {
       else break;
     }
     if (cur) {
+      var t = '', sub = '';
       if (cur.classList.contains('chap')) {
         var part = cur.closest('section.part');
-        var pname = part ? part.querySelector('.part-banner h2').textContent : '';
-        barTitle.innerHTML = '';
-        barTitle.appendChild(document.createTextNode(cur.textContent.trim()));
-        var s = document.createElement('small'); s.textContent = pname;
-        barTitle.appendChild(s);
+        var pb = part && part.querySelector('.part-banner');
+        t = cur.textContent.trim();
+        sub = pb && pb.querySelector('h2') ? pb.querySelector('h2').textContent : '';
+      } else {
+        /* A section banner — an act, the Fast Track, the Practice Kit or the
+           Contents. One branch covers all of them; they all have banners. */
+        var b = cur.querySelector('.part-banner');
+        if (b) {
+          t = b.querySelector('h2') ? b.querySelector('h2').textContent : '';
+          sub = b.querySelector('.k') ? b.querySelector('.k').textContent : '';
+        }
       }
-    } else if (y < 400) {
+      if (t && t !== lastBarT) {
+        lastBarT = t;
+        barTitle.innerHTML = '';
+        barTitle.appendChild(document.createTextNode(t));
+        if (sub) { var sm = document.createElement('small'); sm.textContent = sub; barTitle.appendChild(sm); }
+      }
+    } else if (lastBarT !== null) {
+      lastBarT = null;
       barTitle.innerHTML = defaultTitle;
+    }
+
+    if (cur && cur.classList.contains('chap') && !body.classList.contains('fcmode')) {
+      /* Store an offset from the heading rather than a raw pixel, so the place
+         survives a reflow or a font change. */
+      lastPos = { id: cur.id, dy: Math.round(-cur.getBoundingClientRect().top) };
     }
 
     if (cur) {
       var curPart = cur.closest ? cur.closest('section.part') : null;
       if (curPart && window.__syncAcc) window.__syncAcc(curPart.id);
-      var bf = document.getElementById('bbFast');
+      var bf = document.getElementById('bbContinue');
       if (bf) bf.classList.toggle('on', !!curPart && curPart.id === 'p0');
     }
 
@@ -112,19 +139,48 @@ function buildIndex() {
   var main = $('main');
   var chapter = null, part = null;
   var walker = document.createTreeWalker(main, NodeFilter.SHOW_ELEMENT, null);
-  var node;
+  var node, k = 0;
   while ((node = walker.nextNode())) {
-    if (node.tagName === 'H2' && node.closest('.part-banner')) { part = node.textContent.trim(); continue; }
-    if (node.tagName === 'H3' && node.classList.contains('chap')) { chapter = node; continue; }
-    if (/^(P|LI|TD|TH|H4|H5|FIGCAPTION|CAPTION)$/.test(node.tagName)) {
+    /* The generated contents page echoes every title in the book; without this
+       the top hit for "culvert" was the contents row, bouncing you back to the
+       page you searched from. */
+    if (node.closest('#contentsList') || node.closest('#lookup')) continue;
+
+    if (node.tagName === 'H2' && node.closest('.part-banner')) {
+      part = node.textContent.trim();
+      var sec = node.closest('section.part');
+      if (sec) index.push({ t: part, lc: part.toLowerCase(), id: sec.id, sid: sec.id, c: 'Act', kind: 'title' });
+      continue;
+    }
+    if (node.tagName === 'H3' && node.classList.contains('chap')) {
+      chapter = node; k = 0;
+      var ct = node.textContent.trim();
+      index.push({ t: ct, lc: ct.toLowerCase(), id: node.id, sid: node.id, c: ct, kind: 'title' });
+      continue;
+    }
+    if (node.tagName === 'H4') {
+      var ht = node.textContent.replace(/\s+/g, ' ').trim();
+      if (ht.length > 2) {
+        if (!node.id && chapter) node.id = chapter.id + '-h' + (++k);
+        index.push({ t: ht, lc: ht.toLowerCase(), id: node.id,
+                     sid: chapter ? chapter.id : '', c: chapter ? chapter.textContent.trim() : (part || ''),
+                     kind: 'title' });
+      }
+      continue;
+    }
+    if (/^(P|LI|TD|TH|H5|FIGCAPTION|CAPTION)$/.test(node.tagName)) {
       if (node.querySelector('p,li,td,h4,h5')) continue;
       var txt = node.textContent.replace(/\s+/g, ' ').trim();
       if (txt.length < 12) continue;
+      /* Anchor the passage itself, so a hit lands on the sentence rather than
+         at the top of a 1,400-word session. */
+      var sid = chapter ? chapter.id : ((node.closest('section.part') || {}).id || '');
+      if (!node.id && sid) node.id = sid + '-p' + (++k);
       index.push({
-        t: txt,
-        lc: txt.toLowerCase(),
-        id: chapter ? chapter.id : (node.closest('section.part') || {}).id,
-        c: chapter ? chapter.textContent.trim() : (part || '')
+        t: txt, lc: txt.toLowerCase(),
+        id: node.id || sid, sid: sid,
+        c: chapter ? chapter.textContent.trim() : (part || ''),
+        kind: 'passage'
       });
     }
   }
@@ -147,31 +203,75 @@ function snippet(text, lcText, q) {
   return escapeHtml(out).replace('', '<b>').replace('', '</b>');
 }
 
+function landOn(id) {
+  var el = id && document.getElementById(id);
+  if (!el) return;
+  el.classList.add('flash');
+  setTimeout(function () { el.classList.remove('flash'); }, 2400);
+}
+
 function runSearch(q) {
   q = q.trim().toLowerCase();
   searchResults.innerHTML = '';
-  if (q.length < 2) {
-    searchMeta.textContent = 'Type at least two letters. Try “debris flow”, “scour”, “bio-engineering”.';
+
+  /* He thinks in session numbers; typing "22" used to full-text search 60,000
+     words. */
+  var num = /^\s*(\d{1,2})\s*$/.exec(q);
+  if (num && +num[1] >= 1 && +num[1] <= 32) {
+    location.hash = '#s' + num[1];
+    closeSearch();
     return;
   }
-  var idx = buildIndex();
-  var hits = [];
-  for (var i = 0; i < idx.length && hits.length < 80; i++) {
-    if (idx[i].lc.indexOf(q) >= 0) hits.push(idx[i]);
+
+  if (q.length < 2) {
+    searchMeta.textContent = 'Type at least two letters — a word, or a session number.';
+    return;
   }
-  searchMeta.textContent = hits.length
-    ? hits.length + (hits.length === 80 ? '+ passages' : ' passage' + (hits.length > 1 ? 's' : '')) + ' found'
-    : 'Nothing found for “' + q + '”';
+
+  var idx = buildIndex();
+  var titles = [], groups = {}, order = [], total = 0;
+  for (var i = 0; i < idx.length; i++) {
+    var h = idx[i];
+    if (h.lc.indexOf(q) < 0) continue;
+    total++;
+    if (h.kind === 'title') { if (titles.length < 12) titles.push(h); continue; }
+    if (!groups[h.sid]) { groups[h.sid] = { c: h.c, hits: [] }; order.push(h.sid); }
+    groups[h.sid].hits.push(h);
+  }
+
+  searchMeta.textContent = total
+    ? total + ' match' + (total > 1 ? 'es' : '') + ' in ' + (order.length || 1) + ' session' + (order.length > 1 ? 's' : '')
+    : 'Nothing found for \u201c' + q + '\u201d';
+
   var frag = document.createDocumentFragment();
-  hits.forEach(function (h) {
+
+  function group(label) {
+    var d = document.createElement('div');
+    d.className = 'sgroup'; d.textContent = label;
+    frag.appendChild(d);
+  }
+  function row(id, cx, body, extra) {
     var a = document.createElement('a');
     a.className = 'sres';
-    a.href = '#' + (h.id || '');
-    a.innerHTML = '<span class="cx">' + escapeHtml(h.c) + '</span>' +
-                  '<span class="sn">' + snippet(h.t, h.lc, q) + '</span>';
-    a.addEventListener('click', closeSearch);
+    a.href = '#' + (id || '');
+    a.innerHTML = '<span class="cx">' + escapeHtml(cx) + (extra ? ' <b>' + extra + '</b>' : '') + '</span>' +
+                  '<span class="sn">' + body + '</span>';
+    a.addEventListener('click', function () { closeSearch(); setTimeout(function () { landOn(id); }, 60); });
     frag.appendChild(a);
-  });
+  }
+
+  if (titles.length) {
+    group('Sessions and headings');
+    titles.forEach(function (h) { row(h.id, h.c === h.t ? 'Session' : h.c, snippet(h.t, h.lc, q)); });
+  }
+  if (order.length) {
+    group('Passages');
+    order.forEach(function (sid) {
+      var g = groups[sid], best = g.hits[0];
+      row(best.id, g.c, snippet(best.t, best.lc, q),
+          g.hits.length > 1 ? g.hits.length + ' matches' : '');
+    });
+  }
   searchResults.appendChild(frag);
 }
 
@@ -256,6 +356,15 @@ var prog = { read: {}, last: null };
 try { prog = JSON.parse(localStorage.getItem(PKEY)) || prog; } catch (e) {}
 if (!prog.read) prog.read = {};
 function saveProg() { try { localStorage.setItem(PKEY, JSON.stringify(prog)); } catch (e) {} }
+
+/* Write the position when the page is backgrounded rather than on every scroll
+   frame — iOS kills background tabs without firing unload. */
+document.addEventListener('visibilitychange', function () {
+  if (document.hidden && lastPos) { prog.last = lastPos; saveProg(); }
+});
+window.addEventListener('pagehide', function () {
+  if (lastPos) { prog.last = lastPos; saveProg(); }
+});
 
 /* Every session heading, in document order, with whether it is written yet. */
 var SESSIONS = $$('h3.chap').filter(function (h) { return /^s\d+$/.test(h.id); })
@@ -346,6 +455,67 @@ var ABOUT = {
   "ft5":     "Act V in one card — networks, response, recovery and land use"
 };
 
+/* ---------------- cross-references ----------------
+   The book says "session 10" 144 times and never once tells the browser where
+   that is. One text-node pass turns them into links. Two stages, because the
+   obvious regex captures only the last number of a run: "sessions 6, 9 and 10"
+   would link 10 alone. */
+function linkSessionRefs() {
+  var main = $('main');
+  if (!main) return;
+  var titles = {};
+  SESSIONS.forEach(function (x) { titles[x.id] = x.title; });
+
+  var walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT, {
+    acceptNode: function (n) {
+      if (!/[Ss]essions?\s+\d/.test(n.nodeValue)) return NodeFilter.FILTER_REJECT;
+      var p = n.parentElement;
+      while (p && p !== main) {
+        var t = p.tagName;
+        if (t === 'A' || t === 'SCRIPT' || t === 'STYLE') return NodeFilter.FILTER_REJECT;
+        if (t === 'H3' && p.classList.contains('chap')) return NodeFilter.FILTER_REJECT;
+        if (p.classList && (p.classList.contains('sesstime') ||
+                            p.id === 'contentsList' || p.id === 'lookup')) return NodeFilter.FILTER_REJECT;
+        p = p.parentElement;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+
+  var targets = [], n;
+  while ((n = walker.nextNode())) targets.push(n);
+
+  var RUN = /\b[Ss]essions?\s+\d{1,2}(?:\s*(?:,|and|&|to|\u2013|-)\s*\d{1,2})*/g;
+  targets.forEach(function (node) {
+    var text = node.nodeValue, out = document.createDocumentFragment(), last = 0, m;
+    RUN.lastIndex = 0;
+    while ((m = RUN.exec(text))) {
+      if (m.index > last) out.appendChild(document.createTextNode(text.slice(last, m.index)));
+      var phrase = m[0], inner = document.createDocumentFragment(), p2 = 0, d;
+      var NUM = /\d{1,2}/g;
+      var any = false;
+      while ((d = NUM.exec(phrase))) {
+        var num = parseInt(d[0], 10);
+        if (num < 1 || num > 32) continue;
+        if (d.index > p2) inner.appendChild(document.createTextNode(phrase.slice(p2, d.index)));
+        var a = document.createElement('a');
+        a.className = 'xref';
+        a.href = '#s' + num;
+        a.textContent = d[0];
+        if (titles['s' + num]) a.title = titles['s' + num];
+        inner.appendChild(a);
+        p2 = d.index + d[0].length;
+        any = true;
+      }
+      if (p2 < phrase.length) inner.appendChild(document.createTextNode(phrase.slice(p2)));
+      out.appendChild(any ? inner : document.createTextNode(phrase));
+      last = m.index + phrase.length;
+    }
+    if (last < text.length) out.appendChild(document.createTextNode(text.slice(last)));
+    if (out.childNodes.length) node.parentNode.replaceChild(out, node);
+  });
+}
+
 /* ---------------- the contents page ----------------
    Built from the document itself, so it lists every act, every session and
    every heading inside them, and can never drift out of step with the book. */
@@ -353,6 +523,22 @@ function buildContents() {
   var host = $('#contentsList');
   if (!host) return;
   host.innerHTML = '';
+
+  /* A rail of act chips, sticky under the top bar. These are in-page anchors
+     (#toc-a4) — a chip must move you within Contents, not eject you into the
+     book. */
+  var rail = document.createElement('nav');
+  rail.className = 'tocjump-bar';
+  rail.setAttribute('aria-label', 'Jump to an act');
+  [['#lookup', 'By problem'], ['#toc-p0', 'Fast Track'],
+   ['#toc-a1', 'I · Ground'], ['#toc-a2', 'II · Terrain'], ['#toc-a3', 'III · Water'],
+   ['#toc-a4', 'IV · Road'], ['#toc-a5', 'V · Beyond'], ['#toc-pk', 'Practice Kit']
+  ].forEach(function (p) {
+    var a = document.createElement('a');
+    a.href = p[0]; a.textContent = p[1];
+    rail.appendChild(a);
+  });
+  host.appendChild(rail);
 
   $$('main section.part').forEach(function (sec) {
     if (sec.id === 'contents') return;
@@ -363,6 +549,7 @@ function buildContents() {
 
     var block = document.createElement('section');
     block.className = 'toc-act';
+    block.id = 'toc-' + sec.id;
 
     var head = document.createElement('a');
     head.className = 'toc-acthead';
@@ -374,6 +561,25 @@ function buildContents() {
     head.querySelector('.k').textContent = kt.length <= 12 ? kt : '';
     head.querySelector('.t').textContent = h2 ? h2.textContent : sec.id;
     block.appendChild(head);
+
+    /* How much is in here, and how long it takes — so an act can be chosen
+       against the time actually available. */
+    var mins = 0, count = 0;
+    $$('h3.chap', sec).forEach(function (h) {
+      count++;
+      var m2 = h.nextElementSibling;
+      if (m2 && m2.classList && m2.classList.contains('sesstime')) {
+        var g = /(\d+)\s*min/.exec(m2.textContent);
+        if (g) mins += parseInt(g[1], 10);
+      }
+    });
+    if (count) {
+      var n = document.createElement('span');
+      n.className = 'n';
+      n.textContent = count + (count === 1 ? ' session' : ' sessions') +
+        (mins ? ' · ' + (mins >= 90 ? Math.round(mins / 60 * 10) / 10 + ' hours' : mins + ' min') : '');
+      head.appendChild(n);
+    }
 
     var list = document.createElement('ol');
     list.className = 'toc-list';
@@ -406,6 +612,16 @@ function buildContents() {
         about.textContent = ABOUT[item.id];
         a.appendChild(about);
       }
+      var meta = item.el.nextElementSibling;
+      if (meta && meta.classList && meta.classList.contains('sesstime')) {
+        var mm = /(\d+)\s*min/.exec(meta.textContent);
+        if (mm) {
+          var mins = document.createElement('span');
+          mins.className = 'toc-min';
+          mins.textContent = mm[1] + ' min';
+          a.insertBefore(mins, a.firstChild);
+        }
+      }
       if (item.el.classList && item.el.classList.contains('pending')) a.classList.add('pend');
       if (prog.read && prog.read[item.id]) a.classList.add('done');
       li.appendChild(a);
@@ -429,7 +645,13 @@ function buildContents() {
           li2.appendChild(a2);
           ul.appendChild(li2);
         });
-        li.appendChild(ul);
+        var det = document.createElement('details');
+        det.className = 'toc-parts';
+        var sum = document.createElement('summary');
+        sum.textContent = subs.length + ' parts inside';
+        det.appendChild(sum);
+        det.appendChild(ul);
+        li.appendChild(det);
       }
 
       list.appendChild(li);
@@ -452,10 +674,33 @@ function paintContents() {
 /* The panel under the cover: where to start, and where he left off. */
 var spActs = $('#spActs'), spCount = $('#spCount'), spContinue = $('#spContinue');
 
-function nextUnread() {
+/* Three honest states: resuming where he stopped, starting the next unread
+   session, or finished — in which case Continue should stop pretending and
+   point at the reference half. */
+function resumeTarget() {
+  if (prog.last && prog.last.id && !prog.read[prog.last.id]) {
+    var el = document.getElementById(prog.last.id);
+    if (el) {
+      var m = SESSIONS.filter(function (x) { return x.id === prog.last.id; })[0];
+      if (m) return { kind: 'resume', id: m.id, title: m.title, dy: prog.last.dy || 0 };
+    }
+  }
   var unread = READY.filter(function (x) { return !prog.read[x.id]; });
-  if (unread.length) return unread[0];
-  return READY.length ? READY[READY.length - 1] : null;
+  if (unread.length) return { kind: 'next', id: unread[0].id, title: unread[0].title, dy: 0 };
+  return { kind: 'done', id: 'pk1', title: 'Practice Kit', dy: 0 };
+}
+
+function goTo(t) {
+  if (!t) return;
+  var el = document.getElementById(t.id);
+  if (!el) return;
+  if (t.dy) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset + t.dy });
+  else el.scrollIntoView({ block: 'start' });
+}
+
+function nextUnread() {
+  var t = resumeTarget();
+  return t ? SESSIONS.filter(function (x) { return x.id === t.id; })[0] || null : null;
 }
 
 function paintPanel() {
@@ -480,7 +725,9 @@ function paintPanel() {
       '<span class="bar"><i></i></span>';
     a.querySelector('.t').textContent = h2 ? h2.textContent : sec.id;
     a.querySelector('.m').textContent = ready.length
-      ? mine.length + ' sessions · ' + ready.length + ' ready' + (read ? ' · ' + read + ' read' : '')
+      ? (ready.length < mine.length
+          ? mine.length + ' sessions · ' + ready.length + ' ready'
+          : read + ' of ' + mine.length + ' read')
       : mine.length + ' sessions · being written';
     a.querySelector('.bar i').style.width =
       (ready.length ? Math.round(read / ready.length * 100) : 0) + '%';
@@ -489,18 +736,26 @@ function paintPanel() {
   });
 
   if (spCount) {
-    spCount.innerHTML = '<b>' + SESSIONS.length + ' sessions</b> in five acts · <b>' +
-      READY.length + '</b> written so far · you have read <b>' + readCount() + '</b>';
+    spCount.innerHTML = '<b>' + SESSIONS.length + ' sessions</b> in five acts, plus a ' +
+      '20-minute Fast Track and the Practice Kit · you have read <b>' + readCount() + '</b>';
   }
   if (spContinue) {
-    var nx = nextUnread();
-    if (nx) {
-      spContinue.hidden = false;
-      spContinue.innerHTML = '<span class="lbl2">' +
-        (readCount() ? 'Continue' : 'Start reading') + '</span> ' + nx.title;
-      spContinue.onclick = function () { location.hash = '#' + nx.id; };
-    } else {
-      spContinue.hidden = true;
+    var t = resumeTarget();
+    spContinue.hidden = false;
+    var lead = t.kind === 'resume' ? 'Resume' : (t.kind === 'done' ? 'Finished — go to' : (readCount() ? 'Continue' : 'Start reading'));
+    spContinue.innerHTML = '';
+    var l2 = document.createElement('span'); l2.className = 'lbl2'; l2.textContent = lead;
+    spContinue.appendChild(l2);
+    spContinue.appendChild(document.createTextNode(' ' + t.title));
+    spContinue.onclick = function () { goTo(t); };
+
+    /* The thumb-reachable button should say the same thing, so tapping it is
+       not a leap of faith. */
+    var bb = document.getElementById('bbContinue');
+    if (bb) {
+      var lab = bb.querySelector('span');
+      if (lab) lab.textContent = t.kind === 'resume' ? 'Resume' : (t.kind === 'done' ? 'Kit' : 'Continue');
+      bb.setAttribute('aria-label', lead + ' ' + t.title);
     }
   }
 }
@@ -517,6 +772,7 @@ $$('main section.part').forEach(function (sec) {
   banner.classList.toggle('is-pending', !anyReady);
 });
 
+linkSessionRefs();
 buildContents();
 paintPanel();
 
@@ -714,26 +970,51 @@ fcard.addEventListener('click', function (e) { if (moved) { moved = false; e.sto
 loadDeck(fcDeck.value);
 
 var fcBtn = $('#fcBtn');
+var fcSavedY = 0;
 fcBtn.addEventListener('click', function () {
+  /* Capture before the toggle: main is display:none in card mode, so by the
+     time the class lands the browser has already clamped scrollY to zero. */
+  var goingIn = !body.classList.contains('fcmode');
+  if (goingIn) fcSavedY = window.pageYOffset;
+
   var on = body.classList.toggle('fcmode');
   fcBtn.setAttribute('aria-label', on ? 'Back to the book' : 'Flashcards');
-  barTitle.innerHTML = on ? 'Flashcards<small>Tap a card to flip</small>' : defaultTitle;
-  window.scrollTo(0, 0);
+
+  var cardsLabel = document.querySelector('#bbCards span');
+  if (cardsLabel) cardsLabel.textContent = on ? 'Back' : 'Cards';
+
+  if (on) {
+    lastBarT = null;
+    barTitle.innerHTML = 'Flashcards<small>Tap a card to flip</small>';
+    window.scrollTo(0, 0);
+  } else {
+    window.scrollTo(0, fcSavedY);
+    lastBarT = null;
+    onScroll();
+  }
 });
 
 
 /* ---------------- bottom bar ---------------- */
 var bbToc = $('#bbToc'), bbSearch = $('#bbSearch'), bbCards = $('#bbCards'), bbFast = $('#bbContinue');
-if (bbToc)    bbToc.addEventListener('click', function () {
+function goContents() {
   if (body.classList.contains('fcmode')) fcBtn.click();
-  location.hash = '#contents';
+  var c = document.getElementById('contents');
+  /* Assigning a hash that is already set does nothing, so the button appeared
+     broken on every press after the first. */
+  if (location.hash === '#contents' && c) c.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  else location.hash = '#contents';
+}
+if (bbToc)    bbToc.addEventListener('click', goContents);
+var bbKit = $('#bbKit');
+if (bbKit)    bbKit.addEventListener('click', function () {
+  if (body.classList.contains('fcmode')) fcBtn.click();
+  location.hash = '#pk1';
 });
 if (bbSearch) bbSearch.addEventListener('click', openSearch);
 if (bbFast)   bbFast.addEventListener('click', function () {
   if (body.classList.contains('fcmode')) fcBtn.click();
-  var nx = nextUnread();
-  if (nx) location.hash = '#' + nx.id;
-  else window.scrollTo({ top: 0, behavior: 'smooth' });
+  goTo(resumeTarget());
 });
 if (bbCards)  bbCards.addEventListener('click', function () { fcBtn.click(); });
 
@@ -766,15 +1047,36 @@ if (bbCards)  bbCards.addEventListener('click', function () { fcBtn.click(); });
       return a;
     }
 
-    if (prev) nav.appendChild(link(prev, '\u2190 Previous', 'prev'));
+    var here = h.closest('section.part');
+    var mine = here ? $$('h3.chap', here) : [];
+    var posInAct = mine.indexOf(h) + 1;
+
+    function dirFor(target, word) {
+      var there = target.closest('section.part');
+      if (there && here && there !== here) {
+        var b = there.querySelector('.part-banner');
+        var lbl = b && b.querySelector('.k') ? b.querySelector('.k').textContent : '';
+        var nm = b && b.querySelector('h2') ? b.querySelector('h2').textContent : '';
+        return word + ' \u00b7 ' + (lbl && /^Act/i.test(lbl) ? lbl.toUpperCase() + ' BEGINS' : (nm || 'REFERENCE').toUpperCase());
+      }
+      return word + (mine.length > 1 ? ' \u00b7 ' + (posInAct + (word.indexOf('Next') >= 0 ? 1 : -1)) + ' of ' + mine.length + ' in this act' : '');
+    }
+
+    if (prev) nav.appendChild(link(prev, dirFor(prev, '\u2190 Previous'), 'prev'));
 
     var toc = document.createElement('a');
     toc.className = 'tocjump';
-    toc.href = '#contents';
-    toc.textContent = 'Contents';
+    if (here) {
+      var b2 = here.querySelector('.part-banner h2');
+      toc.href = '#toc-' + here.id;
+      toc.textContent = b2 ? 'Back to ' + b2.textContent : 'Contents';
+    } else {
+      toc.href = '#contents';
+      toc.textContent = 'Contents';
+    }
     nav.appendChild(toc);
 
-    if (next) nav.appendChild(link(next, 'Next \u2192', 'next'));
+    if (next) nav.appendChild(link(next, dirFor(next, 'Next \u2192'), 'next'));
 
     if (last && last.parentNode) last.parentNode.insertBefore(nav, last.nextSibling);
   });
@@ -785,6 +1087,7 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
     if (lb.classList.contains('on')) { lb.classList.remove('on'); return; }
     if (body.classList.contains('search-open')) { closeSearch(); return; }
+    if (body.classList.contains('fcmode')) { fcBtn.click(); return; }
   }
   var typing = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
   if (typing) return;

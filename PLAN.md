@@ -148,8 +148,8 @@ because that is not where his work is.
 | 1 | **The eighty-year clock** | 1934, 2015, and the segment still locked. For a road engineer the earthquake arrives as ten thousand landslides |
 | 2 | **Risk is built, not suffered** | Hazard × exposure × vulnerability ÷ capacity. The only term an engineer can move is vulnerability — that is the whole job |
 | 3 | **Why Nepal's hills move** | Young rock, steep ground, four metres of monsoon, a range still rising. The four belts behave differently and want different engineering |
-| 4 | **The rules of the game** | DRRM Act 2074, NDRRMA, three tiers — and where DoR and DoLI standards get their legal teeth |
-| 5 | **The cascade** | Earthquake → landslide → river blockage → outburst flood. Sunkoshi 2014, Melamchi 2021. Hazards arrive as chains |
+| 4 | **The rules of the game — Act, agency, standard** | DRRM Act 2074, NDRRMA, three tiers — and where DoR and DoLI standards get their legal teeth |
+| 5 | **The cascade — one hazard triggers the next** | Earthquake → landslide → river blockage → outburst flood. Sunkoshi 2014, Melamchi 2021. Hazards arrive as chains |
 
 ### Act II — Reading the Terrain *(7 sessions)*
 *Learning to see a slope fail before it does.*
@@ -170,12 +170,12 @@ because that is not where his work is.
 | # | Session | The idea it lands |
 |---|---|---|
 | 13 ◆ | **The catchment** | Time of concentration, and why the small catchments are the ones that kill roads |
-| 14 ◆ | **The number you are judged on** | Rainfall-runoff, return periods, design discharge. Choosing it, and defending it |
-| 15 ◆ | **Rivers behave** | Sediment, braiding, aggradation, avulsion, bank erosion. Nepal's rivers are not textbook rivers |
+| 14 ◆ | **Design discharge — the number you are judged on** | Rainfall-runoff, return periods, design discharge. Choosing it, and defending it |
+| 15 ◆ | **How rivers behave** | Sediment, braiding, aggradation, avulsion, bank erosion. Nepal's rivers are not textbook rivers |
 | 16 ◆ | **Flood, flash flood, GLOF** | Three different problems with three different warning times. Thame 2024, Melamchi 2021 |
 | 17 ◆ | **Scour** | The single largest killer of bridges in Nepal. General, contraction, local — estimating it, and what to do |
 | 18 ◆ | **Training the river** | Spurs, revetments, gabions, guide bunds. What holds and what washes out in the first monsoon |
-| 19 | **A design flood that is moving** | Non-stationarity — the honest problem with sizing tomorrow's structure from yesterday's record |
+| 19 | **A design flood that keeps moving** | Non-stationarity — the honest problem with sizing tomorrow's structure from yesterday's record |
 
 ### Act IV — The Road That Survives *(8 sessions)*
 *The craft. The longest act, and the one he will re-read.*
@@ -200,7 +200,7 @@ because that is not where his work is.
 | 29 | **The first 72 hours** | Clearance, route triage, temporary crossings, Bailey bridges. The road engineer's actual job |
 | 30 ◆ | **Buildings, compressed** | Load path, soft storey, NBC 105, retrofit basics. Enough to judge a school and hold the argument — the whole building world in one session |
 | 31 | **Building back better** | Reconstruction told honestly — the NRA experience, and what resilient road recovery looks like |
-| 32 | **Land, money, the next one** | Risk-sensitive land use, maintenance funding, insurance. Closing the loop back to session 2 |
+| 32 | **Land use, money, and the next one** | Risk-sensitive land use, maintenance funding, insurance. Closing the loop back to session 2 |
 
 **Plus, not sessions:**
 
