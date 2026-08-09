@@ -4595,41 +4595,732 @@ valuable contribution available.</p>
   <p class="a"><span>Lacing and hand-packing. Boxes must be laced along every edge to their neighbours above, below and beside, and stone must be placed by hand and tight. Tipped stone leaves voids that settle and slump the face — and neither defect is visible in a finished wall until it moves.</span></p>
 </div>
 
-<h3 class="chap pending" id="s24">24 · Bio-engineering</h3>
-<p class="sesstime ui">Session 24 · core · <span class="todo-inline">not yet written</span></p>
-<div class="box def">
-  <span class="lbl">The idea it will land</span>
-  <p>Nepal's own contribution. What roots do mechanically, what they cannot do, and how to combine them with structure.</p>
-</div>
-<p class="pendingnote">Being written. The hook, the body and its figures, the judgment, the
-field assignment, the check-yourself questions and the deep annex all come with it.</p>
+<h3 class="chap" id="s24">24 · Bio-engineering</h3>
+<p class="sesstime ui">Session 24 · core · 15 min</p>
 
-<h3 class="chap pending" id="s25">25 · Green Roads</h3>
-<p class="sesstime ui">Session 25 · core · <span class="todo-inline">not yet written</span></p>
-<div class="box def">
-  <span class="lbl">The idea it will land</span>
-  <p>Labour-based, environment-friendly local roads. The standard, and the logic that produced it.</p>
-</div>
-<p class="pendingnote">Being written. The hook, the body and its figures, the judgment, the
-field assignment, the check-yourself questions and the deep annex all come with it.</p>
+<p class="hook">Two cut faces on the same road, cut the same year. One is a bare scar shedding
+material into the drain every monsoon. The other is covered in <em>amriso</em> planted in
+lines across the slope, has not moved in a decade, and is being harvested for broom-making by
+the household below it. The second cost less. Nepal did not import this technique — it
+developed it, wrote the manuals that the rest of the world cites, and then, in the rush of
+the last two decades of road building,
+<strong>largely stopped doing it</strong>.</p>
 
-<h3 class="chap pending" id="s26">26 · Bridges under hazard</h3>
-<p class="sesstime ui">Session 26 · core · <span class="todo-inline">not yet written</span></p>
 <div class="box def">
-  <span class="lbl">The idea it will land</span>
-  <p>Approach and abutment failure, liquefaction, bearings and expansion. Where seismic design actually bites on a bridge.</p>
+  <span class="lbl">The idea</span>
+  <p>Vegetation is a structural material with quantifiable functions and honest limits. It
+  works on <strong>shallow instability and surface erosion</strong>, it gets stronger with
+  time rather than weaker, and it costs a fraction of masonry. It does nothing whatever for a
+  deep-seated slide, and pretending otherwise discredits the whole method.</p>
 </div>
-<p class="pendingnote">Being written. The hook, the body and its figures, the judgment, the
-field assignment, the check-yourself questions and the deep annex all come with it.</p>
 
-<h3 class="chap pending" id="s27">27 · Resilience, honestly costed</h3>
-<p class="sesstime ui">Session 27 · <span class="todo-inline">not yet written</span></p>
-<div class="box def">
-  <span class="lbl">The idea it will land</span>
-  <p>Build once against maintain forever. What resilience is worth per kilometre, and when it is not.</p>
+<h4>What plants actually do, mechanically</h4>
+
+<p>Treat this as engineering rather than landscaping, and there are five distinct functions.
+The first two are the ones that matter for stability:</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Function</th><th>Mechanism</th><th>Depth it reaches</th></tr></thead>
+<tbody>
+<tr><td><strong>Reinforce</strong></td><td>Roots add tensile strength to the soil, exactly as fibres do — they carry tension across a potential shear plane</td><td>Root depth. For grasses and shrubs, typically the top <strong>0.5–1.5 m</strong></td></tr>
+<tr><td><strong>Anchor</strong></td><td>Deeper woody roots tie a surface layer to firmer material beneath</td><td>A few metres at best, with the right species</td></tr>
+<tr><td><strong>Armour</strong></td><td>Foliage and litter absorb raindrop impact; stems slow surface flow, so it cannot detach particles</td><td>Surface</td></tr>
+<tr><td><strong>Drain</strong></td><td>Transpiration lowers soil moisture and pore pressure through the growing season</td><td>Root zone — and it stops in the monsoon, when you need it most</td></tr>
+<tr><td><strong>Support / catch</strong></td><td>Stems and clumps physically hold small debris and stop material travelling</td><td>Surface</td></tr>
+</tbody>
+</table>
 </div>
-<p class="pendingnote">Being written. The hook, the body and its figures, the judgment, the
-field assignment, the check-yourself questions and the deep annex all come with it.</p>
+
+<p>Now the limitation, stated as sharply as possible, because everything depends on it:</p>
+
+<figure class="fig">
+<svg viewBox="0 0 640 240" role="img" aria-label="A slope showing the shallow root zone reinforced by vegetation and a deeper slip surface that vegetation cannot reach">
+  <g font-family="system-ui,sans-serif">
+  <!-- slope -->
+  <path d="M20 210 L120 210 L420 40 L620 40" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
+  <!-- root zone band -->
+  <path d="M124 214 L420 46 L420 68 L136 226 Z" fill="var(--good-line)" opacity="0.32"/>
+  <text x="430" y="60" font-size="13.5" font-weight="800" fill="var(--good)">root zone</text>
+  <text x="430" y="78" font-size="13" fill="var(--ink-3)">0.5–1.5 m</text>
+
+  <!-- grasses -->
+  <g stroke="var(--good-line)" stroke-width="2.5">
+    <path d="M180 190 l-6 -18 M186 192 l2 -20 M192 190 l8 -17"/>
+    <path d="M250 150 l-6 -18 M256 152 l2 -20 M262 150 l8 -17"/>
+    <path d="M320 110 l-6 -18 M326 112 l2 -20 M332 110 l8 -17"/>
+  </g>
+
+  <!-- shallow failure, which vegetation prevents -->
+  <path d="M150 206 Q250 150 356 84" fill="none" stroke="var(--good)" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <text x="196" y="122" font-size="13" font-weight="800" fill="var(--good)">shallow — roots cross it</text>
+
+  <!-- deep failure, which it cannot -->
+  <path d="M110 214 Q250 232 400 60" fill="none" stroke="var(--danger)" stroke-width="3.5" stroke-dasharray="10 6"/>
+  <text x="150" y="256" font-size="13.5" font-weight="800" fill="var(--danger)">deep-seated — nothing reaches it</text>
+  </g>
+</svg>
+<figcaption>The whole argument in one section. If the failure surface lies inside the root
+zone, vegetation is a genuine structural solution. If it lies below, <b>no planting scheme
+will touch it</b> — and a bio-engineered slope that fails deep-seated is used, unfairly, as
+evidence that the technique does not work.</figcaption>
+</figure>
+
+<h4>The techniques, and what each is for</h4>
+
+<p>Nepal's roadside bio-engineering practice — codified in the Department of Roads manuals
+developed through the 1990s and still the standard reference — sorts techniques by the
+direction the planting runs, because that is what determines the function:</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Technique</th><th>What it does</th><th>Use where</th></tr></thead>
+<tbody>
+<tr><td><strong>Contour grass lines</strong></td><td>Slows surface flow and traps moving material; reinforces the top layer</td><td>General surface protection on cut and fill faces</td></tr>
+<tr><td><strong>Downslope grass lines</strong></td><td>Lets water run cleanly between lines without concentrating it; good on erodible faces where you want drainage, not ponding</td><td>Sandy or highly erodible material</td></tr>
+<tr><td><strong>Diagonal lines</strong></td><td>Compromise — some flow retardation, some drainage</td><td>Where neither pure contour nor downslope suits</td></tr>
+<tr><td><strong>Brush layering</strong></td><td>Live woody cuttings laid in trenches across the slope. They root, reinforce and act as small barriers. The strongest of the vegetative techniques</td><td>Fill slopes, shallow slips</td></tr>
+<tr><td><strong>Palisades</strong></td><td>Rows of live cuttings driven in across the slope, forming a small barrier</td><td>Trapping debris on moderate slopes</td></tr>
+<tr><td><strong>Live check dams</strong></td><td>Cuttings across a small gully to trap sediment and reduce gradient</td><td>Small, actively eroding gullies</td></tr>
+<tr><td><strong>Fascines</strong></td><td>Bundles of live material in shallow trenches along the contour</td><td>Surface stabilisation on wet slopes</td></tr>
+<tr><td><strong>Jute netting</strong></td><td>Holds the surface and seed until vegetation establishes, then rots away</td><td>Steep faces where planting alone would wash off</td></tr>
+<tr><td><strong>Vegetated stone pitching</strong></td><td>Combines structure and planting — stone for immediate protection, roots for the long term</td><td>The hybrid case below</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The species used are working plants, not ornamentals, and most of them have a local
+economic value that matters for the maintenance argument: <strong>amriso</strong>
+(broom grass, <em>Thysanolaena maxima</em>), <strong>babiyo</strong>
+(<em>Eulaliopsis binata</em>), <strong>khar</strong>, napier grass, various
+<strong>bamboos</strong>, and shrubs such as <strong>simali</strong>
+(<em>Vitex negundo</em>) which roots readily from cuttings.</p>
+
+<h4>Time, and why it changes the comparison</h4>
+
+<p>The one genuine weakness of vegetation is that it is weakest when you need it first. A
+newly planted slope offers almost nothing in its first monsoon, reaches useful strength over
+two or three seasons, and continues improving. A masonry wall is at full strength on the day
+it is finished, and declines from then on.</p>
+
+<p>Two things follow. First, planting must be timed — established
+<strong>before</strong> the monsoon that will test it, with the pre-monsoon planting season
+being the whole game. Second, and more importantly, the comparison between vegetation and
+structure should be made <em>over the design life</em>, not on day one. Structure that
+decays against vegetation that strengthens crosses over surprisingly early.</p>
+
+<h4>The honest answer is usually both</h4>
+
+<p>Bio-engineering is not an alternative to civil works and was never presented as one in the
+Nepali manuals. The intended practice is <strong>combination</strong>: a toe wall or check
+dam to hold the base and control the immediate mechanism, with vegetation above it doing the
+surface protection and shallow reinforcement that a wall cannot and should not be paying for.</p>
+
+<p>The typical hill cut in Nepal is best served by a modest structural element at the toe,
+proper drainage from session 21, and a planted face — and it is usually cheaper than the
+oversized wall that gets built instead.</p>
+
+<div class="caveat">
+<p><b>Two failure modes of bio-engineering, and neither is botanical.</b> The first is
+<em>grazing</em> — goats will remove a new planting scheme in weeks, so protection or a
+community agreement is part of the design, not an afterthought. The second is
+<em>misapplication</em>: planting a face whose problem is a 12 m deep-seated slide, then
+recording the technique as ineffective when it fails. That misdiagnosis has done more damage
+to the standing of bio-engineering in Nepal than any technical shortcoming.</p>
+</div>
+
+<div class="box key">
+  <span class="lbl">Judgment</span>
+  <p>Ask one question first: <em>is the failure surface inside the root zone?</em> If it is,
+  vegetation is a real structural answer and probably the cheapest one. If it is not, say so
+  plainly and do not let planting be used as cover for an unaddressed deep problem. Then
+  design the combination rather than choosing a side — structure at the toe, drainage
+  throughout, vegetation on the face — and plant before the monsoon, not after it. And when
+  you can, choose species people want: a slope planted with amriso gets protected by the
+  household harvesting it, which is a maintenance arrangement no contract can buy.</p>
+</div>
+
+<div class="assign">
+  <span class="lbl">Field assignment</span>
+  <p>Find a cut face on a road you know that has vegetation established on it, and one that
+  is bare. Compare them:</p>
+  <ol>
+    <li>What is <strong>growing</strong> on the vegetated one, and is it in lines — contour,
+      downslope, diagonal — or self-seeded?</li>
+    <li>Is either face <strong>shedding material</strong> into the drain?</li>
+    <li>On the bare face, why did nothing establish — material, aspect, grazing, or simply
+      that nobody planted it?</li>
+    <li>Would the bare face's problem be solved by planting, or is something deeper moving?</li>
+  </ol>
+  <p class="found"><b>What you probably found:</b> the vegetated face was self-seeded rather
+  than planted, and the bare one is bare because it was cut too steep for anything to hold on
+  — which is session 10, not a planting problem. Cut angle and planting are the same decision,
+  taken at different times by different people.</p>
+</div>
+
+<div class="checkself">
+  <span class="lbl">Check yourself</span>
+  <p class="q">1 · Name the five mechanical functions of vegetation on a slope and say which two matter for stability.</p>
+  <p class="a"><span>Reinforce, anchor, armour, drain and catch. Reinforcement — roots carrying tension across a potential shear plane, like fibres — and anchoring into firmer material beneath are the two that affect stability. The others control surface erosion and moisture.</span></p>
+  <p class="q">2 · State the limit of bio-engineering in one sentence.</p>
+  <p class="a"><span>It works only where the failure surface lies within the root zone, roughly the top 0.5–1.5 m for grasses and shrubs; below that no planting scheme reaches the mechanism at all.</span></p>
+  <p class="q">3 · Why does timing dominate the first year of a scheme?</p>
+  <p class="a"><span>Because vegetation is weakest exactly when it is newest — it offers almost nothing in its first monsoon and reaches useful strength over two or three seasons. Planting must be established before the monsoon that will test it, which makes the pre-monsoon season decisive.</span></p>
+  <p class="q">4 · Why does the vegetation-versus-structure comparison change over the design life?</p>
+  <p class="a"><span>Because a wall is at full strength the day it is finished and declines thereafter, while vegetation starts near zero and strengthens. Compared over the whole design life rather than on day one, the crossover comes surprisingly early.</span></p>
+  <p class="q">5 · What are the two non-botanical failure modes, and which has done more reputational damage?</p>
+  <p class="a"><span>Grazing — goats can strip a new scheme in weeks, so protection or a community agreement is part of the design — and misapplication, planting a face whose real problem is a deep-seated slide. The second has done far more damage, because the technique gets recorded as ineffective when it was simply the wrong diagnosis.</span></p>
+</div>
+
+<h3 class="chap" id="s25">25 · Green Roads</h3>
+<p class="sesstime ui">Session 25 · core · 14 min</p>
+
+<p class="hook">In the 1990s Nepali and expatriate engineers working on hill roads in the
+Palpa and Dhading districts noticed something that should have been obvious and was not: the
+roads built slowly, by hand, without a dozer, were <em>outlasting</em> the ones built fast
+with machinery. Not because hand labour is inherently better, but because building slowly
+forced a set of practices — balanced earthwork, no tipping, drainage first, planting as you
+go — that machine construction skips. They wrote it down.
+<strong>The result is one of Nepal's genuine contributions to civil engineering</strong>, and
+it is cited internationally while being steadily abandoned at home.</p>
+
+<div class="box def">
+  <span class="lbl">The idea</span>
+  <p>The Green Road approach is not a cheaper standard for poor districts. It is a
+  <em>construction method</em> whose core insight is that most hill road damage is created
+  during construction — so the way you build determines the road's whole life more than the
+  way you design it.</p>
+</div>
+
+<h4>The principles</h4>
+
+<p>Strip away the terminology and it comes down to six things:</p>
+
+<ol>
+  <li><strong>Mass balance.</strong> Cut volume is matched to fill volume along the
+    alignment, so there is nothing to dispose of. This single principle removes session 10's
+    largest damage mechanism — spoil tipped over the edge. It is the heart of the method.</li>
+  <li><strong>No side-tipping, ever.</strong> Where surplus is unavoidable it goes to
+    designated, contained, drained disposal sites, not over the shoulder.</li>
+  <li><strong>Build the drainage first.</strong> Drainage is constructed as the alignment
+    opens, not after the formation is complete. A road that goes through a monsoon without
+    drainage has already been damaged.</li>
+  <li><strong>Slow, staged construction across seasons.</strong> Cut in one dry season, let
+    the slope settle and reveal its weaknesses through a monsoon, then stabilise and finish.
+    Machine construction compresses this into weeks and the slope's response arrives after
+    handover.</li>
+  <li><strong>Bio-engineering from the start</strong> — session 24, planted as construction
+    proceeds so it has established by the time it is needed.</li>
+  <li><strong>Labour-based, locally employed.</strong> Which is both a social objective and a
+    technical one: hand work permits the precision that mass balance and staged cutting
+    require, and it puts the people who will live with the road inside its construction.</li>
+</ol>
+
+<figure class="fig">
+<svg viewBox="0 0 640 250" role="img" aria-label="Mass balance: cut material moved into adjacent fill instead of being tipped over the edge">
+  <g font-family="system-ui,sans-serif">
+  <!-- BAD -->
+  <text x="14" y="22" font-size="15" font-weight="800" fill="var(--danger)">Side-tipped</text>
+  <path d="M18 200 Q68 176 96 120 L156 120 L156 100 Q182 66 214 42" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
+  <path d="M96 122 L52 200 L136 200 Z" fill="var(--danger)" opacity="0.4"/>
+  <text x="34" y="228" font-size="13" fill="var(--danger)">spoil loads the slope below</text>
+  <path d="M56 204 Q42 226 28 242" fill="none" stroke="var(--danger)" stroke-width="3" stroke-dasharray="6 5"/>
+
+  <path d="M300 24 L300 236" stroke="var(--line)" stroke-width="1.5"/>
+
+  <!-- GOOD -->
+  <text x="326" y="22" font-size="15" font-weight="800" fill="var(--good)">Mass balanced</text>
+  <path d="M330 200 Q380 176 408 120 L468 120 L468 100 Q494 66 526 42" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
+  <!-- cut wedge -->
+  <path d="M468 100 L494 66 L468 66 Z" fill="var(--graphite-400)" opacity="0.5"/>
+  <text x="486" y="60" font-size="12.5" fill="var(--ink-3)">cut</text>
+  <!-- arrow to fill -->
+  <path d="M462 84 Q436 92 418 112" fill="none" stroke="var(--good-line)" stroke-width="3"/>
+  <path d="M412 118 l3 -12 l9 6 z" fill="var(--good-line)"/>
+  <!-- fill wedge -->
+  <path d="M408 122 L408 146 L446 122 Z" fill="var(--good-line)" opacity="0.55"/>
+  <text x="380" y="160" font-size="12.5" fill="var(--good)">fill</text>
+  <text x="330" y="228" font-size="13" fill="var(--good)">nothing leaves the alignment</text>
+  </g>
+</svg>
+<figcaption>The central principle. Cut material is carried into the adjacent fill rather than
+pushed over the side, so the road balances within itself. <b>The slope below the road is left
+exactly as it was</b> — which is the difference between a road that ages and one that
+degrades a hillside for fifty years.</figcaption>
+</figure>
+
+<h4>Why it produces a better road, not just a cheaper one</h4>
+
+<p>The counter-intuitive claim is that a slower, hand-built road is <em>technically</em>
+superior on this terrain, and the reasons are specific:</p>
+
+<ul>
+  <li><strong>No manufactured hazard below.</strong> Mass balance removes tipped spoil, which
+    session 10 identified as the mechanism doing the most damage and getting the least
+    attention.</li>
+  <li><strong>The slope gets to answer.</strong> Cutting across seasons means the face reveals
+    its weaknesses while the contractor is still present and while stabilising is cheap. Fast
+    construction hands over a face that has never seen rain.</li>
+  <li><strong>Precision on narrow benches.</strong> A dozer working on a steep hillside cuts
+    what it can reach, which is often more than the design requires. Hand cutting can hold a
+    designed line and angle.</li>
+  <li><strong>Vegetation has a head start.</strong> Planted during construction rather than
+    after it, and therefore established when the first monsoon arrives.</li>
+</ul>
+
+<h4>The honest limits</h4>
+
+<p>It is not the answer everywhere, and being straight about that protects the method's
+credibility:</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Limit</th><th>What it means</th></tr></thead>
+<tbody>
+<tr><td><strong>Time</strong></td><td>Several seasons rather than one. Politically difficult where access is promised before an election — which is session 4's problem, not an engineering one</td></tr>
+<tr><td><strong>Traffic class</strong></td><td>Suited to low-volume local roads. It is not a method for a strategic highway carrying heavy vehicles</td></tr>
+<tr><td><strong>Rock</strong></td><td>Hard rock sections need machinery or blasting; hand methods have a real limit</td></tr>
+<tr><td><strong>Supervision</strong></td><td>Labour-based work needs more technical supervision, not less. Without it, "labour-based" degrades into unsupervised digging</td></tr>
+<tr><td><strong>Institutional memory</strong></td><td>The manuals exist; the trained supervisors and the funding model have thinned. This is the real constraint today</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>What happened, and what is worth salvaging</h4>
+
+<p>After federalisation gave local governments both the authority and the budget to build
+roads (session 4), the dominant model became the hired excavator: fast, visible, and cheap
+per kilometre on the day. Green Road practice requires patience, supervision and a
+multi-season programme, and it lost the comparison at the point where the comparison is made
+— construction cost.</p>
+
+<p>The argument that wins, when it wins, is the whole-life one from session 20: a track that
+is re-cut every year after every monsoon has not been built once cheaply, it has been built
+repeatedly and expensively, while degrading the hillside a step further each time. That case
+is winnable, and it needs the numbers put side by side.</p>
+
+<p>Even where the full method is impossible, <strong>the principles unbundle</strong>. If you
+can get only one thing into a specification, take mass balance and the prohibition on
+side-tipping — that alone removes the largest damage mechanism, and it can be written into
+any contract regardless of whether the rest of the approach is adopted.</p>
+
+<div class="caveat">
+<p><b>The alternative is rarely "no road".</b> When you argue against fast dozer construction,
+you will be told that the community needs access and cannot wait. The honest counter is not
+that they should go without — it is that a badly cut track delivers access that is lost for
+part of every monsoon, degrades the land the community farms, and consumes its own capital
+cost again every few years. The choice is not road against no road. It is a road that lasts
+against a road that has to be rebuilt.</p>
+</div>
+
+<div class="box key">
+  <span class="lbl">Judgment</span>
+  <p>Carry the principles even where you cannot carry the programme. In any hill road
+  specification you influence, insist on two clauses: <em>earthwork shall be balanced along
+  the alignment</em> and <em>no side-tipping of spoil</em>, with designated disposal sites
+  where surplus is unavoidable. Add drainage constructed ahead of formation if you can get a
+  third. Those three items are most of the benefit, they cost almost nothing to write, and
+  they survive being handed to a contractor with an excavator — which is who will actually
+  build the road.</p>
+</div>
+
+<div class="assign">
+  <span class="lbl">Field assignment</span>
+  <p>Find two hill roads near you built by different methods — an older, hand-built or
+  staged road, and a recent dozer-cut track. Walk or drive a kilometre of each:</p>
+  <ol>
+    <li>Look <strong>below</strong> the road. Is there tipped spoil? How far down does the
+      disturbance reach?</li>
+    <li>Look at the <strong>cut face</strong>. Is it a designed angle with benches, or
+      whatever the machine achieved?</li>
+    <li>Is there <strong>drainage</strong>, and is there vegetation established on the faces?</li>
+    <li>Ask anyone local how often each road is closed or re-cut.</li>
+  </ol>
+  <p class="found"><b>What you probably found:</b> the older road's damage stops at its own
+  formation, while the new one has disturbed a wide band of hillside below it — and the
+  closure answer confirmed it. That band of disturbance below the road is the clearest
+  visual evidence there is for the whole argument, and it photographs well.</p>
+</div>
+
+<div class="checkself">
+  <span class="lbl">Check yourself</span>
+  <p class="q">1 · What is mass balance, and why is it the heart of the method?</p>
+  <p class="a"><span>Matching cut volume to fill volume along the alignment so there is no surplus to dispose of. It is central because it eliminates side-tipped spoil — the mechanism that loads the slope below, buries natural drainage and stockpiles debris-flow material. The slope below the road is left as it was.</span></p>
+  <p class="q">2 · Why does building across several seasons produce a technically better road?</p>
+  <p class="a"><span>Because the cut face passes through a monsoon while the contractor is still present, revealing its weaknesses when stabilising is still cheap. Fast construction hands over a face that has never seen rain, so the slope's response arrives after handover and becomes somebody else's maintenance problem.</span></p>
+  <p class="q">3 · Give three honest limits of the Green Road approach.</p>
+  <p class="a"><span>It takes several seasons rather than one, which is politically hard where access is promised quickly; it suits low-volume local roads, not strategic highways; and hard rock still needs machinery. It also needs more technical supervision, not less — without it, labour-based degrades into unsupervised digging.</span></p>
+  <p class="q">4 · If you can get only one or two clauses into a specification, which do you take?</p>
+  <p class="a"><span>Earthwork balanced along the alignment, and no side-tipping of spoil with designated contained disposal sites where surplus is unavoidable. Those two capture most of the benefit, cost nothing to write, and survive being handed to a contractor with an excavator.</span></p>
+  <p class="q">5 · How do you answer "the community needs access now and cannot wait"?</p>
+  <p class="a"><span>That the choice is not road against no road, but a road that lasts against a road that must be rebuilt. A badly cut track gives access that is lost for part of every monsoon, degrades the land the community farms, and consumes its own capital cost again every few years.</span></p>
+</div>
+
+<h3 class="chap" id="s26">26 · Bridges under hazard</h3>
+<p class="sesstime ui">Session 26 · core · 15 min</p>
+
+<p class="hook">Go and look at the bridges lost in Nepal over the last thirty years and a
+pattern emerges that most engineers do not expect. The deck is usually intact. The girders
+are usually fine. What has gone is <strong>the ground</strong> — a pier undermined, an
+abutment slipped, an approach embankment washed out, leaving a perfectly sound superstructure
+spanning a gap it can no longer reach. Bridge design attention concentrates above the bearing
+line. Bridge <em>losses</em> concentrate below it.</p>
+
+<div class="box def">
+  <span class="lbl">The idea</span>
+  <p>A bridge is lost at its interfaces — foundation to river, abutment to slope, approach to
+  bridge. Seismic design matters and is not usually what takes the structure. Scour and the
+  approaches are.</p>
+</div>
+
+<h4>The approach embankment: the most-lost element</h4>
+
+<p>It is worth saying this first because it is where the money is least often spent. The
+embankment is not part of the bridge in most people's minds, but functionally it is: if it
+goes, the bridge is unusable, and it goes far more often than any other element.</p>
+
+<p>Three mechanisms:</p>
+
+<ul>
+  <li><strong>Outflanking.</strong> Session 18. The river goes round the end of the works and
+    attacks the embankment from behind. The classic loss on a braided or migrating river,
+    where the structure is fine and the road either side of it has gone.</li>
+  <li><strong>Overtopping and breach.</strong> Flood level exceeds the embankment, water
+    flows across it, and the downstream shoulder erodes into a breach. Preventable by
+    armouring the shoulder at a chosen overtopping point — session 22's principle at a larger
+    scale.</li>
+  <li><strong>Settlement at the interface.</strong> A step between a rigid abutment on
+    foundations and a compressible embankment. It is a serviceability problem in normal times
+    and a serious one after an earthquake, when differential settlement can be large enough
+    to stop vehicles entirely — which matters because those are exactly the vehicles bringing
+    help.</li>
+</ul>
+
+<h4>Foundations and the water</h4>
+
+<p>Session 17 in one line: <strong>founding depth below total scour, plus grip.</strong> It is
+the only scour defence that does not depend on somebody maintaining it, and it is the
+decision that most reliably separates bridges that survive from bridges that do not.</p>
+
+<p>Two additions specific to bridge work:</p>
+
+<p><strong>Keep piers out of the channel where a span can reach.</strong> A pier is an
+obstruction, an obstruction collects debris, and a debris raft multiplies local scour —
+session 17's a<sup>0.65</sup>. A single span with abutments on the banks removes the
+mechanism entirely, and on a Nepali khola it is frequently worth the extra structure cost
+against the whole-life alternative.</p>
+
+<p><strong>Assess existing foundations honestly.</strong> On an older bridge you often do not
+know the founding level. The reflex is to assume it is adequate because the bridge is standing.
+It is standing because the design flood has not yet coincided with the bed's lowest state.
+Where records are absent, probing, sounding and repeat bed surveys are the available evidence
+— and repeat surveys at the same sections are worth more than any single investigation.</p>
+
+<h4>Where seismic design actually bites</h4>
+
+<figure class="fig">
+<svg viewBox="0 0 640 250" role="img" aria-label="A bridge showing the four places hazard is resisted: approach, abutment and backfill, bearings and seating, and foundation below scour">
+  <g font-family="system-ui,sans-serif">
+  <!-- ground and river -->
+  <path d="M14 120 L150 120 L150 190 L490 190 L490 120 L626 120" fill="none" stroke="var(--ink-2)" stroke-width="2.5"/>
+  <path d="M160 196 L480 196" stroke="var(--info-line)" stroke-width="6" opacity="0.6"/>
+  <!-- scoured bed -->
+  <path d="M160 216 L480 216" stroke="var(--orange-500)" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <text x="368" y="234" font-size="12.5" fill="var(--orange-600)">design scour level</text>
+
+  <!-- deck -->
+  <path d="M100 108 L540 108" stroke="var(--ink)" stroke-width="9"/>
+  <!-- abutments -->
+  <rect x="140" y="112" width="26" height="80" fill="var(--graphite-100)" stroke="var(--ink-2)" stroke-width="2"/>
+  <rect x="474" y="112" width="26" height="80" fill="var(--graphite-100)" stroke="var(--ink-2)" stroke-width="2"/>
+  <!-- pier + foundation below scour -->
+  <rect x="308" y="112" width="24" height="104" fill="var(--graphite-100)" stroke="var(--ink-2)" stroke-width="2"/>
+  <rect x="304" y="216" width="32" height="26" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-dasharray="4 4"/>
+
+  <!-- callouts -->
+  <circle cx="70" cy="100" r="10" fill="var(--orange-600)"/>
+  <text x="66" y="105" font-size="13" font-weight="800" fill="#fff">1</text>
+  <text x="14" y="80" font-size="13" font-weight="800" fill="var(--orange-600)">approach</text>
+
+  <circle cx="153" cy="140" r="10" fill="var(--orange-600)"/>
+  <text x="149" y="145" font-size="13" font-weight="800" fill="#fff">2</text>
+  <text x="120" y="176" font-size="13" font-weight="800" fill="var(--orange-600)">abutment</text>
+
+  <circle cx="320" cy="100" r="10" fill="var(--orange-600)"/>
+  <text x="316" y="105" font-size="13" font-weight="800" fill="#fff">3</text>
+  <text x="286" y="82" font-size="13" font-weight="800" fill="var(--orange-600)">bearing / seat</text>
+
+  <circle cx="320" cy="228" r="10" fill="var(--orange-600)"/>
+  <text x="316" y="233" font-size="13" font-weight="800" fill="#fff">4</text>
+  <text x="352" y="200" font-size="13" font-weight="800" fill="var(--orange-600)">foundation below scour</text>
+  </g>
+</svg>
+<figcaption>Four interfaces, and design attention is usually concentrated on the span between
+them. <b>All four are ground problems</b> — approach fill, abutment and backfill, seating
+displacement, and founding level relative to the scoured bed.</figcaption>
+</figure>
+
+<p>Seismic design of a bridge is not a scaled-down building problem, and three things carry
+most of the risk:</p>
+
+<p><strong>1 · Unseating.</strong> The dominant collapse mechanism for simply supported spans
+— and most Nepali bridges are simply supported. Relative displacement between deck and
+substructure exceeds the seating length and the span falls off its bearing. The remedies are
+unglamorous and highly effective: <strong>generous seat width</strong>, and restrainers or
+stoppers that limit displacement. Seat width is nearly free at design stage and cannot be
+added later.</p>
+
+<p><strong>2 · Liquefaction and lateral spreading.</strong> Saturated loose sand near a river
+— which is exactly where abutments sit — can lose strength during shaking. Beyond bearing
+loss, the ground can spread laterally towards the channel, dragging abutments and piled
+foundations with it. This deserves a specific check anywhere you have young saturated
+alluvium, and the Terai crossings are the obvious candidates.</p>
+
+<p><strong>3 · Abutment and backfill behaviour.</strong> Backfill pressure rises during
+shaking, and an abutment can be pushed, rotated or slid. Combined with settlement of the
+approach fill, this is what produces the step that stops traffic.</p>
+
+<p>Note what is <em>not</em> at the top of that list: the strength of the girders. Members
+sized for traffic loading are rarely what fails.</p>
+
+<h4>Detailing that matters disproportionately</h4>
+
+<ul>
+  <li><strong>Bearings and expansion joints</strong> — the most neglected maintenance item on
+    Nepali bridges. Seized bearings transfer forces the substructure was never designed for,
+    and blocked joints do the same. They are cheap to inspect and are almost never inspected.</li>
+  <li><strong>Deck drainage</strong> — water discharged at the abutment saturates the backfill
+    and washes out the approach. Take it clear, to a channel.</li>
+  <li><strong>Approach slabs</strong> — bridge the settlement step between abutment and
+    embankment, and are worth their cost.</li>
+  <li><strong>Access for inspection</strong> — if you cannot reach the bearings and the
+    bearing shelf, they will not be inspected for the life of the structure.</li>
+</ul>
+
+<div class="caveat">
+<p><b>The post-earthquake question is different from the design question.</b> Design asks
+whether it collapses. Response asks whether it can carry a loaded truck the following
+morning — session 29. A bridge that survives structurally but has a 400 mm step at the
+abutment is, for the first critical week, closed. Seat width, restrainers, approach slabs and
+compacted well-drained approach fill are life-safety measures at the network level, not
+merely serviceability items.</p>
+</div>
+
+<div class="box key">
+  <span class="lbl">Judgment</span>
+  <p>Spend your attention below the bearing line. Get founding depth right, keep piers out of
+  the channel if a span can reach, and treat the approach embankment as part of the bridge —
+  tied into ground the river cannot get behind, armoured where it will overtop, and drained.
+  On the seismic side, buy seat width and restrainers, and check for liquefiable ground at
+  the abutments before anything else. And on any existing bridge you are responsible for:
+  survey the bed at the same sections every year after monsoon, and open the bearings. Those
+  two habits will find more real risk than any recalculation of the superstructure.</p>
+</div>
+
+<div class="assign">
+  <span class="lbl">Field assignment</span>
+  <p>Inspect one bridge, from the ground rather than the deck:</p>
+  <ol>
+    <li>Walk to <strong>both approach embankments</strong>. What are the ends tied into? Any
+      erosion starting behind the abutment?</li>
+    <li>Look at the <strong>bearing shelf</strong> — can you even see it? How much seat is
+      there beyond the bearing?</li>
+    <li>Look at the <strong>bed</strong> around any pier, and at the apron. Probe if you
+      safely can.</li>
+    <li>Where does <strong>deck drainage</strong> discharge — clear of the structure, or onto
+      the abutment backfill?</li>
+  </ol>
+  <p class="found"><b>What you probably found:</b> deck drainage discharging straight down
+  onto the abutment, and no access to inspect the bearings. Both are cheap to fix, both are
+  ignored for decades, and the first is a slow reliable way to lose an approach.</p>
+</div>
+
+<div class="checkself">
+  <span class="lbl">Check yourself</span>
+  <p class="q">1 · Where are bridges actually lost, and where does design attention usually go?</p>
+  <p class="a"><span>Lost at the interfaces below the bearing line — foundation to river, abutment to slope, approach to bridge. Design attention concentrates on the superstructure, which is rarely what fails; the deck and girders are typically intact when a bridge is lost.</span></p>
+  <p class="q">2 · Name the three ways an approach embankment is lost.</p>
+  <p class="a"><span>Outflanking, where the river goes round the end of the works and attacks from behind; overtopping and breach of the downstream shoulder; and settlement at the interface with the rigid abutment, producing a step that can stop vehicles entirely.</span></p>
+  <p class="q">3 · What is unseating, and what are the two cheap defences?</p>
+  <p class="a"><span>Relative displacement between deck and substructure exceeding the seating length, so a simply supported span falls off its bearing — the dominant seismic collapse mechanism for the span types common in Nepal. The defences are generous seat width and restrainers or stoppers. Seat width is nearly free at design and cannot be added later.</span></p>
+  <p class="q">4 · Why is liquefaction a specific concern at bridge abutments?</p>
+  <p class="a"><span>Because abutments sit in young saturated alluvium beside a river — exactly the material that loses strength under shaking. Beyond bearing loss, the ground can spread laterally towards the channel, dragging abutments and even piled foundations with it.</span></p>
+  <p class="q">5 · Why is a 400 mm step at an abutment a life-safety issue rather than a serviceability one?</p>
+  <p class="a"><span>Because the post-earthquake question is not whether the bridge stood but whether it can carry a loaded truck the next morning. A structurally intact bridge with a large step is closed during the week when access matters most — so seat width, restrainers, approach slabs and well-compacted drained fill are network-level life-safety measures.</span></p>
+</div>
+
+<h3 class="chap" id="s27">27 · Resilience, honestly costed</h3>
+<p class="sesstime ui">Session 27 · 14 min</p>
+
+<p class="hook">You propose the resilient option and the answer comes back: <em>we cannot
+afford it</em>. It is a reasonable answer, and it is usually wrong — not because resilience
+is always worth it, but because the comparison being made is the wrong one. Construction cost
+is being compared against construction cost, when the resilient option's whole point is that
+it changes the other columns. <strong>Nobody has been shown the other columns</strong>, and
+producing them is a job for an engineer, not an economist.</p>
+
+<div class="box def">
+  <span class="lbl">The idea</span>
+  <p>"Resilient costs more" is a statement about one column of a table. Put the maintenance,
+  the periodic reconstruction and the cost of closure alongside it, and the ranking often
+  reverses — but not always, and knowing when it does not is what makes you credible.</p>
+</div>
+
+<h4>The four columns</h4>
+
+<div class="tw">
+<table>
+<thead><tr><th>Column</th><th>What it contains</th><th>Who normally sees it</th></tr></thead>
+<tbody>
+<tr><td><strong>Capital</strong></td><td>Construction cost</td><td>Everyone. Usually the only one in the room</td></tr>
+<tr><td><strong>Maintenance</strong></td><td>Annual drain clearing, apron replenishment, vegetation, small repairs</td><td>A different budget, often a different institution</td></tr>
+<tr><td><strong>Reconstruction</strong></td><td>The periodic rebuild — every monsoon, every few years, every decade</td><td>Charged to disaster or emergency funds, so it never appears against the original decision</td></tr>
+<tr><td><strong>Closure</strong></td><td>What it costs the district to have no road: goods not moved, patients not reached, produce spoiled, school missed</td><td>Nobody. It falls on people who were not consulted</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The structural problem is in the right-hand column. Each cost is borne by a different
+budget, and in most cases by a different institution from the one making the decision. The
+municipality that builds cheaply does not pay for the emergency reconstruction; the emergency
+fund that pays for it did not choose the design; and the household that cannot reach a clinic
+pays a cost that appears in no ledger at all. <strong>The decision is rational for the person
+taking it and wrong for the system.</strong> Recognising that is what lets you argue
+usefully instead of moralising.</p>
+
+<h4>A comparison that fits on one page</h4>
+
+<p>You do not need formal economics. You need four numbers and a horizon:</p>
+
+<ol>
+  <li><strong>Capital cost</strong> of each option.</li>
+  <li><strong>Annual maintenance</strong> each option requires — realistically, including
+    whether anyone will actually do it.</li>
+  <li><strong>Expected reconstruction</strong> — how often, and how much. Take this from the
+    road's own history, which is the most credible source available and costs nothing.</li>
+  <li><strong>Days closed per year</strong>, and roughly what a day of closure costs the
+    people served.</li>
+</ol>
+
+<p>Then total over twenty or fifty years. Do not discount elaborately — a simple undiscounted
+total is transparent, hard to dispute, and adequate to reveal a reversal. If the answer only
+holds under a particular discount rate, it is not a strong argument anyway.</p>
+
+<div class="worked">
+<h6>Illustrative comparison · one kilometre of hill road</h6>
+<div class="inner">
+<p>Two options for the same kilometre. The figures are illustrative — the
+<em>method</em> is the point, and the inputs should come from your own road's history.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th></th><th>A · minimum cost</th><th>B · built to standard</th></tr></thead>
+<tbody>
+<tr><td>Cut, drainage, protection</td><td>Basic cut, unlined drain, no catch drain, spoil side-tipped</td><td>Benched cut, lined drains, catch drain, mass balanced, bio-engineered</td></tr>
+<tr><td><strong>Capital</strong></td><td><strong>1.0×</strong></td><td><strong>1.6×</strong></td></tr>
+<tr><td>Annual maintenance</td><td>0.03× — nominally, and largely not done</td><td>0.04×</td></tr>
+<tr><td>Reconstruction</td><td>0.35× every 3 years</td><td>0.20× every 12 years</td></tr>
+<tr><td>Days closed per year</td><td>~25</td><td>~4</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="step"><strong>Twenty-year capital and reconstruction, option A.</strong><br>
+1.0 + (0.35 × 6 rebuilds) = 1.0 + 2.10 = <strong>3.10×</strong></p>
+
+<p class="step"><strong>Twenty-year capital and reconstruction, option B.</strong><br>
+1.6 + (0.20 × 1 rebuild) = <strong>1.80×</strong></p>
+
+<p class="step"><strong>Add maintenance over twenty years.</strong><br>
+A: 0.03 × 20 = 0.60 → total <strong>3.70×</strong><br>
+B: 0.04 × 20 = 0.80 → total <strong>2.60×</strong></p>
+
+<p class="step"><strong>Now the column nobody costs.</strong><br>
+A closes about 25 days a year, B about 4 — roughly <strong>420 additional days of closure</strong>
+over twenty years. Whatever value the district puts on a day of access, it is not zero, and
+it lands entirely on option A.</p>
+
+<p class="ans"><b>Result:</b> the option that was 60 % more expensive to build is roughly
+<b>30 % cheaper over twenty years</b> before closure is counted at all — and closure is where
+most of the real difference sits.</p>
+
+<p class="src">Illustrative ratios, not published figures. Replace every number with your own
+road's record before using this in an argument; the history of the road you are discussing is
+both the most credible source and the hardest for anyone to dispute.</p>
+</div>
+</div>
+
+<h4>When resilience is not worth it</h4>
+
+<p>Be able to say this too, or the analysis above reads as advocacy rather than engineering:</p>
+
+<ul>
+  <li><strong>Very low traffic, easily bypassed.</strong> If the road serves a handful of
+    households with an alternative footpath, the closure column is small and the cheap option
+    may genuinely win.</li>
+  <li><strong>Short design life or a temporary purpose.</strong> A haul road for a project
+    that ends in three years should not be built for fifty.</li>
+  <li><strong>Where the resilient option still fails.</strong> Spending 1.6× to survive a
+    hazard that will destroy it anyway — a fan crossing that a debris flow will take
+    regardless — is worse than building cheap and expendable. Session 8's conclusion.</li>
+  <li><strong>Where maintenance will certainly not happen.</strong> An option whose
+    performance depends on annual work, in a place with no funded maintenance, is not a
+    resilient option. It is an expensive option that will fail on the same schedule as the
+    cheap one. Choose the design that survives neglect.</li>
+</ul>
+
+<p>That last point is the most useful and the least intuitive. <strong>Design for the
+maintenance regime you will actually get</strong>, not the one specified. A slightly cruder
+solution that tolerates neglect frequently beats a better one that does not.</p>
+
+<div class="caveat">
+<p><b>Get the closure cost from the people who bear it.</b> You will not find it in a
+schedule of rates. You will get it in an afternoon by asking in the bazaar: what does it cost
+when this road is shut, what cannot be sold, what happens to somebody who needs the hospital.
+The numbers will be rough and they will be far more persuasive to a local decision-maker than
+anything you calculate — because they are that ward's own numbers, and nobody has ever
+written them down before.</p>
+</div>
+
+<div class="box key">
+  <span class="lbl">Judgment</span>
+  <p>Never argue for resilience in the abstract. Build the four-column table for the specific
+  road, using its own failure history for the reconstruction column and the bazaar for the
+  closure column, and put it in front of whoever decides. Where the table says the cheap
+  option wins, say so — that is what makes you believed the next time it does not. And always
+  ask the maintenance question honestly before recommending anything, because a resilient
+  design that assumes work nobody is funded to do is not resilient. It is just more expensive.</p>
+</div>
+
+<div class="assign">
+  <span class="lbl">Field assignment</span>
+  <p>Take one road section with a repeated failure and build the table:</p>
+  <ol>
+    <li>Find out <strong>how many times it has been rebuilt</strong> and roughly what each
+      cost. Ask the division or the municipality — they know.</li>
+    <li>Estimate <strong>days closed per year</strong>. Ask a driver who uses it.</li>
+    <li>Ask three people in the nearest bazaar <strong>what a week of closure costs them</strong>.</li>
+    <li>Total twenty years against the cost of doing it properly once.</li>
+  </ol>
+  <p class="found"><b>What you probably found:</b> the reconstruction total already exceeds
+  the cost of building it properly, and nobody had ever added it up because each rebuild was
+  a separate emergency in a separate year with a separate budget line. That sum, on one page,
+  is the most useful document you can produce about that road.</p>
+</div>
+
+<div class="checkself">
+  <span class="lbl">Check yourself</span>
+  <p class="q">1 · Name the four columns, and say which one falls on people who were never consulted.</p>
+  <p class="a"><span>Capital, maintenance, reconstruction and closure. Closure — goods not moved, patients not reached, produce spoiled — falls on the people served, appears in no ledger, and is almost never counted.</span></p>
+  <p class="q">2 · Why is the cheap decision often rational for the decision-maker and wrong for the system?</p>
+  <p class="a"><span>Because each cost sits with a different budget and often a different institution. The body that builds cheaply does not pay for emergency reconstruction; the emergency fund did not choose the design; and the household bearing the closure cost had no say. The incentives are misaligned, not the arithmetic.</span></p>
+  <p class="q">3 · Where should the reconstruction figures in your comparison come from?</p>
+  <p class="a"><span>From the road's own failure history — how often it has actually been rebuilt and at what cost. It is the most credible source available, it costs nothing to obtain, and it is very hard for anyone to dispute, because it is their own record.</span></p>
+  <p class="q">4 · Give two cases where the cheap option genuinely wins.</p>
+  <p class="a"><span>Very low traffic with an easy bypass, so the closure column is small; and a short design life or temporary purpose. Also where the resilient option would fail anyway — a fan crossing a debris flow will take regardless, where cheap and expendable is the correct answer.</span></p>
+  <p class="q">5 · Why can a resilient design be the wrong choice where maintenance will not happen?</p>
+  <p class="a"><span>Because an option whose performance depends on annual work, in a place with no funded maintenance, will fail on roughly the same schedule as the cheap one while costing more. Design for the maintenance regime you will actually get — a cruder solution that tolerates neglect often beats a better one that does not.</span></p>
+</div>
 
 </section>
 
