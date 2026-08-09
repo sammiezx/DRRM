@@ -179,7 +179,7 @@ body.nav-open nav.toc{transform:none}
 
 nav.toc ol{list-style:none;margin:0;padding:0;counter-reset:part}
 nav.toc>ol>li.fastli{counter-increment:none}
-nav.toc>ol>li.fastli>a::before{content:"\2605";background:var(--good-bg);color:var(--good)}
+nav.toc>ol>li.fastli>a::before{content:"\2605";background:var(--orange-100);color:var(--orange-600)}
 nav.toc>ol>li.fastli>a em{font-style:normal;font-weight:400;color:var(--ink-3);font-size:12px}
 nav.toc>ol>li{counter-increment:part;margin-bottom:2px}
 nav.toc>ol>li>a{
@@ -266,7 +266,11 @@ main{
     linear-gradient(160deg,var(--graphite-900) 0%, #2c3a44 100%);
   background-color:var(--graphite-900);
 }
-.cover .glyph{font-size:42px;line-height:1;filter:drop-shadow(0 3px 10px rgba(0,0,0,.35))}
+.cover .glyph{
+  display:block;width:58px;height:58px;margin:0 auto;
+  filter:drop-shadow(0 3px 10px rgba(0,0,0,.4));
+}
+.cover .glyph path{fill:none;stroke-linecap:round;stroke-linejoin:round}
 .cover h1{
   margin:16px 0 8px;font-size:clamp(27px,7.6vw,38px);line-height:1.1;
   letter-spacing:-.5px;font-weight:750;color:#fff;
@@ -566,8 +570,10 @@ body.fcmode main{display:none}
 
 
 /* ---------------- Fast Track ---------------- */
-.ftbanner{background:linear-gradient(145deg,#0f6b43,#0b4f33) !important}
-html[data-theme="dark"] .ftbanner{background:linear-gradient(145deg,#1c5c40,#123024) !important}
+/* Fast Track is marked by the hazard colour, not by green — in this book
+   green is reserved for "safe", the way it is on a tagging card. */
+.ftbanner{background:linear-gradient(145deg,#7a2b07,#3d1704) !important}
+html[data-theme="dark"] .ftbanner{background:linear-gradient(145deg,#6b2606,#301203) !important}
 
 .ft{
   margin:16px -2px;padding:0 0 14px;
@@ -581,7 +587,7 @@ html[data-theme="dark"] .ftbanner{background:linear-gradient(145deg,#1c5c40,#123
 .ft-n{
   flex:0 0 26px;height:26px;border-radius:8px;
   display:inline-flex;align-items:center;justify-content:center;
-  background:var(--good-line);color:#fff;font-family:var(--sans);font-size:13px;font-weight:800;
+  background:var(--orange-500);color:#fff;font-family:var(--sans);font-size:13px;font-weight:800;
 }
 .ft-h h4{margin:0;flex:1 1 auto;font-size:18px;color:var(--heading);line-height:1.25}
 .ft-link{
