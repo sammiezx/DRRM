@@ -697,29 +697,37 @@ hr.sec{border:0;border-top:1px solid var(--line);margin:32px 0}
 
 /* ---------------- desktop ---------------- */
 @media(min-width:900px){
-  :root{--bar-h:58px}
+  :root{--bar-h:58px; --sbw:272px}
   body{font-size:17.5px}
   .bottombar{display:none}
-  main{padding-bottom:120px}
   #toTop{bottom:calc(14px + env(safe-area-inset-bottom))}
   #quizScore{bottom:calc(14px + env(safe-area-inset-bottom))}
   nav.toc>ol>li>ul{display:block}
   nav.toc>ol>li>a::after{display:none}
   nav.toc>ol>li>a{padding-right:10px}
-  .wrap{display:flex;align-items:flex-start;
-    padding-top:calc(var(--bar-h) + env(safe-area-inset-top))}
   #scrim{display:none}
-  nav.toc{
-    position:sticky;top:calc(var(--bar-h) + env(safe-area-inset-top));
-    height:calc(100vh - var(--bar-h));
-    flex:0 0 310px;width:310px;transform:none;box-shadow:none;
-    border-right:1px solid var(--line);background:var(--bg-2);
-    padding:20px 12px 60px 16px;
-  }
-  .tochead .iconbtn{display:none}
-  main{flex:1;min-width:0;max-width:46rem;padding:8px 48px 120px}
-  .cover{margin:0 -48px 30px;padding:76px 48px 62px;border-radius:0}
   #menuBtn{display:none}
+
+  /* The contents sidebar is genuinely pinned, not sticky — it must never
+     scroll away, and it scrolls independently of the page. */
+  .wrap{display:block;padding-left:var(--sbw);
+    padding-top:calc(var(--bar-h) + env(safe-area-inset-top))}
+  nav.toc{
+    position:fixed;left:0;
+    top:calc(var(--bar-h) + env(safe-area-inset-top));
+    bottom:0;height:auto;
+    width:var(--sbw);transform:none;box-shadow:none;
+    border-right:1px solid var(--line);background:var(--bg-2);
+    padding:18px 10px 60px 14px;
+    font-size:14px;
+  }
+  nav.toc>ol>li>a{font-size:14px;padding:9px 8px}
+  nav.toc ul a{font-size:13px;padding:6px 8px}
+  .tochead .iconbtn{display:none}
+
+  /* Prose keeps a readable measure; the page is centred in what is left. */
+  main{margin:0 auto;min-width:0;max-width:46rem;padding:8px 40px 120px}
+  .cover{margin:0 -40px 30px;padding:76px 48px 62px;border-radius:0}
   .tw{margin:20px 0;padding:0}
   figure{margin:24px 0}
   figure.narrow img{max-width:72%;margin:0 auto}
@@ -1070,3 +1078,64 @@ nav.toc>ol>li>a .cnt{
   background:var(--bg-3);color:var(--ink);border:1px solid var(--line);
 }
 .tbtn:hover{background:var(--graphite-100)}
+
+/* ---------------- wide screens: let the furniture use the room ----------------
+   Long lines of prose are harder to read, not easier, so the text column stays
+   put. What earns the extra width is everything that is NOT prose — tables,
+   figures, deep annexes, worked examples, the Fast Track grids and the MCQs —
+   which break out symmetrically on either side of the measure.
+
+   This block is deliberately last in the sheet: the components set their own
+   margins further up, and at equal specificity the later rule wins. */
+
+:root{--bleed:0rem}
+
+@media(min-width:1180px){
+  :root{--bleed:4.5rem}
+  main{max-width:47rem}
+}
+@media(min-width:1500px){
+  :root{--bleed:8rem; --sbw:300px}
+  main{max-width:48rem}
+  body{font-size:18px}
+}
+@media(min-width:1900px){
+  :root{--bleed:11rem}
+}
+
+@media(min-width:1180px){
+  .tw,
+  figure.fig,
+  details.deep,
+  .startpanel,
+  .ft,
+  .mcq,
+  .part-banner,
+  .glance{
+    margin-left:calc(-1 * var(--bleed));
+    margin-right:calc(-1 * var(--bleed));
+  }
+  /* the cover already runs to the edge of main; carry it out the same amount */
+  .cover{
+    margin-left:calc(-40px - var(--bleed));
+    margin-right:calc(-40px - var(--bleed));
+  }
+  /* the annex has its own padding — widen it so its contents get the room too */
+  .deepbody{
+    padding-left:calc(16px + var(--bleed) * 0.4);
+    padding-right:calc(16px + var(--bleed) * 0.4);
+  }
+  /* worked examples sit inside the annex and must not break out twice */
+  .worked{margin-left:0;margin-right:0}
+}
+
+/* The wide-screen rules above sit later in the sheet than the print block, so
+   they would otherwise win when printing on a large display. Reset them last. */
+@media print{
+  main{max-width:none !important;margin:0 !important;padding:0 !important}
+  .cover,.tw,figure.fig,details.deep,.startpanel,.ft,.mcq,.part-banner,.glance{
+    margin-left:0 !important;margin-right:0 !important;
+  }
+  .deepbody{padding-left:0 !important;padding-right:0 !important}
+  .wrap{padding-left:0 !important}
+}
