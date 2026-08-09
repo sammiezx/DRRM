@@ -1,7 +1,8 @@
 # DRRM — Scope & Vision
 
-> **Phase 1 document.** This defines *what* we are building and *for whom*, before any
-> content is written. Read this, correct anything that is wrong, and Phase 2 writes the book.
+> **Phase 1 document.** This defines *what* we are building and *for whom*.
+> [`PLAN.md`](PLAN.md) defines *how it teaches* — sessions, assignments, practice.
+> Read both, correct anything wrong, then Phase 2 writes and Phase 3 deploys.
 
 ---
 
@@ -65,25 +66,21 @@ every code he will open. Nepali terms are given where the field uses them
 
 ## 4. The outline
 
-Eleven parts. `★` opens the book; Parts 4–7 are the engineering core and will carry the
-most weight.
+**The session list lives in [`PLAN.md`](PLAN.md)** — 32 sessions across five acts, with
+the idea each one lands. That document also settles how it teaches: the six-part session
+rhythm, the field assignments, and the three layers of practice.
 
-| # | Part | What it does |
+The arc, in one line each:
+
+| Act | Sessions | What it does |
 |---|---|---|
-| ★ | **Fast Track** | The whole field in ~20 minutes. One card per part. Read this first, or read only this |
-| 1 | **Foundations** | Hazard · exposure · vulnerability · capacity · risk. Why risk is *constructed*, not natural. The DRRM cycle and why "reduction" replaced "response" |
-| 2 | **Nepal's hazard profile** | Seismotectonics of the Himalaya (MHT, the seismic gap). Floods, GLOF, landslides & debris flow, fire, drought, avalanche. Physiography, climate change amplification, the historical record |
-| 3 | **Law & institutions** | DRRM Act 2074 + Rules 2076. NDRRMA. Federal / province / local structure (NDRRMEC, DDMC, LDMC). DRR National Strategic Action Plan 2018–2030. Building Act 2055 and NBC enforcement. Sendai's 4 priorities & 7 targets. BIPAD portal |
-| 4 | **Risk assessment** | Hazard assessment (DSHA/PSHA, return periods, Nepal's seismic hazard map, NBC 105:2020 spectra). Exposure inventory. Nepali building typologies. Fragility & vulnerability curves. Rapid Visual Screening. EMS-98 damage grades D1–D5. Loss estimation |
-| 5 | **Designing for the hazard** | **The heart of the book.** Inertia forces, ductility, capacity design, strong-column/weak-beam, load path, diaphragm action, regularity & redundancy. NBC 105:2020 vs 105:1994 — what actually changed. IS 1893 / IS 13920 detailing. Configuration killers: soft storey, short column, floating column, torsion, pounding. Site: liquefaction in the Kathmandu valley, amplification, slope stability. Base isolation & damping |
-| 6 | **Non-engineered & vernacular construction** | Where most of Nepal actually lives. Stone-in-mud, adobe, brick-in-mud, timber. MRT / NBC 201 & 202. Horizontal bands, corner reinforcement, through-stones, gable bands, wall slenderness. Why these rules work |
-| 7 | **Assessment & retrofitting** | Deciding repair vs restore vs strengthen vs replace. Visual survey, NDT, material testing. RC jacketing, steel jacketing, FRP, added shear walls, bracing. Masonry: splint-and-bandage, ferrocement overlay, corner stitching, grouting, through-stone insertion. School retrofit and heritage retrofit in Nepal. Cost–benefit: when retrofit stops making sense |
-| 8 | **Non-structural risk & lifelines** | Parapets, water tanks, ceilings, cladding, hospital equipment. Roads, bridges, water supply, power. Safe Hospitals & Safe Schools. Bio-engineering for slopes |
-| 9 | **Preparedness & response** | Early warning systems in Nepal. LDCRP / DPRP contingency planning. The engineer in the first 72 hours: search & rescue support, **rapid building safety assessment and green/yellow/red tagging**, shelter, debris management. Cluster system, IRA, INSARAG |
-| 10 | **Recovery & reconstruction** | Build Back Better. The NRA experience after 2015 — owner-driven reconstruction, grant tranches, compliance inspection, what worked and what did not. PDNA methodology. Risk-sensitive land use planning, relocation, DRR financing and insurance |
-| 11 | **Practice kit** | Field checklists (site inspection, RVS form, tagging card). Must-know numbers and code clauses. Glossary & abbreviations. Where to actually download every code and report cited |
-
----
+| ★ | Fast Track | The whole argument in twenty minutes. Written last |
+| **I — The Ground** | 1–5 | Why this matters, before any engineering |
+| **II — Reading Buildings** | 6–12 | Learning to see a building's death before it happens |
+| **III — Making It Stand** | 13–21 | The craft. The longest act |
+| **IV — Strengthening What Stands** | 22–27 | Most buildings that will be here in twenty years are already here |
+| **V — Beyond the Building** | 28–32 | Where an engineer becomes useful to a whole community |
+| ≡ | Practice Kit | Checklists, numbers, question bank, glossary, sources. Reference, not reading |
 
 ## 5. How it will be built
 
@@ -113,7 +110,7 @@ Structure is drawn in **graphite** (`#31414c`), the way a drawing is. **Safety o
 (`#b8410a`) is the only chromatic colour in the book, and it means exactly one thing:
 *hazard*, or *look here*. Nothing else competes with it. Status colours follow site
 signage — green safe, amber caution, red restricted — which is also the tagging convention
-in Part 9, so the colour language and the subject matter agree.
+in session 30, so the colour language and the subject matter agree.
 
 Full light and dark token sets are already in `style.css`.
 
@@ -149,12 +146,11 @@ url    https://sammiezx.github.io/DRRM/
 
 None are blocking — Phase 2 can start on the assumptions in brackets.
 
-1. **Depth on hydro-hazards.** Floods, GLOF and landslides currently sit in Parts 2 and 8.
-   If his work is more water/highway than buildings, they deserve a part of their own.
-   *[Assumed: buildings-led, as scoped.]*
+1. **Depth on hydro-hazards.** Floods, GLOF and landslides get one session (3) plus a
+   share of 29. If his work is more water and highway than buildings, they are worth an
+   act of their own. *[Assumed: buildings-led, as scoped.]*
 2. **Any Nepali-language sections?** *[Assumed: English throughout.]*
-3. **Worked numerical examples** — e.g. a full NBC 105:2020 base-shear calculation for a
-   4-storey RC frame in Kathmandu. Slower to write, and very useful. *[Assumed: yes, a few,
-   in Part 5.]*
-4. **Is he working toward anything specific** — a municipal role, a retrofit programme,
-   a licence upgrade? If so, that section gets deepened. *[Assumed: general practice.]*
+3. **Is he working toward anything specific** — a municipal role, a retrofit programme,
+   a licence upgrade? If so, those sessions get deepened. *[Assumed: general practice.]*
+4. **Pace.** The plan assumes two sessions a week, which is four months. If he wants it
+   faster, the acts are independent enough to reorder. *[Assumed: no deadline.]*

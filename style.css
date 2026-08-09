@@ -776,3 +776,59 @@ hr.sec{border:0;border-top:1px solid var(--line);margin:32px 0}
   border-left:3px dashed var(--line);padding:6px 0 6px 14px;margin:14px 0 30px;
 }
 .todo code{font-size:12.5px}
+
+/* ---------------- session furniture ---------------- */
+/* Every session carries the same six-part rhythm — see PLAN.md. */
+
+/* Editorial boxes stay inside the graphite/orange language. Green, amber and red
+   are reserved for tagging semantics: they appear where the book is actually
+   talking about green/yellow/red placards, and nowhere else. Spending green on
+   "here is a definition" would blunt it before session 30 needs it. */
+.def{background:var(--bg-3);border-color:var(--line);border-left-color:var(--orange-500)}
+.def .lbl{color:var(--orange-600)}
+.key{background:var(--graphite-100);border-color:var(--line);border-left-color:var(--graphite-400)}
+.key .lbl{color:var(--ink-2)}
+.note{background:var(--bg-2);border-color:var(--line);border-left-color:var(--graphite-400)}
+.note .lbl{color:var(--ink-3)}
+/* .warn keeps its red — there, red genuinely means danger. */
+
+.assign .lbl,.checkself .lbl{
+  display:flex;align-items:center;gap:6px;
+  font-family:var(--sans);font-weight:800;font-size:10.5px;letter-spacing:1.3px;
+  text-transform:uppercase;margin-bottom:7px;
+}
+
+.sesstime{
+  margin:-6px 0 16px;font-size:12.5px;letter-spacing:.3px;
+  text-transform:uppercase;color:var(--ink-3);font-weight:700;
+}
+
+/* Field assignment — the piece that turns reading into seeing. */
+.assign{
+  margin:24px 0;padding:16px 18px;
+  border:1px solid var(--orange-600);border-radius:var(--r-md);
+  background:var(--orange-100);
+}
+.assign .lbl{color:var(--orange-600)}
+html[data-theme="dark"] .assign{background:var(--orange-100);border-color:var(--orange-500)}
+
+/* Check yourself — retrieval practice, answers hidden until tapped. */
+.checkself{
+  margin:24px 0 34px;padding:16px 18px;
+  border:1px solid var(--line);border-left:3px solid var(--graphite-400);
+  border-radius:var(--r-md);background:var(--bg-2);
+}
+.checkself .lbl{color:var(--ink-2)}
+.checkself .q{margin:14px 0 0;font-weight:600}
+.checkself .a{
+  margin:6px 0 0;color:var(--ink-2);
+  cursor:pointer;border-bottom:1px dashed var(--line);
+}
+.checkself .a:not(.shown) span{filter:blur(5px);user-select:none}
+@media print{ .checkself .a span{filter:none !important} }
+
+/* Practice Kit is reference, not a numbered act. */
+nav.toc>ol>li.kitli{counter-increment:none}
+nav.toc>ol>li.kitli>a::before{content:"\2261";background:var(--graphite-100);color:var(--ink-3)}
+
+.todo-inline{color:var(--ink-3);font-style:italic;text-transform:none;letter-spacing:0}

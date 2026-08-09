@@ -7,8 +7,10 @@ written for a **practising civil engineer in Nepal**.
 
 📖 **[Read it here](https://sammiezx.github.io/DRRM/)**
 
-> **Status — Phase 1.** The structure, chassis and editorial scope are in place.
-> The chapters are empty. See **[SCOPE.md](SCOPE.md)** for what is being built and why.
+> **Status — Phase 1 (planning).** Structure, chassis and learning design are in place;
+> the sessions are empty shells. **[PLAN.md](PLAN.md)** — how it teaches.
+> **[SCOPE.md](SCOPE.md)** — what it covers and why.
+> Phase 2 writes the content, Phase 3 deploys.
 
 ---
 
@@ -18,20 +20,20 @@ The centre of gravity is the part of DRRM that **only a civil engineer can do** 
 whether a structure will stand, designing so that it does, and strengthening it when it will
 not. Governance, response and recovery are the frame around that, not the subject.
 
-| Part | Topic |
-|---|---|
-| ★ | **Fast Track** — the whole field in twenty minutes |
-| 1 | Foundations of risk — hazard, exposure, vulnerability, capacity |
-| 2 | Nepal's hazard profile — earthquake, flood, GLOF, landslide |
-| 3 | Law & institutions — DRRM Act 2074, NDRRMA, NBC enforcement, Sendai |
-| 4 | Risk assessment — hazard maps, typologies, fragility, RVS, damage grading |
-| 5 | **Designing for the hazard** — ductility, capacity design, configuration, NBC 105:2020 |
-| 6 | Non-engineered construction — masonry, bands, through-stones, MRT |
-| 7 | **Assessment & retrofitting** — jacketing, splint-and-bandage, cost–benefit |
-| 8 | Non-structural risk & lifelines |
-| 9 | Preparedness & response — early warning, the first 72 hours, tagging |
-| 10 | Recovery & reconstruction — Build Back Better, the NRA experience |
-| 11 | Practice kit — checklists, numbers, self-test, glossary, sources |
+Thirty-two sessions, twelve to twenty minutes each, in five acts. Two a week is four months.
+
+| Act | | Sessions |
+|---|---|---|
+| ★ | **Fast Track** | The whole argument in twenty minutes |
+| I | **The Ground** | Why this matters, before any engineering |
+| II | **Reading Buildings** | Learning to see a building's death before it happens |
+| III | **Making It Stand** | The craft — ductility, capacity design, NBC 105:2020, detailing, masonry |
+| IV | **Strengthening What Stands** | Assessment, jacketing, splint-and-bandage, cost–benefit |
+| V | **Beyond the Building** | Lifelines, the first 72 hours, building back better |
+| ≡ | **Practice Kit** | Checklists, numbers, question bank, glossary, sources |
+
+Every session ends with a **field assignment** — fifteen minutes, outside, on the street he
+already walks — and **check yourself** questions with answers hidden until tapped.
 
 ## Features
 
@@ -40,6 +42,7 @@ Built mobile-first — it is designed to be read on a phone, standing on a site.
 - **Search** the whole handbook, with result snippets (or press `/`)
 - **Flashcards** — definitions, Nepal hazards, code clauses, numbers, detailing rules, failure modes
 - **Self-test** MCQs with instant feedback, explanations and a running score
+- **Continue where you left off**, with progress and assignments tracked on his own phone
 - **Works offline** — installable to the home screen
 - **Print to PDF** — clean A4 booklet
 - Figures are hand-drawn inline SVG, so they stay sharp and legible in dark mode
@@ -49,6 +52,7 @@ Built mobile-first — it is designed to be read on a phone, standing on a site.
 
 - `index.html` + `style.css` + `app.js` — the handbook
 - `sw.js`, `manifest.webmanifest`, `icon.svg` — offline / add-to-home-screen support
+- `PLAN.md` — the learning design: session list, assignments, practice, engagement
 - `SCOPE.md` — what this is, who it is for, and the editorial rules
 - `img/` — inline SVG figures
 - `content/` — working outlines and notes, not served
