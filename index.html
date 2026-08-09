@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Disaster Risk Reduction &amp; Management — A Civil Engineer's Handbook</title>
+<meta name="description" content="Disaster risk reduction and management for practising civil engineers in Nepal — hazard and vulnerability, seismic design, non-engineered construction, retrofitting, preparedness and reconstruction.">
+<meta name="theme-color" content="#1d262d" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1419" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DRRM">
+<meta name="color-scheme" content="light dark">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Contents" aria-expanded="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <div class="bartitle" id="barTitle">Disaster Risk Reduction &amp; Management<small>A civil engineer's handbook · Nepal</small></div>
+  <button class="iconbtn" id="searchBtn" aria-label="Search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+  </button>
+  <button class="iconbtn" id="fcBtn" aria-label="Flashcards">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M8 3h11a2 2 0 0 1 2 2v11"/></svg>
+  </button>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle dark mode">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  </button>
+</header>
+<div id="progress" aria-hidden="true"><i></i></div>
+
+<div id="scrim"></div>
+
+<div id="searchPane" role="dialog" aria-label="Search the handbook">
+  <div class="searchbar">
+    <button class="iconbtn" id="searchClose" aria-label="Close search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <input id="search" type="search" placeholder="Search the whole handbook…" autocomplete="off"
+           autocorrect="off" autocapitalize="off" spellcheck="false">
+  </div>
+  <div id="searchMeta">Type at least two letters. Try “soft storey”, “NBC 105”, “liquefaction”.</div>
+  <div id="searchResults"></div>
+</div>
+
+<div class="wrap">
+<nav class="toc" id="toc" aria-label="Contents">
+  <div class="tochead">
+    <h4>Contents</h4>
+    <button class="iconbtn" id="navClose" aria-label="Close contents">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <ol class="hasfast">
+    <li class="fastli"><a href="#p0">Fast Track <em>— start here</em></a>
+      <ul>
+        <li><a href="#ft1">1 · What risk actually is</a></li>
+        <li><a href="#ft2">2 · Nepal's hazards</a></li>
+        <li><a href="#ft3">3 · The law you work under</a></li>
+        <li><a href="#ft4">4 · Judging a building</a></li>
+        <li><a href="#ft5">5 · Designing for the shake</a></li>
+        <li><a href="#ft6">6 · Building without engineers</a></li>
+        <li><a href="#ft7">7 · Strengthening what stands</a></li>
+        <li><a href="#ft8">8 · The first 72 hours</a></li>
+        <li><a href="#ft9">9 · Building back better</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#p1">Foundations of Risk</a>
+      <ul>
+        <li><a href="#c1-1">1.1 Hazard, exposure, vulnerability, capacity</a></li>
+        <li><a href="#c1-2">1.2 Risk is constructed, not natural</a></li>
+        <li><a href="#c1-3">1.3 The DRRM cycle</a></li>
+        <li><a href="#c1-4">1.4 Vocabulary that must be exact</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#p2">Nepal's Hazard Profile</a>
+      <ul>
+        <li><a href="#c2-1">2.1 Why Nepal is where it is</a></li>
+        <li><a href="#c2-2">2.2 Earthquake — the Himalayan setting</a></li>
+        <li><a href="#c2-3">2.3 Flood, flash flood and GLOF</a></li>
+        <li><a href="#c2-4">2.4 Landslide and debris flow</a></li>
+        <li><a href="#c2-5">2.5 Fire, drought, avalanche, others</a></li>
+        <li><a href="#c2-6">2.6 The historical record</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#p3">Law &amp; Institutions</a>
+      <ul>
+        <li><a href="#c3-1">3.1 DRRM Act 2074 and Rules 2076</a></li>
+        <li><a href="#c3-2">3.2 NDRRMA and the three tiers</a></li>
+        <li><a href="#c3-3">3.3 The Building Act and NBC enforcement</a></li>
+        <li><a href="#c3-4">3.4 National Strategic Action Plan 2018–2030</a></li>
+        <li><a href="#c3-5">3.5 Sendai, and how it reaches your desk</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#p4">Risk Assessment</a>
+      <ul>
+        <li><a href="#c4-1">4.1 Hazard assessment — DSHA, PSHA, return periods</a></li>
+        <li><a href="#c4-2">4.2 Nepal's seismic hazard map and NBC spectra</a></li>
+        <li><a href="#c4-3">4.3 Exposure — building typologies of Nepal</a></li>
+        <li><a href="#c4-4">4.4 Vulnerability and fragility curves</a></li>
+        <li><a href="#c4-5">4.5 Rapid Visual Screening</a></li>
+        <li><a href="#c4-6">4.6 Damage grading — EMS-98 D1–D5</a></li>
+        <li><a href="#c4-7">4.7 Loss estimation</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#p5">Designing for the Hazard</a>
+      <ul>
+        <li><a href="#c5-1">5.1 Inertia — what the earthquake actually does</a></li>
+        <li><a href="#c5-2">5.2 Ductility and capacity design</a></li>
+        <li><a href="#c5-3">5.3 Load path, diaphragm, redundancy</a></li>
+        <li><a href="#c5-4">5.4 Configuration killers</a></li>
+        <li><a href="#c5-5">5.5 NBC 105:2020 — what changed</a></li>
+        <li><a href="#c5-6">5.6 Detailing: IS 13920 and the ductile frame</a></li>
+        <li><a href="#c5-7">5.7 Worked example — base shear, Kathmandu</a></li>
+        <li><a href="#c5-8">5.8 Site: liquefaction, amplification, slopes</a></li>
+        <li><a href="#c5-9">5.9 Base isolation and damping</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#p6">Non-Engineered Construction</a>
+      <ul>
+        <li><a href="#c6-1">6.1 Where most of Nepal actually lives</a></li>
+        <li><a href="#c6-2">6.2 How masonry fails</a></li>
+        <li><a href="#c6-3">6.3 Bands, corners, through-stones</a></li>
+        <li><a href="#c6-4">6.4 MRT — NBC 201 and 202</a></li>
+        <li><a href="#c6-5">6.5 Vernacular wisdom, and its limits</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#p7">Assessment &amp; Retrofitting</a>
+      <ul>
+        <li><a href="#c7-1">7.1 Repair, restore, strengthen or replace</a></li>
+        <li><a href="#c7-2">7.2 Survey, NDT and material testing</a></li>
+        <li><a href="#c7-3">7.3 RC: jacketing, shear walls, bracing, FRP</a></li>
+        <li><a href="#c7-4">7.4 Masonry: splint-and-bandage and the rest</a></li>
+        <li><a href="#c7-5">7.5 Schools and heritage in Nepal</a></li>
+        <li><a href="#c7-6">7.6 Cost–benefit: when retrofit stops paying</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#p8">Non-Structural Risk &amp; Lifelines</a>
+      <ul>
+        <li><a href="#c8-1">8.1 The things that fall on people</a></li>
+        <li><a href="#c8-2">8.2 Roads, bridges, water, power</a></li>
+        <li><a href="#c8-3">8.3 Safe hospitals, safe schools</a></li>
+        <li><a href="#c8-4">8.4 Slope protection and bio-engineering</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#p9">Preparedness &amp; Response</a>
+      <ul>
+        <li><a href="#c9-1">9.1 Early warning that works</a></li>
+        <li><a href="#c9-2">9.2 Contingency planning — LDCRP, DPRP</a></li>
+        <li><a href="#c9-3">9.3 The engineer in the first 72 hours</a></li>
+        <li><a href="#c9-4">9.4 Rapid safety assessment and tagging</a></li>
+        <li><a href="#c9-5">9.5 Shelter, debris, temporary works</a></li>
+        <li><a href="#c9-6">9.6 How the response is organised</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#p10">Recovery &amp; Reconstruction</a>
+      <ul>
+        <li><a href="#c10-1">10.1 Build Back Better — beyond the slogan</a></li>
+        <li><a href="#c10-2">10.2 The NRA experience after 2015</a></li>
+        <li><a href="#c10-3">10.3 PDNA</a></li>
+        <li><a href="#c10-4">10.4 Risk-sensitive land use planning</a></li>
+        <li><a href="#c10-5">10.5 Financing, insurance, relocation</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#p11">Practice Kit</a>
+      <ul>
+        <li><a href="#c11-1">11.1 Field checklists</a></li>
+        <li><a href="#c11-2">11.2 Must-know numbers and clauses</a></li>
+        <li><a href="#c11-3">11.3 Self-test</a></li>
+        <li><a href="#c11-4">11.4 Glossary and abbreviations</a></li>
+        <li><a href="#c11-5">11.5 Where to get every code cited</a></li>
+      </ul>
+    </li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ============================================================
+     SKELETON — Phase 1.
+     Every part and chapter below exists as an empty shell so the
+     shape of the book is walkable and the navigation is real.
+     Phase 2 replaces each .todo block with the written chapter.
+     See SCOPE.md before writing anything here.
+     ============================================================ -->
+
+<div class="cover">
+  <div class="glyph">◣</div>
+  <h1>Disaster Risk Reduction<br>&amp; Management</h1>
+  <p class="sub">A handbook for the practising civil engineer</p>
+  <p class="meta">Nepal · hazard, vulnerability, design, retrofitting, recovery</p>
+</div>
+
+<div class="box warn narrow">
+  <span class="lbl">Skeleton</span>
+  <p>This is the Phase&nbsp;1 structure only — the chapters are empty. The outline, the
+  audience and the editorial rules are settled in <strong>SCOPE.md</strong>. Content is
+  written in Phase&nbsp;2.</p>
+</div>
+
+<!-- ================= FAST TRACK ================= -->
+<section class="part fast" id="p0">
+<div class="part-banner ftbanner">
+  <div class="k">Start here</div>
+  <h2>Fast Track</h2>
+  <div class="src">The whole field in about twenty minutes. One card per part. Everything
+  after this section is the same material at working depth.</div>
+</div>
+<div class="box note narrow"><p class="todo">Nine Fast Track cards — <code>#ft1</code> … <code>#ft9</code>.</p></div>
+</section>
+
+<!-- ================= PART 1 ================= -->
+<section class="part" id="p1">
+<div class="part-banner">
+  <div class="k">Part 1</div>
+  <h2>Foundations of Risk</h2>
+  <div class="src">What the words mean, and why the definitions decide the engineering.</div>
+</div>
+
+<h3 class="chap" id="c1-1">1.1 Hazard, exposure, vulnerability, capacity</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c1-2">1.2 Risk is constructed, not natural</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c1-3">1.3 The DRRM cycle</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c1-4">1.4 Vocabulary that must be exact</h3>
+<p class="todo">To be written.</p>
+</section>
+
+<!-- ================= PART 2 ================= -->
+<section class="part" id="p2">
+<div class="part-banner">
+  <div class="k">Part 2</div>
+  <h2>Nepal's Hazard Profile</h2>
+  <div class="src">The hazards you are actually designing against, and where they come from.</div>
+</div>
+
+<h3 class="chap" id="c2-1">2.1 Why Nepal is where it is</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c2-2">2.2 Earthquake — the Himalayan setting</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c2-3">2.3 Flood, flash flood and GLOF</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c2-4">2.4 Landslide and debris flow</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c2-5">2.5 Fire, drought, avalanche, others</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c2-6">2.6 The historical record</h3>
+<p class="todo">To be written.</p>
+</section>
+
+<!-- ================= PART 3 ================= -->
+<section class="part" id="p3">
+<div class="part-banner">
+  <div class="k">Part 3</div>
+  <h2>Law &amp; Institutions</h2>
+  <div class="src">The system you sign drawings inside — who decides what, and under which Act.</div>
+</div>
+
+<h3 class="chap" id="c3-1">3.1 DRRM Act 2074 and Rules 2076</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c3-2">3.2 NDRRMA and the three tiers</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c3-3">3.3 The Building Act and NBC enforcement</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c3-4">3.4 National Strategic Action Plan 2018–2030</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c3-5">3.5 Sendai, and how it reaches your desk</h3>
+<p class="todo">To be written.</p>
+</section>
+
+<!-- ================= PART 4 ================= -->
+<section class="part" id="p4">
+<div class="part-banner">
+  <div class="k">Part 4</div>
+  <h2>Risk Assessment</h2>
+  <div class="src">Putting a number on it — hazard, exposure, vulnerability, loss.</div>
+</div>
+
+<h3 class="chap" id="c4-1">4.1 Hazard assessment — DSHA, PSHA, return periods</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c4-2">4.2 Nepal's seismic hazard map and NBC spectra</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c4-3">4.3 Exposure — building typologies of Nepal</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c4-4">4.4 Vulnerability and fragility curves</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c4-5">4.5 Rapid Visual Screening</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c4-6">4.6 Damage grading — EMS-98 D1–D5</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c4-7">4.7 Loss estimation</h3>
+<p class="todo">To be written.</p>
+</section>
+
+<!-- ================= PART 5 ================= -->
+<section class="part" id="p5">
+<div class="part-banner">
+  <div class="k">Part 5</div>
+  <h2>Designing for the Hazard</h2>
+  <div class="src">The core of the book. How a building survives, and how the code makes it.</div>
+</div>
+
+<h3 class="chap" id="c5-1">5.1 Inertia — what the earthquake actually does</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c5-2">5.2 Ductility and capacity design</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c5-3">5.3 Load path, diaphragm, redundancy</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c5-4">5.4 Configuration killers</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c5-5">5.5 NBC 105:2020 — what changed</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c5-6">5.6 Detailing: IS 13920 and the ductile frame</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c5-7">5.7 Worked example — base shear, Kathmandu</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c5-8">5.8 Site: liquefaction, amplification, slopes</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c5-9">5.9 Base isolation and damping</h3>
+<p class="todo">To be written.</p>
+</section>
+
+<!-- ================= PART 6 ================= -->
+<section class="part" id="p6">
+<div class="part-banner">
+  <div class="k">Part 6</div>
+  <h2>Non-Engineered Construction</h2>
+  <div class="src">The buildings no engineer ever saw — which is most of them.</div>
+</div>
+
+<h3 class="chap" id="c6-1">6.1 Where most of Nepal actually lives</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c6-2">6.2 How masonry fails</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c6-3">6.3 Bands, corners, through-stones</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c6-4">6.4 MRT — NBC 201 and 202</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c6-5">6.5 Vernacular wisdom, and its limits</h3>
+<p class="todo">To be written.</p>
+</section>
+
+<!-- ================= PART 7 ================= -->
+<section class="part" id="p7">
+<div class="part-banner">
+  <div class="k">Part 7</div>
+  <h2>Assessment &amp; Retrofitting</h2>
+  <div class="src">Judging what already stands, and making it stand through the next one.</div>
+</div>
+
+<h3 class="chap" id="c7-1">7.1 Repair, restore, strengthen or replace</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c7-2">7.2 Survey, NDT and material testing</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c7-3">7.3 RC: jacketing, shear walls, bracing, FRP</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c7-4">7.4 Masonry: splint-and-bandage and the rest</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c7-5">7.5 Schools and heritage in Nepal</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c7-6">7.6 Cost–benefit: when retrofit stops paying</h3>
+<p class="todo">To be written.</p>
+</section>
+
+<!-- ================= PART 8 ================= -->
+<section class="part" id="p8">
+<div class="part-banner">
+  <div class="k">Part 8</div>
+  <h2>Non-Structural Risk &amp; Lifelines</h2>
+  <div class="src">The structure survives and the building still kills people. Why.</div>
+</div>
+
+<h3 class="chap" id="c8-1">8.1 The things that fall on people</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c8-2">8.2 Roads, bridges, water, power</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c8-3">8.3 Safe hospitals, safe schools</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c8-4">8.4 Slope protection and bio-engineering</h3>
+<p class="todo">To be written.</p>
+</section>
+
+<!-- ================= PART 9 ================= -->
+<section class="part" id="p9">
+<div class="part-banner">
+  <div class="k">Part 9</div>
+  <h2>Preparedness &amp; Response</h2>
+  <div class="src">What you do before it happens, and in the days when nobody is thinking clearly.</div>
+</div>
+
+<h3 class="chap" id="c9-1">9.1 Early warning that works</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c9-2">9.2 Contingency planning — LDCRP, DPRP</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c9-3">9.3 The engineer in the first 72 hours</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c9-4">9.4 Rapid safety assessment and tagging</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c9-5">9.5 Shelter, debris, temporary works</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c9-6">9.6 How the response is organised</h3>
+<p class="todo">To be written.</p>
+</section>
+
+<!-- ================= PART 10 ================= -->
+<section class="part" id="p10">
+<div class="part-banner">
+  <div class="k">Part 10</div>
+  <h2>Recovery &amp; Reconstruction</h2>
+  <div class="src">The years afterwards — where risk is either reduced or rebuilt in.</div>
+</div>
+
+<h3 class="chap" id="c10-1">10.1 Build Back Better — beyond the slogan</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c10-2">10.2 The NRA experience after 2015</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c10-3">10.3 PDNA</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c10-4">10.4 Risk-sensitive land use planning</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c10-5">10.5 Financing, insurance, relocation</h3>
+<p class="todo">To be written.</p>
+</section>
+
+<!-- ================= PART 11 ================= -->
+<section class="part" id="p11">
+<div class="part-banner">
+  <div class="k">Part 11</div>
+  <h2>Practice Kit</h2>
+  <div class="src">The parts you take to site.</div>
+</div>
+
+<h3 class="chap" id="c11-1">11.1 Field checklists</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c11-2">11.2 Must-know numbers and clauses</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c11-3">11.3 Self-test</h3>
+<div id="mcqs"><p class="todo">MCQ bank — <code>.mcq</code> blocks, <code>data-a</code> = zero-based answer index.</p></div>
+
+<h3 class="chap" id="c11-4">11.4 Glossary and abbreviations</h3>
+<p class="todo">To be written.</p>
+
+<h3 class="chap" id="c11-5">11.5 Where to get every code cited</h3>
+<p class="todo">To be written.</p>
+
+<hr class="sec">
+
+<h3 class="chap" id="sources">Sources</h3>
+<p class="srcnote">To be written — see the sourcing rules in SCOPE.md §6. Every design number
+carries its clause; everything added on top of the sources is marked as an addition.</p>
+</section>
+
+</main>
+</div>
+
+<div id="fcWrap">
+  <div class="fcbar">
+    <select id="fcDeck" aria-label="Flashcard deck"></select>
+    <button id="fcPrev" aria-label="Previous card">←</button>
+    <span id="fcCount"></span>
+    <button id="fcNext" aria-label="Next card">→</button>
+    <button id="fcShuffle">Shuffle</button>
+  </div>
+  <div class="fcard" id="fcard" role="button" tabindex="0" aria-label="Flashcard, tap to flip">
+    <div class="inner">
+      <div class="face front" id="fcFront"></div>
+      <div class="face back" id="fcBack"></div>
+    </div>
+  </div>
+  <p class="fchint">Tap the card to flip · swipe left or right for the next card</p>
+</div>
+
+<div id="lightbox" role="dialog" aria-label="Enlarged figure">
+  <button class="iconbtn" id="lbClose" aria-label="Close figure">
+    <svg viewBox="0 0 24 24" aria-hidden="true" style="stroke:#fff"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <img id="lbImg" alt="">
+  <div id="lbHint">Pinch to zoom · drag to move · tap ✕ to close</div>
+</div>
+
+<nav class="bottombar" id="bottombar" aria-label="Main">
+  <button class="bb" id="bbToc" aria-label="Contents">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h11"/></svg>
+    <span>Contents</span>
+  </button>
+  <button class="bb" id="bbSearch" aria-label="Search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <span>Search</span>
+  </button>
+  <button class="bb" id="bbCards" aria-label="Flashcards">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M8 3h11a2 2 0 0 1 2 2v11"/></svg>
+    <span>Cards</span>
+  </button>
+  <button class="bb" id="bbFast" aria-label="Fast Track">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+    <span>Fast</span>
+  </button>
+</nav>
+
+<button id="toTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="app.js" defer></script>
+</body>
+</html>

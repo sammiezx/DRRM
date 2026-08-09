@@ -1,0 +1,8 @@
+.DS_Store
+
+# local preview artefacts
+_*.html
+*.tmp
+
+# source material dumps (codes, reports) kept locally, not published
+source/
