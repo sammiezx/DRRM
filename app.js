@@ -709,9 +709,22 @@ document.addEventListener('keydown', function (e) {
 });
 
 /* ---------------- offline ---------------- */
+/* When a new service worker takes over, the page is still running the old
+   stylesheet and script. Reload once so the reader actually gets the update
+   rather than silently keeping a stale copy. Guarded so the very first
+   install — where there was no controller — does not cause a reload. */
 if ('serviceWorker' in navigator) {
+  var hadController = !!navigator.serviceWorker.controller;
+  var reloading = false;
+  navigator.serviceWorker.addEventListener('controllerchange', function () {
+    if (!hadController || reloading) return;
+    reloading = true;
+    window.location.reload();
+  });
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('sw.js').catch(function () {});
+    navigator.serviceWorker.register('sw.js').then(function (reg) {
+      reg.update();
+    }).catch(function () {});
   });
 }
 

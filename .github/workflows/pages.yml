@@ -34,6 +34,10 @@ jobs:
           cp index.html style.css app.js sw.js manifest.webmanifest icon.svg _site/
           cp .nojekyll _site/
           if [ -d img ] && [ -n "$(ls -A img)" ]; then cp -r img _site/; fi
+          # Stamp the build into the service worker cache name, so every deploy
+          # retires the previous cache instead of serving it forever.
+          sed -i "s/__BUILD__/${GITHUB_SHA::7}/" _site/sw.js
+          grep -n "const VERSION" _site/sw.js
           ls -la _site
 
       - name: Push to gh-pages
