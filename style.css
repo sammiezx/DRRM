@@ -145,66 +145,6 @@ html[data-theme="dark"] mark.hit{background:#c9a227;color:#000}
   background:linear-gradient(90deg,var(--orange-500),var(--graphite-400));
   transition:width .1s linear}
 
-/* ---------------- drawer nav ---------------- */
-#scrim{
-  position:fixed;inset:0;z-index:80;background:rgba(10,14,18,.55);
-  opacity:0;visibility:hidden;transition:opacity .25s;
-  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
-}
-body.nav-open #scrim{opacity:1;visibility:visible}
-
-nav.toc{
-  position:fixed;z-index:90;top:0;bottom:0;left:0;
-  width:min(88vw,340px);
-  background:var(--bg);
-  transform:translateX(-102%);
-  transition:transform .28s cubic-bezier(.4,0,.2,1);
-  overflow-y:auto;-webkit-overflow-scrolling:touch;
-  overscroll-behavior:contain;
-  box-shadow:var(--shadow-3);
-  padding:calc(12px + env(safe-area-inset-top)) 12px calc(28px + env(safe-area-inset-bottom));
-}
-body.nav-open nav.toc{transform:none}
-
-.tochead{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:10px;padding:0 4px;
-}
-.tochead h4{
-  margin:0;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;
-  color:var(--ink-3);font-weight:700;
-}
-.tochead .iconbtn{color:var(--ink-2)}
-.tochead .iconbtn:hover{background:var(--bg-3)}
-
-nav.toc ol{list-style:none;margin:0;padding:0;counter-reset:part}
-nav.toc>ol>li.fastli{counter-increment:none}
-nav.toc>ol>li.fastli>a::before{content:"\2605";background:var(--orange-100);color:var(--orange-600)}
-nav.toc>ol>li.fastli>a em{font-style:normal;font-weight:400;color:var(--ink-3);font-size:12px}
-nav.toc>ol>li{counter-increment:part;margin-bottom:2px}
-nav.toc>ol>li>a{
-  display:flex;align-items:baseline;gap:9px;
-  padding:11px 10px;border-radius:var(--r-sm);
-  text-decoration:none;color:var(--ink);
-  font-family:var(--sans);font-weight:620;font-size:14.5px;line-height:1.3;
-}
-nav.toc>ol>li>a::before{
-  content:counter(part);
-  flex:0 0 22px;height:22px;border-radius:6px;
-  display:inline-flex;align-items:center;justify-content:center;
-  background:var(--graphite-100);color:var(--graphite-700);
-  font-size:11.5px;font-weight:800;
-}
-nav.toc>ol>li>a:hover{background:var(--bg-3)}
-nav.toc ul{list-style:none;margin:0 0 10px;padding:0 0 0 31px}
-nav.toc ul a{
-  display:block;padding:8px 10px;border-radius:var(--r-sm);
-  text-decoration:none;color:var(--ink-2);
-  font-family:var(--sans);font-size:13.5px;line-height:1.35;
-}
-nav.toc ul a:hover{background:var(--bg-3);color:var(--ink)}
-nav.toc a.active{background:var(--graphite-surface);color:var(--on-graphite)}
-nav.toc a.active::before{background:rgba(255,255,255,.22);color:#fff}
 
 /* ---------------- search overlay ---------------- */
 #searchPane{
@@ -661,18 +601,6 @@ html[data-theme="dark"] .ftbanner{background:linear-gradient(145deg,#6b2606,#301
 .stepper .ttl{font-size:13.5px;font-weight:600;line-height:1.3}
 .stepper a.next{text-align:right}
 
-/* accordion contents: only the open part shows its chapters */
-nav.toc>ol>li>ul{display:none}
-nav.toc>ol>li.open>ul{display:block}
-nav.toc>ol>li>a{position:relative;padding-right:34px}
-nav.toc>ol>li>a::after{
-  content:"";position:absolute;right:13px;top:50%;
-  width:7px;height:7px;margin-top:-5px;
-  border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);
-  transform:rotate(45deg);transition:transform .2s;
-}
-nav.toc>ol>li.open>a::after{transform:rotate(-135deg);margin-top:-2px}
-nav.toc>ol>li>a.active::after{border-color:var(--on-graphite)}
 
 /* ---------------- misc ---------------- */
 .tag{
@@ -697,36 +625,12 @@ hr.sec{border:0;border-top:1px solid var(--line);margin:32px 0}
 
 /* ---------------- desktop ---------------- */
 @media(min-width:900px){
-  :root{--bar-h:58px; --sbw:272px}
+  :root{--bar-h:58px}
   body{font-size:17.5px}
-  .bottombar{display:none}
-  #toTop{bottom:calc(14px + env(safe-area-inset-bottom))}
-  #quizScore{bottom:calc(14px + env(safe-area-inset-bottom))}
-  nav.toc>ol>li>ul{display:block}
-  nav.toc>ol>li>a::after{display:none}
-  nav.toc>ol>li>a{padding-right:10px}
-  #scrim{display:none}
-  #menuBtn{display:none}
-
-  /* The contents sidebar is genuinely pinned, not sticky — it must never
-     scroll away, and it scrolls independently of the page. */
-  .wrap{display:block;padding-left:var(--sbw);
-    padding-top:calc(var(--bar-h) + env(safe-area-inset-top))}
-  nav.toc{
-    position:fixed;left:0;
-    top:calc(var(--bar-h) + env(safe-area-inset-top));
-    bottom:0;height:auto;
-    width:var(--sbw);transform:none;box-shadow:none;
-    border-right:1px solid var(--line);background:var(--bg-2);
-    padding:18px 10px 60px 14px;
-    font-size:14px;
-  }
-  nav.toc>ol>li>a{font-size:14px;padding:9px 8px}
-  nav.toc ul a{font-size:13px;padding:6px 8px}
-  .tochead .iconbtn{display:none}
-
-  /* Prose keeps a readable measure; the page is centred in what is left. */
-  main{margin:0 auto;min-width:0;max-width:46rem;padding:8px 40px 120px}
+  #toTop{bottom:calc(84px + env(safe-area-inset-bottom))}
+  #quizScore{bottom:calc(84px + env(safe-area-inset-bottom))}
+  .wrap{padding-top:calc(var(--bar-h) + env(safe-area-inset-top))}
+  main{margin:0 auto;min-width:0;max-width:46rem;padding:8px 40px 140px}
   .cover{margin:0 -40px 30px;padding:76px 48px 62px;border-radius:0}
   .tw{margin:20px 0;padding:0}
   figure{margin:24px 0}
@@ -740,8 +644,6 @@ hr.sec{border:0;border-top:1px solid var(--line);margin:32px 0}
 @media print{
   @page{size:A4;margin:16mm 14mm 18mm}
   html,body{background:#fff;color:#000;font-size:10.5pt;line-height:1.45}
-  .topbar,nav.toc,#scrim,#searchPane,#lightbox,#fcWrap,#quizScore,#toTop,#progress,
-  .bottombar,.stepper{display:none !important}
   .wrap{display:block;padding:0}
   main{max-width:none;margin:0;padding:0}
   .cover{
@@ -846,9 +748,6 @@ html[data-theme="dark"] .assign{background:var(--orange-100);border-color:var(--
   .checkself .a::after{display:none !important}
 }
 
-/* Practice Kit is reference, not a numbered act. */
-nav.toc>ol>li.kitli{counter-increment:none}
-nav.toc>ol>li.kitli>a::before{content:"\2261";background:var(--graphite-100);color:var(--ink-3)}
 
 .todo-inline{color:var(--ink-3);font-style:italic;text-transform:none;letter-spacing:0}
 
@@ -1035,23 +934,6 @@ details.deep>summary .hint{
 .sp-acts .bar i{display:block;height:100%;background:var(--accent);border-radius:3px}
 .sp-acts li.none .bar i{background:var(--ink-3);opacity:.35}
 
-/* ---------------- contents drawer states ---------------- */
-nav.toc ul a.pend{color:var(--ink-3)}
-nav.toc ul a.pend::after{
-  content:"soon";
-  margin-left:7px;padding:1px 6px;border-radius:20px;
-  background:var(--bg-3);color:var(--ink-3);
-  font-size:10px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;
-  vertical-align:1px;
-}
-nav.toc ul a.done::before{
-  content:"\2713";
-  margin-right:6px;color:var(--good);font-weight:800;
-}
-nav.toc>ol>li>a .cnt{
-  margin-left:auto;padding-left:8px;
-  font-size:11px;font-weight:700;color:var(--ink-3);white-space:nowrap;
-}
 
 /* A pending banner should recede, not shout. */
 .part-banner.ftbanner.is-pending{
@@ -1138,4 +1020,97 @@ nav.toc>ol>li>a .cnt{
   }
   .deepbody{padding-left:0 !important;padding-right:0 !important}
   .wrap{padding-left:0 !important}
+}
+
+
+/* ---------------- the contents page ----------------
+   One page listing everything, reachable from anywhere by the Contents button.
+   There is no sidebar: on a book this long a 300px column could never show the
+   whole structure, and it stole width from the reading. */
+
+#contentsList{margin-top:6px}
+
+.toc-act{margin:0 0 10px}
+.toc-acthead{
+  display:flex;align-items:baseline;gap:10px;
+  padding:14px 14px;margin-top:16px;
+  text-decoration:none;border-radius:var(--r-md);
+  background:var(--graphite-surface);color:var(--on-graphite);
+}
+.toc-acthead:hover{filter:brightness(1.15)}
+.toc-acthead .k{
+  font-family:var(--sans);font-size:10.5px;font-weight:800;
+  letter-spacing:1.4px;text-transform:uppercase;opacity:.75;white-space:nowrap;
+}
+.toc-acthead .t{font-family:var(--sans);font-size:17px;font-weight:750;line-height:1.25}
+
+.toc-list{list-style:none;margin:6px 0 0;padding:0}
+.toc-list > li{border-bottom:1px solid var(--line-2)}
+.toc-list > li:last-child{border-bottom:0}
+
+a.toc-item{
+  display:block;padding:11px 8px 10px;
+  font-family:var(--sans);font-size:15.5px;font-weight:650;line-height:1.3;
+  color:var(--ink);text-decoration:none;border-radius:var(--r-sm);
+}
+a.toc-item:hover{background:var(--bg-3)}
+a.toc-item.done::before{content:"\2713";color:var(--good);font-weight:800;margin-right:7px}
+a.toc-item.pend{color:var(--ink-3)}
+a.toc-item.pend::after{
+  content:"soon";margin-left:8px;padding:1px 6px;border-radius:20px;
+  background:var(--bg-3);color:var(--ink-3);
+  font-size:10px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;
+}
+
+.toc-subs{list-style:none;margin:0 0 10px;padding:0 0 0 14px}
+.toc-subs li{margin:0}
+.toc-subs a{
+  display:block;padding:6px 8px;border-left:2px solid var(--line);
+  font-family:var(--sans);font-size:13.5px;line-height:1.35;
+  color:var(--ink-2);text-decoration:none;
+}
+.toc-subs a:hover{background:var(--bg-3);border-left-color:var(--accent);color:var(--ink)}
+
+/* two columns of acts once there is room for them */
+@media(min-width:1180px){
+  #contentsList{columns:2;column-gap:34px}
+  .toc-act{break-inside:avoid;display:inline-block;width:100%}
+}
+
+/* the bottom bar is permanent navigation, so give it a little more presence */
+.bottombar{box-shadow:0 -1px 0 var(--line), 0 -8px 24px rgba(16,22,27,.06)}
+@media(min-width:900px){
+  .bottombar{
+    left:50%;right:auto;transform:translateX(-50%);
+    width:min(560px, calc(100% - 32px));
+    bottom:14px;border-radius:var(--r-xl);
+    border:1px solid var(--line);
+    box-shadow:var(--shadow-2);
+  }
+}
+
+@media print{
+  #contents{display:none !important}
+}
+
+/* Anchors must not land under the fixed top bar. */
+h3.chap, h4, section.part, .ft, .mcq, details.deep, #contents{
+  scroll-margin-top:calc(var(--bar-h) + env(safe-area-inset-top) + 14px);
+}
+
+/* Emphasis inside a dark part banner has to stay legible on it. */
+.part-banner .src strong,
+.part-banner .src b{color:var(--on-graphite);font-weight:700}
+
+/* the Contents jump sits between Previous and Next */
+.stepper .tocjump{
+  flex:0 0 auto;align-items:center;justify-content:center;
+  font-size:12.5px;font-weight:800;letter-spacing:.6px;
+  text-transform:uppercase;color:var(--accent);
+  background:transparent;border-style:dashed;
+}
+.stepper .tocjump:hover{background:var(--orange-100);border-color:var(--accent)}
+@media(max-width:520px){
+  .stepper{flex-wrap:wrap}
+  .stepper .tocjump{order:3;flex:1 1 100%}
 }

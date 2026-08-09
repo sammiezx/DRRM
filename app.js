@@ -21,18 +21,7 @@ themeBtn.addEventListener('click', function () {
   try { localStorage.setItem('drrm-theme', next); } catch (e) {}
 });
 
-/* ---------------- drawer nav ---------------- */
-var body = document.body, toc = $('#toc'), scrim = $('#scrim'), menuBtn = $('#menuBtn');
-function openNav()  { body.classList.add('nav-open');  menuBtn.setAttribute('aria-expanded', 'true'); }
-function closeNav() { body.classList.remove('nav-open'); menuBtn.setAttribute('aria-expanded', 'false'); }
-menuBtn.addEventListener('click', function () {
-  body.classList.contains('nav-open') ? closeNav() : openNav();
-});
-$('#navClose').addEventListener('click', closeNav);
-scrim.addEventListener('click', closeNav);
-toc.addEventListener('click', function (e) {
-  if (e.target.closest('a')) closeNav();
-});
+var body = document.body;
 
 /* ---------------- back to top ---------------- */
 var toTop = $('#toTop');
@@ -63,8 +52,6 @@ if (lbCloseBtn) lbCloseBtn.addEventListener('click', closeLb);
 var pbar = $('#progress i'), barTitle = $('#barTitle');
 var defaultTitle = barTitle.innerHTML;
 var spyTargets = $$('section.part, h3.chap');
-var navLinks = {};
-$$('nav.toc a').forEach(function (a) { navLinks[a.getAttribute('href').slice(1)] = a; });
 var ticking = false;
 
 function onScroll() {
@@ -83,12 +70,7 @@ function onScroll() {
       if (spyTargets[i].getBoundingClientRect().top <= 110) cur = spyTargets[i];
       else break;
     }
-    Object.keys(navLinks).forEach(function (k) { navLinks[k].classList.remove('active'); });
-    if (cur && navLinks[cur.id]) {
-      var link = navLinks[cur.id];
-      link.classList.add('active');
-      var lr = link.getBoundingClientRect(), nr = toc.getBoundingClientRect();
-      if (lr.top < nr.top || lr.bottom > nr.bottom) link.scrollIntoView({ block: 'nearest' });
+    if (cur) {
       if (cur.classList.contains('chap')) {
         var part = cur.closest('section.part');
         var pname = part ? part.querySelector('.part-banner h2').textContent : '';
@@ -302,7 +284,7 @@ if (window.IntersectionObserver) {
       var h = en.target.closest('section.part') && en.target.getAttribute('data-for');
       if (h && !prog.read[h]) { prog.read[h] = 1; changed = true; }
     });
-    if (changed) { saveProg(); paintPanel(); paintToc(); }
+    if (changed) { saveProg(); paintPanel(); paintContents(); }
   }, { rootMargin: '0px 0px -25% 0px' });
   READY.forEach(function (x) {
     var el = x.el.nextElementSibling, stop = null;
@@ -314,26 +296,97 @@ if (window.IntersectionObserver) {
   });
 }
 
-/* Contents drawer: show what is ready, what is read, and how far each act is. */
-function paintToc() {
-  SESSIONS.forEach(function (x) {
-    var a = toc.querySelector('a[href="#' + x.id + '"]');
-    if (!a) return;
-    a.classList.toggle('pend', x.pending);
-    a.classList.toggle('done', !x.pending && !!prog.read[x.id]);
+/* ---------------- the contents page ----------------
+   Built from the document itself, so it lists every act, every session and
+   every heading inside them, and can never drift out of step with the book. */
+function buildContents() {
+  var host = $('#contentsList');
+  if (!host) return;
+  host.innerHTML = '';
+
+  $$('main section.part').forEach(function (sec) {
+    if (sec.id === 'contents') return;
+
+    var banner = sec.querySelector('.part-banner');
+    var k  = banner && banner.querySelector('.k');
+    var h2 = banner && banner.querySelector('h2');
+
+    var block = document.createElement('section');
+    block.className = 'toc-act';
+
+    var head = document.createElement('a');
+    head.className = 'toc-acthead';
+    head.href = '#' + sec.id;
+    head.innerHTML = '<span class="k"></span><span class="t"></span>';
+    /* Some banners carry a sentence rather than a label; only short ones
+       work as a chip here. */
+    var kt = k ? k.textContent.trim() : '';
+    head.querySelector('.k').textContent = kt.length <= 12 ? kt : '';
+    head.querySelector('.t').textContent = h2 ? h2.textContent : sec.id;
+    block.appendChild(head);
+
+    var list = document.createElement('ol');
+    list.className = 'toc-list';
+
+    /* Sessions and reference chapters are h3.chap. The Fast Track has no
+       chapters — its five cards are .ft blocks — so fall back to those. */
+    var items = $$('h3.chap', sec).map(function (h) { return { el: h, id: h.id, label: h.textContent.trim() }; });
+    if (!items.length) {
+      items = $$('.ft', sec).map(function (d) {
+        var h4 = d.querySelector('.ft-h h4');
+        var n  = d.querySelector('.ft-n');
+        return { el: d, id: d.id,
+                 label: (n ? n.textContent.trim() + ' · ' : '') + (h4 ? h4.textContent.trim() : d.id) };
+      });
+    }
+
+    items.forEach(function (item) {
+      var li = document.createElement('li');
+
+      var a = document.createElement('a');
+      a.className = 'toc-item';
+      a.href = '#' + item.id;
+      a.textContent = item.label;
+      if (item.el.classList && item.el.classList.contains('pending')) a.classList.add('pend');
+      if (prog.read && prog.read[item.id]) a.classList.add('done');
+      li.appendChild(a);
+
+      /* The headings inside it — this is what makes the page usable rather
+         than merely complete. Give them ids if the markup has none. */
+      var subs = [], el = item.el.nextElementSibling, n = 0;
+      while (el && !(el.tagName === 'H3' && el.classList.contains('chap'))) {
+        if (el.tagName === 'H4') subs.push(el);
+        el = el.nextElementSibling;
+      }
+      if (subs.length) {
+        var ul = document.createElement('ul');
+        ul.className = 'toc-subs';
+        subs.forEach(function (h4) {
+          if (!h4.id) h4.id = item.id + '-h' + (++n);
+          var li2 = document.createElement('li');
+          var a2 = document.createElement('a');
+          a2.href = '#' + h4.id;
+          a2.textContent = h4.textContent.trim();
+          li2.appendChild(a2);
+          ul.appendChild(li2);
+        });
+        li.appendChild(ul);
+      }
+
+      list.appendChild(li);
+    });
+
+    block.appendChild(list);
+    host.appendChild(block);
   });
-  $$('nav.toc > ol > li').forEach(function (li) {
-    var a = li.querySelector(':scope > a');
-    if (!a) return;
-    var href = a.getAttribute('href');
-    var sec = href && document.querySelector(href);
-    if (!sec) return;
-    var mine = SESSIONS.filter(function (x) { return x.act === sec; });
-    if (!mine.length) return;
-    var ready = mine.filter(function (x) { return !x.pending; }).length;
-    var cnt = a.querySelector('.cnt');
-    if (!cnt) { cnt = document.createElement('span'); cnt.className = 'cnt'; a.appendChild(cnt); }
-    cnt.textContent = ready ? ready + '/' + mine.length : '';
+}
+
+/* Repaint the read ticks without rebuilding the whole page. */
+function paintContents() {
+  if (!$('#contentsList')) return;
+  SESSIONS.forEach(function (x) {
+    var a = document.querySelector('#contentsList a.toc-item[href="#' + x.id + '"]');
+    if (a) a.classList.toggle('done', !!prog.read[x.id]);
   });
 }
 
@@ -405,7 +458,7 @@ $$('main section.part').forEach(function (sec) {
   banner.classList.toggle('is-pending', !anyReady);
 });
 
-paintToc();
+buildContents();
 paintPanel();
 
 /* ---------------- deep annex ---------------- */
@@ -613,7 +666,8 @@ fcBtn.addEventListener('click', function () {
 /* ---------------- bottom bar ---------------- */
 var bbToc = $('#bbToc'), bbSearch = $('#bbSearch'), bbCards = $('#bbCards'), bbFast = $('#bbContinue');
 if (bbToc)    bbToc.addEventListener('click', function () {
-  body.classList.contains('nav-open') ? closeNav() : openNav();
+  if (body.classList.contains('fcmode')) fcBtn.click();
+  location.hash = '#contents';
 });
 if (bbSearch) bbSearch.addEventListener('click', openSearch);
 if (bbFast)   bbFast.addEventListener('click', function () {
@@ -624,79 +678,54 @@ if (bbFast)   bbFast.addEventListener('click', function () {
 });
 if (bbCards)  bbCards.addEventListener('click', function () { fcBtn.click(); });
 
-/* ---------------- accordion contents ---------------- */
-/* Only the part you are in shows its chapters, so the drawer is short enough to scan. */
-var topLis = $$('nav.toc > ol > li');
-topLis.forEach(function (li) {
-  var a = li.querySelector(':scope > a');
-  var sub = li.querySelector(':scope > ul');
-  if (!a || !sub) return;
-  a.addEventListener('click', function (e) {
-    // on a phone, first tap opens the group; a second tap on the same link navigates
-    if (window.matchMedia('(min-width:900px)').matches) return;
-    if (!li.classList.contains('open')) {
-      e.preventDefault();
-      topLis.forEach(function (o) { o.classList.remove('open'); });
-      li.classList.add('open');
-    }
-  });
-});
-window.__syncAcc = syncAccordion;
-function syncAccordion(partId) {
-  if (window.matchMedia('(min-width:900px)').matches) return;
-  topLis.forEach(function (li) {
-    var a = li.querySelector(':scope > a');
-    li.classList.toggle('open', !!a && a.getAttribute('href') === '#' + partId);
-  });
-}
-
-/* ---------------- chapter stepper ---------------- */
-/* Prev / next links at the foot of every chapter, so the drawer is rarely needed. */
+/* ---------------- session stepper ----------------
+   Previous / Contents / Next at the foot of every session, so you can move
+   through the book without going anywhere else, and get back to the contents
+   from wherever you are. */
 (function buildSteppers() {
   var chaps = $$('h3.chap').filter(function (h) { return h.id; });
   chaps.forEach(function (h, i) {
     var prev = chaps[i - 1], next = chaps[i + 1];
     if (!prev && !next) return;
-    var stop = h.nextElementSibling;
-    var last = h;
+
+    var stop = h.nextElementSibling, last = h;
     while (stop && !(stop.tagName === 'H3' && stop.classList.contains('chap'))) {
       last = stop; stop = stop.nextElementSibling;
     }
-    var nav = document.createElement('div');
+
+    var nav = document.createElement('nav');
     nav.className = 'stepper';
-    function link(t, dir, cls) {
+    nav.setAttribute('aria-label', 'Session navigation');
+
+    function link(target, dir, cls) {
       var a = document.createElement('a');
-      a.className = cls; a.href = '#' + t.id;
-      a.innerHTML = '<span class="dir">' + dir + '</span>' +
-                    '<span class="ttl">' + t.textContent.trim().replace(/[<>&]/g, '') + '</span>';
+      a.className = cls;
+      a.href = '#' + target.id;
+      var d = document.createElement('span'); d.className = 'dir'; d.textContent = dir;
+      var t = document.createElement('span'); t.className = 'ttl'; t.textContent = target.textContent.trim();
+      a.appendChild(d); a.appendChild(t);
       return a;
     }
-    if (prev) nav.appendChild(link(prev, '← Previous', 'prev'));
-    if (next) nav.appendChild(link(next, 'Next →', 'next'));
+
+    if (prev) nav.appendChild(link(prev, '\u2190 Previous', 'prev'));
+
+    var toc = document.createElement('a');
+    toc.className = 'tocjump';
+    toc.href = '#contents';
+    toc.textContent = 'Contents';
+    nav.appendChild(toc);
+
+    if (next) nav.appendChild(link(next, 'Next \u2192', 'next'));
+
     if (last && last.parentNode) last.parentNode.insertBefore(nav, last.nextSibling);
   });
 })();
-
-/* ---------------- edge swipe opens contents ---------------- */
-var eStartX = 0, eStartY = 0, edge = false;
-document.addEventListener('touchstart', function (e) {
-  var t = e.changedTouches[0];
-  eStartX = t.clientX; eStartY = t.clientY;
-  edge = eStartX < 24 && !body.classList.contains('nav-open');
-}, { passive: true });
-document.addEventListener('touchend', function (e) {
-  if (!edge) return;
-  edge = false;
-  var t = e.changedTouches[0];
-  if (t.clientX - eStartX > 60 && Math.abs(t.clientY - eStartY) < 50) openNav();
-}, { passive: true });
 
 /* ---------------- keyboard ---------------- */
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
     if (lb.classList.contains('on')) { lb.classList.remove('on'); return; }
     if (body.classList.contains('search-open')) { closeSearch(); return; }
-    if (body.classList.contains('nav-open')) { closeNav(); return; }
   }
   var typing = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
   if (typing) return;

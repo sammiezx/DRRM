@@ -17,9 +17,6 @@
 <body>
 
 <header class="topbar">
-  <button class="iconbtn" id="menuBtn" aria-label="Contents" aria-expanded="false">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-  </button>
   <div class="bartitle" id="barTitle">Disaster Risk Reduction &amp; Management<small>A civil engineer's handbook · Nepal</small></div>
   <button class="iconbtn" id="searchBtn" aria-label="Search">
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
@@ -32,8 +29,6 @@
   </button>
 </header>
 <div id="progress" aria-hidden="true"><i></i></div>
-
-<div id="scrim"></div>
 
 <div id="searchPane" role="dialog" aria-label="Search the handbook">
   <div class="searchbar">
@@ -48,91 +43,7 @@
 </div>
 
 <div class="wrap">
-<nav class="toc" id="toc" aria-label="Contents">
-  <div class="tochead">
-    <h4>Contents</h4>
-    <button class="iconbtn" id="navClose" aria-label="Close contents">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
-    </button>
-  </div>
-  <ol class="hasfast">
-    <li class="fastli"><a href="#p0">Fast Track <em>— 20 min overview</em></a>
-      <ul>
-        <li><a href="#ft1">I · The Ground</a></li>
-        <li><a href="#ft2">II · Reading the Terrain</a></li>
-        <li><a href="#ft3">III · Water</a></li>
-        <li><a href="#ft4">IV · The Road That Survives</a></li>
-        <li><a href="#ft5">V · Beyond the Alignment</a></li>
-      </ul>
-    </li>
-    <li><a href="#a1">The Ground</a>
-      <ul>
-        <li><a href="#s1">1 · The eighty-year clock</a></li>
-        <li><a href="#s2">2 · Risk is built, not suffered</a></li>
-        <li><a href="#s3">3 · Why Nepal's hills move</a></li>
-        <li><a href="#s4">4 · The rules of the game</a></li>
-        <li><a href="#s5">5 · The cascade</a></li>
-      </ul>
-    </li>
 
-    <li><a href="#a2">Reading the Terrain</a>
-      <ul>
-        <li><a href="#s6">6 · How a slope fails</a></li>
-        <li><a href="#s7">7 · The five ways ground moves</a></li>
-        <li><a href="#s8">8 · Debris flow</a></li>
-        <li><a href="#s9">9 · Reading a hillside</a></li>
-        <li><a href="#s10">10 · The road as the cause</a></li>
-        <li><a href="#s11">11 · Rock, not soil</a></li>
-        <li><a href="#s12">12 · Susceptibility on a map</a></li>
-      </ul>
-    </li>
-
-    <li><a href="#a3">Water</a>
-      <ul>
-        <li><a href="#s13">13 · The catchment</a></li>
-        <li><a href="#s14">14 · The number you are judged on</a></li>
-        <li><a href="#s15">15 · Rivers behave</a></li>
-        <li><a href="#s16">16 · Flood, flash flood, GLOF</a></li>
-        <li><a href="#s17">17 · Scour</a></li>
-        <li><a href="#s18">18 · Training the river</a></li>
-        <li><a href="#s19">19 · A design flood that is moving</a></li>
-      </ul>
-    </li>
-
-    <li><a href="#a4">The Road That Survives</a>
-      <ul>
-        <li><a href="#s20">20 · Alignment is the decision</a></li>
-        <li><a href="#s21">21 · Drainage is everything</a></li>
-        <li><a href="#s22">22 · Cross-drainage</a></li>
-        <li><a href="#s23">23 · Walls that hold</a></li>
-        <li><a href="#s24">24 · Bio-engineering</a></li>
-        <li><a href="#s25">25 · Green Roads</a></li>
-        <li><a href="#s26">26 · Bridges under hazard</a></li>
-        <li><a href="#s27">27 · Resilience, honestly costed</a></li>
-      </ul>
-    </li>
-
-    <li><a href="#a5">Beyond the Alignment</a>
-      <ul>
-        <li><a href="#s28">28 · Roads are the lifeline</a></li>
-        <li><a href="#s29">29 · The first 72 hours</a></li>
-        <li><a href="#s30">30 · Buildings, compressed</a></li>
-        <li><a href="#s31">31 · Building back better</a></li>
-        <li><a href="#s32">32 · Land, money, the next one</a></li>
-      </ul>
-    </li>
-
-    <li class="kitli"><a href="#pk">Practice Kit</a>
-      <ul>
-        <li><a href="#pk1">Field checklists</a></li>
-        <li><a href="#pk2">Numbers &amp; clauses</a></li>
-        <li><a href="#pk3">Question bank</a></li>
-        <li><a href="#pk4">Glossary</a></li>
-        <li><a href="#pk5">Where to get every standard</a></li>
-      </ul>
-    </li>
-  </ol>
-</nav>
 
 <main>
 
@@ -167,6 +78,18 @@
   </div>
   <ol class="sp-acts" id="spActs"></ol>
 </nav>
+
+<!-- ============================ CONTENTS ============================ -->
+<section class="part" id="contents">
+<div class="part-banner">
+  <div class="k">Everything, in order</div>
+  <h2>Contents</h2>
+  <div class="src">Every act, every session and every heading inside them. Tap anything to
+  go straight there — and the <strong>Contents</strong> button at the bottom of the screen
+  brings you back here from anywhere in the book.</div>
+</div>
+<div id="contentsList"></div>
+</section>
 
 <!-- ============================ FAST TRACK ============================ -->
 <section class="part fast" id="p0">
@@ -7452,7 +7375,7 @@ Educational use. Not a design authority and not a substitute for the standards t
   <div id="lbHint">Pinch to zoom · drag to move · tap ✕ to close</div>
 </div>
 
-<nav class="bottombar" id="bottombar" aria-label="Main">
+<nav class="bottombar" id="bottombar" aria-label="Main navigation">
   <button class="bb" id="bbToc" aria-label="Contents">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h11"/></svg>
     <span>Contents</span>
