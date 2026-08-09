@@ -825,10 +825,53 @@ html[data-theme="dark"] .assign{background:var(--orange-100);border-color:var(--
   cursor:pointer;border-bottom:1px dashed var(--line);
 }
 .checkself .a:not(.shown) span{filter:blur(5px);user-select:none}
-@media print{ .checkself .a span{filter:none !important} }
+/* the blur alone gives no affordance — say what to do with it */
+.checkself .a:not(.shown)::after{
+  content:"tap to reveal";
+  display:block;margin-top:4px;
+  font-family:var(--sans);font-size:11px;font-weight:700;
+  letter-spacing:1.1px;text-transform:uppercase;color:var(--accent);
+}
+.checkself .a.shown{border-bottom-color:transparent}
+@media print{
+  .checkself .a span{filter:none !important}
+  .checkself .a::after{display:none !important}
+}
 
 /* Practice Kit is reference, not a numbered act. */
 nav.toc>ol>li.kitli{counter-increment:none}
 nav.toc>ol>li.kitli>a::before{content:"\2261";background:var(--graphite-100);color:var(--ink-3)}
 
 .todo-inline{color:var(--ink-3);font-style:italic;text-transform:none;letter-spacing:0}
+
+/* ---------------- session prose ---------------- */
+.hook{
+  font-size:18px;line-height:1.6;color:var(--ink-2);
+  border-left:3px solid var(--graphite-400);padding-left:16px;margin:18px 0 22px;
+}
+.hook strong{color:var(--ink)}
+
+figure svg{display:block;width:100%;height:auto}
+figure.fig{
+  margin:26px 0;padding:16px 14px 10px;
+  background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-md);
+}
+figure.fig figcaption{
+  margin-top:10px;font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--ink-3);
+}
+figure.fig figcaption b{color:var(--ink-2)}
+
+/* the "what you probably found" note under an assignment */
+.assign .found{
+  margin:12px 0 0;padding-top:10px;border-top:1px dashed var(--orange-500);
+  font-size:15px;color:var(--ink-2);
+}
+.assign .found b{color:var(--ink)}
+
+/* an aside for the honest limits of a method */
+.caveat{
+  margin:22px 0;padding:14px 16px;font-size:15.5px;
+  border:1px dashed var(--line);border-radius:var(--r-md);
+  background:transparent;color:var(--ink-2);
+}
+.caveat b{color:var(--ink)}

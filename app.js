@@ -267,15 +267,72 @@ if (resetBtn) resetBtn.addEventListener('click', function () {
   if (mcqs[0]) mcqs[0].scrollIntoView({ block: 'start', behavior: 'smooth' });
 });
 
+/* ---------------- check yourself ---------------- */
+/* Answers stay blurred until tapped: he has to produce the answer before he
+   sees it. Recognition is not recall, and the blur is what forces the difference. */
+$$('.checkself .a').forEach(function (el) {
+  el.setAttribute('role', 'button');
+  el.setAttribute('tabindex', '0');
+  el.setAttribute('aria-label', 'Reveal answer');
+  function reveal() { el.classList.add('shown'); }
+  el.addEventListener('click', reveal);
+  el.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); reveal(); }
+  });
+});
+
 /* ---------------- flashcard decks ---------------- */
 const DECKS = {
-  /* PHASE 2 — content. Deck names are provisional; shape is ["front","back"]. */
-  "Definitions":         [["placeholder","Deck content is written in Phase 2."]],
-  "Nepal events":        [["placeholder","Deck content is written in Phase 2."]],
-  "Standards & clauses": [["placeholder","Deck content is written in Phase 2."]],
-  "Numbers":             [["placeholder","Deck content is written in Phase 2."]],
-  "Field indicators":    [["placeholder","Deck content is written in Phase 2."]],
-  "Failure modes":       [["placeholder","Deck content is written in Phase 2."]]
+  /* Cards are harvested from the written sessions, never invented separately.
+     Acts III-V are added as those sessions are written. */
+  "Definitions": [
+    ["Factor of safety","Resisting force divided by driving force on an assumed failure surface. FoS = 1.0 means the slope IS moving, not that it is about to."],
+    ["Effective stress","Total normal stress minus pore water pressure, (\u03c3 \u2212 u). Friction is mobilised by this, not by total stress \u2014 which is why rain weakens a slope without making it heavier."],
+    ["Matric suction","Apparent cohesion from surface tension in partly saturated pores. Holds a cut face up through the dry season, and disappears entirely on saturation."],
+    ["Debris flow","A moving mass in which the sediment IS the flow and water makes it mobile. Solids over half the volume; density roughly 1.8\u20132.3 t/m\u00b3."],
+    ["Entrainment","A flow scouring the channel bed and banks as it travels, so the volume arriving at the fan can be many times what detached at the source."],
+    ["Avulsion","A stream abandoning its channel and taking a new path across a fan. Predicted by a channel perched above the surrounding fan surface."],
+    ["Rock mass","Blocks separated by discontinuities \u2014 not intact rock. What governs a cut is the orientation of those surfaces, not the strength of the rock."],
+    ["Kinematic test","Asking whether a block can physically get out, given the joint geometry. If movement is not permitted, the failure mode is impossible regardless of strength."],
+    ["Susceptibility","WHERE a landslide can occur \u2014 terrain only. No timing, no consequence. Not the same as hazard, and not remotely the same as risk."],
+    ["Hazard (vs susceptibility)","Susceptibility plus magnitude and probability \u2014 where, how big, how often."],
+    ["Risk","Hazard plus exposure and vulnerability. A steep uninhabited hillside has high susceptibility and no risk."]
+  ],
+  "Nepal events": [
+    ["Jure landslide","2 August 2014, ~2:30 am, Sindhupalchok. Roughly 156 killed, Araniko Highway severed, and the Sunkoshi dammed \u2014 the landslide-dam outburst threat lasted weeks."],
+    ["Melamchi","15 June 2021. A debris flow, not a flood \u2014 buried parts of Melamchi Bazar, took bridges, damaged the water supply headworks. The arriving event was out of all proportion to the rainfall."],
+    ["Why the two differ","Jure was a rock slide: sudden, local, and it dammed a river. Melamchi was a debris flow: it travelled far beyond its source and rebuilt the valley floor as it went."]
+  ],
+  "Field indicators": [
+    ["Tension cracks at the crown","The most reliable early sign \u2014 and also a cause, because an open crack drains surface water straight to the slip surface. Seal them and date them."],
+    ["Trees tilted backwards into the slope","Rotational movement \u2014 the mass has rotated on a curved surface, tipping its upper part back."],
+    ["Trees tilted downslope, or bent at the base","Translational movement or creep. The bend records ground moving while the tree kept growing vertically."],
+    ["A spring that has moved, appeared or dried","The most diagnostic single sign. Movement disrupts internal drainage paths, so changed water means deformed ground."],
+    ["A roadside drain that keeps silting for no reason","It is probably no longer level \u2014 toe heave from a slope moving beneath the road. A displacement symptom, not a maintenance failure."],
+    ["Straight things that stopped being straight","Terraces, walls, channels, road crest. Humans build straight lines; the ground does not. A free displacement gauge somebody installed years ago."],
+    ["Boulders larger than the present stream could move","Evidence of past debris flows, and a rough gauge of the magnitude to design for."],
+    ["A stream perched above the fan surface","Aggrading and prone to avulsion. Today's channel is not where the next flow will go."],
+    ["Talus block shape at a rock cut toe","Slabs point to planar sliding, triangular blocks to wedges, long columns to toppling. The ground has already run the analysis."]
+  ],
+  "Failure modes": [
+    ["Fall","Detaches and travels through the air \u2014 no shear surface. Extremely fast. Often best managed by catching it, not preventing it."],
+    ["Topple","Rotates forward about a point near its base. Steep joints dipping INTO the face \u2014 which is why it is the mode most often misread as favourable."],
+    ["Slide","Coherent mass on one distinct shear surface. Rotational (curved) or translational (planar). The only family where a factor of safety means something."],
+    ["Spread","A stiff layer breaks up and extends over a softer one beneath. Uncommon in Nepal's hills."],
+    ["Flow","Moves as a fluid, shearing internally with no single surface. Travels furthest, kills most, and cannot be analysed by limit equilibrium."],
+    ["Planar rock failure \u2014 three conditions","Joint dips out of the face and roughly parallel to it (within ~20\u00b0); dips less steeply than the face, so it daylights; dips more steeply than its friction angle, so it is driven."],
+    ["Wedge failure","Two joint sets intersect and the block slides along the line of intersection. Easy to miss \u2014 neither set alone looks threatening."],
+    ["Slide becoming flow","The commonest Nepali sequence. Classify by what it will be when it reaches your road, not by how it started at the crown."]
+  ],
+  "Numbers": [
+    ["Debris flow density","Roughly 1.8\u20132.3 t/m\u00b3 against water's 1.0 \u2014 about twice the impact force at the same velocity, before any boulder strike."],
+    ["Shallow vs deep-seated","Shallow is roughly under 3 m. It responds to rainfall intensity within hours; deep-seated responds to accumulated rainfall over days to weeks."],
+    ["Typical target factor of safety","About 1.5 for permanent slopes where the data is good; lower is accepted on temporary works. A 1.5 on a guessed water table is worth less than a 1.3 where the water is known."],
+    ["Planar sliding \u2014 face parallelism","The joint must dip within about 20\u00b0 of the face direction."]
+  ],
+  "Standards & clauses": [
+    ["Placeholder","Filled as Acts III\u2013V are written \u2014 DoR and DoLI standards, NBC, and IRC where adopted."]
+  ]
 };
 
 /* ---------------- flashcards ---------------- */

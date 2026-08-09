@@ -290,144 +290,1294 @@
 </div>
 
 <h3 class="chap" id="s6">6 · How a slope fails</h3>
-<p class="sesstime ui">Session 6 · core · <span class="todo-inline">reading time to be set</span></p>
+<p class="sesstime ui">Session 6 · core · 15 min</p>
+
+<p class="hook">At about half past two in the morning on <strong>2 August 2014</strong>, the
+hillside above Jure, in Sindhupalchok, let go. It took the village, roughly 156 people, and
+a length of the Araniko Highway. Then it did something worse: it dammed the Sunkoshi, and
+for weeks afterwards the country waited to see whether that dam would breach.
+It had rained hard that monsoon. But it had rained hard the week before too, and the
+hillside had stood. The question every engineer should ask about Jure is not <em>why did
+it fail</em> — it is <strong>why did it fail at 2:30 that morning, and not before?</strong></p>
+
 <div class="box def">
   <span class="lbl">The idea</span>
-  <p>Shear strength, pore pressure, factor of safety. Rain is not the cause — it is the trigger.</p>
+  <p>A slope is a balance between the weight pulling it down and the strength holding it
+  on. Rain does not add much weight. What it does is <strong>take strength away</strong> —
+  and that is why the trigger and the cause are never the same thing.</p>
 </div>
-<p class="todo">Hook, body and figures — Phase 2.</p>
+
+<h4>The balance</h4>
+
+<p>Take any slope and imagine the surface it would slide on. Gravity resolves the mass
+above that surface into a component pushing along it. Against that, the ground resists
+with its shear strength. Divide one by the other and you have the only number the whole
+subject turns on:</p>
+
+<p class="tw" style="text-align:center"><strong>Factor of safety = resisting force ÷ driving force</strong></p>
+
+<p>At <b>FoS = 1.0</b> the slope is moving. Not "about to move" — moving. Everything above
+that is your margin against the things you got wrong.</p>
+
+<p>The resisting side is where the interesting physics lives. Shear strength on that
+surface follows the Mohr–Coulomb relation, and the form that matters is the
+<strong>effective stress</strong> form:</p>
+
+<p class="tw" style="text-align:center">τ = c′ + (σ − u) tan φ′</p>
+
+<p>Read that as three separate things you might be able to change:</p>
+
+<ul>
+  <li><strong>c′</strong> — effective cohesion. In most Nepali hill soils, small. In
+    weathered rock and colluvium, often close to zero once it has moved once before.</li>
+  <li><strong>σ</strong> — the total normal stress pressing the surface together. This is
+    essentially the weight of what sits above.</li>
+  <li><strong>u</strong> — the <strong>pore water pressure</strong> pushing the grains
+    apart. This is the term that changes with the weather.</li>
+</ul>
+
+<p>Frictional strength does not come from σ. It comes from <b>σ − u</b>, the effective
+stress — the part of the load actually carried grain to grain. Water in the pores carries
+some of the load, and water has no friction. Raise <em>u</em> and you have not made the
+slope heavier in any meaningful way; you have made it <em>weaker</em>.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 640 360" role="img" aria-label="A hillside with a slip surface, one slice showing weight, and the dry-season and monsoon water tables">
+  <!-- ground profile -->
+  <path d="M30 300 L150 300 L470 96 L610 96" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
+  <!-- slip surface -->
+  <path d="M120 300 Q300 282 466 100" fill="none" stroke="var(--orange-500)" stroke-width="3.5" stroke-dasharray="10 7"/>
+  <text x="150" y="332" font-family="system-ui,sans-serif" font-size="17" font-weight="700" fill="var(--orange-600)">slip surface</text>
+
+  <!-- the slice -->
+  <path d="M280 220 L330 220 L330 283 L280 285 Z" fill="var(--graphite-100)" stroke="var(--ink-3)" stroke-width="2"/>
+  <!-- weight -->
+  <path d="M305 160 L305 214" stroke="var(--ink)" stroke-width="3"/>
+  <path d="M305 222 l-7 -12 h14 z" fill="var(--ink)"/>
+  <text x="315" y="180" font-family="system-ui,sans-serif" font-size="20" font-weight="800" fill="var(--ink)">W</text>
+
+  <!-- pore pressure pushing the slice off its base -->
+  <path d="M300 292 L300 322" stroke="var(--orange-500)" stroke-width="3"/>
+  <path d="M300 284 l-7 12 h14 z" fill="var(--orange-500)"/>
+  <text x="316" y="318" font-family="system-ui,sans-serif" font-size="17" font-weight="700" fill="var(--orange-600)">u</text>
+
+  <!-- dry season water table -->
+  <path d="M40 308 Q300 300 468 200" fill="none" stroke="var(--ink-3)" stroke-width="2.5" stroke-dasharray="6 6"/>
+  <text x="386" y="232" font-family="system-ui,sans-serif" font-size="16" fill="var(--ink-3)">dry season</text>
+
+  <!-- monsoon water table, above the slip surface -->
+  <path d="M40 272 Q290 254 468 120" fill="none" stroke="var(--orange-500)" stroke-width="3"/>
+  <text x="376" y="152" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="var(--orange-600)">monsoon</text>
+
+  <!-- the gap that matters -->
+  <path d="M180 275 L180 297 M215 271 L215 294 M250 267 L250 291" stroke="var(--orange-500)" stroke-width="2" opacity="0.65"/>
+</svg>
+<figcaption>Weight drives, friction and cohesion resist, and pore pressure quietly subtracts
+from the friction. When the monsoon table rises above the slip surface, <b>σ has not
+changed — but σ&nbsp;−&nbsp;u has.</b> Nothing got heavier. The slope simply lost the strength
+it had been relying on.</figcaption>
+</figure>
+
+<h4>Why the failure comes after the storm</h4>
+
+<p>This is the part that catches people out, and it is worth being precise about, because
+it decides when you close a road.</p>
+
+<p>Water has to get from the surface down to the slip surface, and that takes time. How
+much time depends on how deep the surface is and how permeable the ground is. So slopes
+sort themselves into two families:</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Failure</th><th>Responds to</th><th>Lag</th></tr></thead>
+<tbody>
+<tr><td><strong>Shallow</strong> — debris slides, the 1–2 m skin of soil on a hillside or a cut face</td><td>Rainfall <em>intensity</em> — the hard burst</td><td>Hours, sometimes minutes</td></tr>
+<tr><td><strong>Deep-seated</strong> — the whole hillside, colluvium, old slide masses</td><td>Rainfall <em>accumulation</em> — how wet the ground already was</td><td>Days to weeks</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Which is why the dangerous morning is often the bright one. The storm passes, the sky
+clears, the road looks fine, the traffic goes back on — and the water is still working its
+way down. In the Middle Hills the big deep-seated movements cluster in late July and
+August, after the ground has had six weeks to saturate, not in the first storm of June.</p>
+
+<p>There is a second mechanism in the shallow family worth knowing by name. Unsaturated
+soil holds itself together partly by <strong>matric suction</strong> — the surface tension
+of water in partly filled pores, which acts like a temporary cohesion. It is why a cut
+face in silty soil can stand vertical for a season and look sound. Saturate it and that
+apparent cohesion vanishes completely. The face did not weaken gradually; it was never
+that strong, and it was being held up by something the first heavy monsoon removes.</p>
+
+<h4>What you can actually change</h4>
+
+<p>Go back to the balance and ask, honestly, which terms are available to you.</p>
+
+<ul>
+  <li><strong>Gravity</strong> — no.</li>
+  <li><strong>c′ and φ′</strong> — essentially no. You cannot make the ground into
+    different ground. (Soil nailing and grouting change the system, not the soil.)</li>
+  <li><strong>Geometry</strong> — yes, and powerfully. Flatten the cut, bench it, unload
+    the head, load the toe. Both sides of the ratio move at once, which is why it works.</li>
+  <li><strong>u</strong> — yes, and cheaply. Every metre you drop the water table is
+    strength you get back for the price of a drain.</li>
+</ul>
+
+<p>That last line is the whole reason drainage gets a session of its own, and the reason a
+gabion wall with no weep holes and no backfill drainage is not a retaining structure but
+a dam. You will meet that again in session 23.</p>
+
+<div class="caveat">
+<p><b>An honest word about the number.</b> A factor of safety is a ratio between two
+quantities you estimated. It carries c′ and φ′ from a handful of samples, a slip surface
+you assumed, and a water table you guessed. FoS = 1.4 does not mean 40&nbsp;% margin; it
+means 40&nbsp;% margin <em>if all of that was right</em>. Design practice for permanent
+slopes generally looks for about 1.5 where the data is good, and accepts lower on
+temporary works — but a 1.5 built on a guessed water table is worth less than a 1.3 where
+you actually know where the water is. Confidence in the inputs matters more than the
+decimal.</p>
+</div>
+
 <div class="box key">
   <span class="lbl">Judgment</span>
-  <p class="todo">To be written.</p>
+  <p>Treat every slope problem as a water problem until the ground proves otherwise.
+  Before you price a wall, spend the morning finding out where water enters the slope,
+  where it travels, and where it is supposed to leave. Half the failed structures on any
+  hill road in Nepal are structurally sound walls that were asked to hold back water
+  nobody drained. And when you are deciding whether to reopen a road: the rain stopping
+  is not the all-clear. For a deep-seated mass it is the middle of the event, not the end.</p>
 </div>
+
 <div class="assign">
   <span class="lbl">Field assignment</span>
-  <p class="todo">To be written — 15 minutes, outside.</p>
+  <p>Pick a slope failure you drive past — a scar on a cut, a slumped shoulder, anything.
+  Stand where you can see the whole thing and answer three questions on paper:</p>
+  <ol>
+    <li><strong>Where does water get in?</strong> Look uphill of the crown, not at the
+      scar. A road above? A field being irrigated? A crown crack that funnels rain
+      straight in?</li>
+    <li><strong>Where does it come out?</strong> Find seepage, damp patches that survive
+      dry weather, or a line of greener vegetation across the face.</li>
+    <li><strong>Is the failure surface shallow or deep?</strong> Skin of soil, or has the
+      whole mass moved?</li>
+  </ol>
+  <p class="found"><b>What you probably found:</b> water entering from something man-made
+  above the crown — a road drain, a diverted khola, a leaking irrigation channel — far
+  more often than from rain falling on the scar itself. That is the ordinary case, not the
+  exception, and it is the reason session 10 exists.</p>
 </div>
+
 <div class="checkself">
   <span class="lbl">Check yourself</span>
-  <p class="todo">3–5 questions, tap to reveal.</p>
+  <p class="q">1 · Rain raises the pore pressure on a slip surface. Which term in the shear strength equation does that actually attack, and why does it matter that it is that one?</p>
+  <p class="a"><span>The frictional term, tan φ′ — because friction is mobilised by the <em>effective</em> normal stress (σ − u), not the total stress σ. Cohesion c′ is untouched. So the wetter it gets, the more a slope that was relying on friction loses, while one relying on genuine cohesion loses less.</span></p>
+  <p class="q">2 · A cut face in silty soil has stood vertical for two dry seasons. Your junior says that proves it is stable. What is wrong with that?</p>
+  <p class="a"><span>It was standing on matric suction — apparent cohesion from partly saturated pores — which disappears entirely on saturation. It was never strong; it was temporarily held. The first heavy monsoon is the real test.</span></p>
+  <p class="q">3 · Why do deep-seated failures often occur days after the heaviest rainfall, while debris slides occur during it?</p>
+  <p class="a"><span>Because water needs time to reach the slip surface. A shallow surface responds to rainfall intensity within hours; a deep one responds to accumulated, antecedent rainfall over days or weeks. The lag is the travel time of the water, not a delay in the mechanics.</span></p>
+  <p class="q">4 · Of the terms in the stability balance, which two can a road engineer realistically change — and which of those two is cheaper?</p>
+  <p class="a"><span>Geometry (cut angle, benching, unloading the head, loading the toe) and pore pressure (drainage). Drainage is far cheaper per unit of factor of safety recovered — which is why it is the first thing to design and the first thing to inspect.</span></p>
+  <p class="q">5 · You are asked whether to reopen a highway the morning after a three-day storm. The sky is clear and the road surface is intact. What do you say?</p>
+  <p class="a"><span>That the surface tells you nothing about a deep-seated mass, which may still be gaining pore pressure. Look for crown cracks above the road, fresh seepage, tilted poles or trees, and offsets in the drain line. Clear weather is not the all-clear — for the deep failures it is often the middle of the event.</span></p>
 </div>
 
 <h3 class="chap" id="s7">7 · The five ways ground moves</h3>
-<p class="sesstime ui">Session 7 · core · <span class="todo-inline">reading time to be set</span></p>
+<p class="sesstime ui">Session 7 · core · 14 min</p>
+
+<p class="hook">Two reports land on your desk in the same week. Both say
+<em>"landslide blocked the road."</em> One is a hillside that crept forward two metres over
+a fortnight, tilting the poles and cracking the carriageway but leaving it passable. The
+other arrived in ninety seconds and left forty metres of alignment as boulders in a khola.
+The same word covered both — and if you procure the same remedy for both, you will waste
+the money on one and lose the road on the other. <strong>"Landslide" is not a
+diagnosis.</strong></p>
+
 <div class="box def">
   <span class="lbl">The idea</span>
-  <p>Fall, topple, slide, spread, flow. What each looks like on a hillside.</p>
+  <p>Ground moves in five distinct ways, and the way it moves tells you the velocity, the
+  reach, and the remedy. Naming the mechanism correctly is the whole of the engineering
+  judgment — everything after it is procurement.</p>
 </div>
-<p class="todo">Hook, body and figures — Phase 2.</p>
+
+<h4>The classification everyone actually uses</h4>
+
+<p>The standard scheme — Varnes, as revised by Cruden and Varnes and refined since — sorts
+movement by <strong>type of movement</strong> first and <strong>material</strong> second.
+So a description is always two words: <em>rock fall</em>, <em>debris flow</em>,
+<em>earth slide</em>. Get in the habit of writing both, because the second word decides
+half the design.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Type</th><th>What it does</th><th>Speed</th><th>Where you meet it</th></tr></thead>
+<tbody>
+<tr><td><strong>Fall</strong></td><td>Detaches and travels through the air. No shear surface at all</td><td>Extremely fast</td><td>Steep rock cuts, undercut cliffs, the Siwaliks and any hard-rock gorge section</td></tr>
+<tr><td><strong>Topple</strong></td><td>Rotates forward about a point near its base — a column of rock pivoting out</td><td>Fast</td><td>Steeply dipping, closely jointed rock. Often precedes a fall</td></tr>
+<tr><td><strong>Slide</strong></td><td>Moves as a coherent mass on a distinct shear surface. <em>Rotational</em> on a curved surface in soil; <em>translational</em> on a planar one — a bedding plane, a joint, the soil/rock interface</td><td>Slow to fast</td><td>The bread and butter of the Middle Hills. Most road-cut failures</td></tr>
+<tr><td><strong>Spread</strong></td><td>A stiff layer breaks up and extends over a softer one beneath</td><td>Slow, occasionally sudden</td><td>Uncommon in Nepal's hills; matters where a firm crust sits on soft lacustrine or liquefiable ground</td></tr>
+<tr><td><strong>Flow</strong></td><td>Moves like a fluid. No coherent blocks, no single shear surface — internal shear throughout</td><td>Very slow (creep) to extremely fast (debris flow)</td><td>Gullies and steep channels. The one that reaches furthest and kills most</td></tr>
+</tbody>
+</table>
+</div>
+
+<figure class="fig">
+<svg viewBox="0 0 640 250" role="img" aria-label="Five movement types drawn on the same hillside: fall, topple, slide, spread and flow">
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- FALL -->
+    <path d="M20 190 L20 60 L74 60" fill="none" stroke="var(--ink-2)" stroke-width="2.5"/>
+    <path d="M20 190 L96 190" stroke="var(--ink-2)" stroke-width="2.5"/>
+    <rect x="24" y="66" width="18" height="16" fill="var(--orange-500)" transform="rotate(20 33 74)"/>
+    <path d="M46 96 Q58 130 52 172" fill="none" stroke="var(--orange-500)" stroke-width="2" stroke-dasharray="5 5"/>
+    <path d="M52 180 l-6 -11 h12 z" fill="var(--orange-500)"/>
+    <text x="20" y="216" font-family="system-ui,sans-serif" font-size="16" font-weight="800" fill="var(--ink)">Fall</text>
+    <text x="20" y="236" font-family="system-ui,sans-serif" font-size="13" fill="var(--ink-3)">through air</text>
+
+    <!-- TOPPLE -->
+    <path d="M140 190 L140 60 L194 60" fill="none" stroke="var(--ink-2)" stroke-width="2.5"/>
+    <path d="M140 190 L216 190" stroke="var(--ink-2)" stroke-width="2.5"/>
+    <path d="M144 66 L162 66 L168 150 L150 150 Z" fill="var(--orange-500)" opacity="0.85" transform="rotate(16 156 150)"/>
+    <circle cx="159" cy="150" r="4" fill="var(--ink)"/>
+    <path d="M186 92 A40 40 0 0 1 196 118" fill="none" stroke="var(--orange-500)" stroke-width="2"/>
+    <path d="M196 126 l-6 -11 h12 z" fill="var(--orange-500)"/>
+    <text x="140" y="216" font-family="system-ui,sans-serif" font-size="16" font-weight="800" fill="var(--ink)">Topple</text>
+    <text x="140" y="236" font-family="system-ui,sans-serif" font-size="13" fill="var(--ink-3)">pivots out</text>
+
+    <!-- SLIDE -->
+    <path d="M258 190 L300 190 L376 84 L420 84" fill="none" stroke="var(--ink-2)" stroke-width="2.5"/>
+    <path d="M300 190 Q334 172 372 88" fill="none" stroke="var(--orange-500)" stroke-width="3" stroke-dasharray="8 6"/>
+    <path d="M322 128 L352 150" stroke="var(--orange-500)" stroke-width="2"/>
+    <path d="M358 155 l-12 -3 l3 -11 z" fill="var(--orange-500)"/>
+    <text x="258" y="216" font-family="system-ui,sans-serif" font-size="16" font-weight="800" fill="var(--ink)">Slide</text>
+    <text x="258" y="236" font-family="system-ui,sans-serif" font-size="13" fill="var(--ink-3)">one shear surface</text>
+
+    <!-- SPREAD -->
+    <path d="M440 190 L556 190" stroke="var(--ink-2)" stroke-width="2.5"/>
+    <path d="M440 150 L556 150" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="4 4"/>
+    <rect x="444" y="126" width="30" height="24" fill="none" stroke="var(--orange-500)" stroke-width="2.5"/>
+    <rect x="484" y="126" width="30" height="24" fill="none" stroke="var(--orange-500)" stroke-width="2.5"/>
+    <rect x="524" y="126" width="30" height="24" fill="none" stroke="var(--orange-500)" stroke-width="2.5"/>
+    <path d="M470 168 L444 168 M528 168 L556 168" stroke="var(--orange-500)" stroke-width="2"/>
+    <text x="440" y="216" font-family="system-ui,sans-serif" font-size="16" font-weight="800" fill="var(--ink)">Spread</text>
+    <text x="440" y="236" font-family="system-ui,sans-serif" font-size="13" fill="var(--ink-3)">soft layer below</text>
+
+    <!-- FLOW -->
+    <path d="M576 60 L600 190 L636 190" fill="none" stroke="var(--ink-2)" stroke-width="2.5"/>
+    <path d="M582 76 Q612 118 600 186" fill="none" stroke="var(--orange-500)" stroke-width="7" opacity="0.55"/>
+    <path d="M600 186 Q616 190 636 188" fill="none" stroke="var(--orange-500)" stroke-width="9" opacity="0.4"/>
+    <text x="566" y="216" font-family="system-ui,sans-serif" font-size="16" font-weight="800" fill="var(--ink)">Flow</text>
+    <text x="566" y="236" font-family="system-ui,sans-serif" font-size="13" fill="var(--ink-3)">no blocks</text>
+  </g>
+</svg>
+<figcaption>The same five geometries you will see on any hill road. The difference that
+matters most is between the <b>slide</b> — one surface, coherent mass, stays roughly where
+it started — and the <b>flow</b>, which has no single surface and travels far beyond the
+slope that produced it.</figcaption>
+</figure>
+
+<h4>Why the name changes the design</h4>
+
+<p>Take the two reports from the top of the page.</p>
+
+<p><strong>The slide.</strong> A coherent mass on a definable surface. That means there is
+something to analyse — you can find the surface, estimate the geometry, and calculate a
+factor of safety that means something. It also means the remedies are the ones from session
+6: change the geometry, or take the water out. Unloading the head and draining is often
+enough. A retaining structure at the toe can work, <em>if</em> it is founded below the slip
+surface. If it is not, you have built an expensive passenger.</p>
+
+<p><strong>The flow.</strong> There is no single surface, so there is no meaningful factor
+of safety for the mass, and no wall you can afford will stop it. You are no longer in
+stability analysis; you are in <em>routing</em>. Where does it come from, where does it go,
+how much of it is there, and can you get your alignment out of the way or pass the material
+underneath? Debris flow gets its own session next, because it needs a completely different
+head.</p>
+
+<p><strong>Falls and topples</strong> are different again. There is nothing to stabilise
+after the event — the block has gone. The engineering is entirely about the
+<em>source</em>: scaling, bolting, meshing, or accepting the fall and catching it with a
+ditch, barrier or net. It is the one family where "do nothing to the slope, manage the
+consequence" is a legitimate, often correct answer.</p>
+
+<h4>The words that come with it</h4>
+
+<p>Two more descriptors travel with the type, and both should appear in any report you
+sign.</p>
+
+<p><strong>Activity.</strong> Is it <em>active</em> (moving now), <em>dormant</em> (has
+moved, could again — the conditions are unchanged), or <em>relict</em> (moved under
+conditions that no longer exist)? Dormant is the dangerous one, because it looks like
+stable ground. A great deal of the Middle Hills is old landslide debris that has been
+quiet for a century, and cutting a road across its toe is exactly the thing that wakes it.</p>
+
+<p><strong>Depth.</strong> Roughly: shallow under about 3 m, deep-seated beyond. This
+matters because it decides whether your remedy has to reach the surface. A 4 m gabion wall
+on a 15 m deep slide is decoration.</p>
+
+<div class="caveat">
+<p><b>Complex and composite movements.</b> Real hillsides do not read the table. The most
+common sequence in Nepal is a <em>slide that becomes a flow</em>: a mass detaches on a
+surface, disintegrates as it moves, picks up water in the channel below, and arrives at your
+road as something quite unlike what left the hillside. Classify by <b>what it will be when
+it reaches you</b>, not by how it started. Your alignment is downstream, not at the crown.</p>
+</div>
+
 <div class="box key">
   <span class="lbl">Judgment</span>
-  <p class="todo">To be written.</p>
+  <p>Before you accept anyone's landslide report — including your own — insist on both
+  words, plus activity and depth. <em>"Shallow active debris slide becoming flow"</em> tells
+  a designer what to do; <em>"landslide"</em> tells them nothing and invites the default
+  answer, which in Nepal is almost always a gabion wall. That wall is right for perhaps a
+  third of what it gets built for. If you change one habit from this session, make it
+  refusing to write the word alone.</p>
 </div>
+
 <div class="assign">
   <span class="lbl">Field assignment</span>
-  <p class="todo">To be written — 15 minutes, outside.</p>
+  <p>On your next drive of any hill road, classify every failure you pass — out loud or on
+  paper, two words each. Aim for ten. For each one, note whether the material stayed on
+  the slope or travelled beyond it.</p>
+  <p class="found"><b>What you probably found:</b> a large majority of shallow debris
+  slides on cut faces, a handful of rock falls at the gorge sections, and — this is the
+  useful part — that the ones which actually took out the carriageway were mostly the ones
+  whose material <em>travelled</em>. Reach, not volume, is what closes a road.</p>
 </div>
+
 <div class="checkself">
   <span class="lbl">Check yourself</span>
-  <p class="todo">3–5 questions, tap to reveal.</p>
+  <p class="q">1 · What are the two words in a proper description, and why is one word never enough?</p>
+  <p class="a"><span>Type of movement plus material — "rock fall", "debris flow", "earth slide". Type decides the mechanics and the remedy; material decides the strength parameters, the reach and the construction method. One word without the other leaves the designer guessing at half the problem.</span></p>
+  <p class="q">2 · Why can you calculate a meaningful factor of safety for a slide but not for a flow?</p>
+  <p class="a"><span>A slide moves as a coherent mass on a definable shear surface, so there is a real surface on which to compare resisting and driving forces. A flow shears internally throughout, with no single surface — the problem is one of routing and volume, not of limit equilibrium.</span></p>
+  <p class="q">3 · A 4 m gabion wall is proposed at the toe of a slide whose surface is 15 m deep. What is your objection, in one sentence?</p>
+  <p class="a"><span>The wall is founded above the slip surface, so the slide will simply carry it along — it adds cost and weight without intersecting the mechanism. Any toe structure must be founded below the surface it is meant to resist.</span></p>
+  <p class="q">4 · Which activity state is the most dangerous to a road engineer, and why?</p>
+  <p class="a"><span>Dormant. It has moved before and the conditions that caused it have not changed, but it looks like ordinary stable ground. Cutting a road through the toe of a dormant slide is one of the most reliable ways to reactivate it.</span></p>
+  <p class="q">5 · The most common Nepali sequence is a slide that becomes a flow. Which one do you design your alignment against?</p>
+  <p class="a"><span>The flow — because that is what arrives at the road. Classify by what the movement will be when it reaches you, not by how it began at the crown.</span></p>
 </div>
 
 <h3 class="chap" id="s8">8 · Debris flow</h3>
-<p class="sesstime ui">Session 8 · core · <span class="todo-inline">reading time to be set</span></p>
+<p class="sesstime ui">Session 8 · core · 15 min</p>
+
+<p class="hook">On <strong>15 June 2021</strong> the Melamchi Khola came down in a way
+nobody on the bazaar's main street had budgeted for. It was not a flood of water. It was a
+moving mass of water, boulders and forest, and it rebuilt the valley floor as it passed —
+burying parts of Melamchi Bazar, taking bridges, and damaging the headworks of the water
+supply scheme that Kathmandu had waited decades for. The rainfall that day was not
+extraordinary by Nepali standards. <strong>What arrived was not proportional to what
+fell</strong> — and understanding why is the difference between a bridge that survives the
+century and one that does not see out its first monsoon.</p>
+
 <div class="box def">
   <span class="lbl">The idea</span>
-  <p>A different animal from a landslide, and the one that takes bridges out. Melamchi.</p>
+  <p>A debris flow is not a big flood. It is a different material with different physics —
+  denser, far more destructive per unit of discharge, and capable of carrying boulders that
+  clear water could never move. Size a structure for the flood and you have sized it for
+  the wrong event.</p>
 </div>
-<p class="todo">Hook, body and figures — Phase 2.</p>
+
+<h4>What makes it a different animal</h4>
+
+<p>Clear water in a channel carries sediment because the flow is turbulent enough to hold
+it. A debris flow is the other way round: <em>the sediment is the flow</em>, and water is
+what makes it mobile. Solids typically make up more than half the volume. Three
+consequences follow, and each one breaks an assumption you carry from hydraulics.</p>
+
+<ul>
+  <li><strong>Density.</strong> Around 1.8–2.3 t/m³ against water's 1.0. Impact pressure
+    on a pier scales with density and with the square of velocity — so the same velocity
+    delivers roughly twice the force, before you count a single boulder.</li>
+  <li><strong>It does not behave as a Newtonian fluid.</strong> It has a yield strength.
+    It can stop dead on a slope that clear water would run straight down, sit there through
+    the dry season, and be remobilised by the next event. That is why deposits accumulate
+    on fans instead of washing through.</li>
+  <li><strong>The front.</strong> A debris flow arrives as a steep, boulder-rich snout —
+    the coarsest material migrates forward — followed by a more watery tail. The snout does
+    the damage. Peak discharge in the surge can be several times the water-flood peak for
+    the same catchment.</li>
+</ul>
+
+<figure class="fig">
+<svg viewBox="0 0 640 300" role="img" aria-label="A debris flow catchment showing initiation zone, transport channel and deposition fan with the road crossing the fan">
+  <!-- hillslope profile -->
+  <path d="M20 40 Q120 60 210 140 Q300 218 400 250 L620 254" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
+
+  <!-- initiation zone -->
+  <ellipse cx="72" cy="62" rx="46" ry="20" fill="var(--orange-500)" opacity="0.3"/>
+  <text x="26" y="30" font-family="system-ui,sans-serif" font-size="16" font-weight="800" fill="var(--orange-600)">1 · Initiation</text>
+  <text x="26" y="100" font-family="system-ui,sans-serif" font-size="13.5" fill="var(--ink-3)">steep, saturated,</text>
+  <text x="26" y="118" font-family="system-ui,sans-serif" font-size="13.5" fill="var(--ink-3)">loose material</text>
+
+  <!-- transport channel -->
+  <path d="M112 76 Q190 130 290 208" fill="none" stroke="var(--orange-500)" stroke-width="9" opacity="0.55"/>
+  <text x="196" y="112" font-family="system-ui,sans-serif" font-size="16" font-weight="800" fill="var(--orange-600)">2 · Transport</text>
+  <text x="196" y="132" font-family="system-ui,sans-serif" font-size="13.5" fill="var(--ink-3)">scours and</text>
+  <text x="196" y="150" font-family="system-ui,sans-serif" font-size="13.5" fill="var(--ink-3)">gains volume</text>
+
+  <!-- fan -->
+  <path d="M300 214 L560 258 L560 274 L300 232 Z" fill="var(--orange-500)" opacity="0.28"/>
+  <text x="368" y="196" font-family="system-ui,sans-serif" font-size="16" font-weight="800" fill="var(--orange-600)">3 · Deposition fan</text>
+
+  <!-- the road, on the fan -->
+  <path d="M330 200 L330 296" stroke="var(--ink)" stroke-width="3" stroke-dasharray="12 8"/>
+  <text x="338" y="292" font-family="system-ui,sans-serif" font-size="15" font-weight="800" fill="var(--ink)">your road</text>
+
+  <!-- snout -->
+  <path d="M296 206 l16 -12 l0 24 z" fill="var(--orange-600)"/>
+</svg>
+<figcaption>Three zones, and the road is almost always on the third. The flow
+<b>gains volume as it travels</b>, scouring the channel bed and banks — so the mass that
+reaches the fan can be many times what detached at the top. That is why the arriving event
+is not proportional to the rainfall.</figcaption>
+</figure>
+
+<h4>Entrainment: why it grows on the way down</h4>
+
+<p>This is the mechanism that most surprises people, and the one that decides your design
+volume. A debris flow travelling down a channel <strong>scours the bed and undercuts the
+banks</strong>, and everything it removes joins the flow. A modest initiation — a single
+shallow slide in a steep headwater — can arrive at the fan as several times its original
+volume, having eaten the loose material stored in the channel on its way past.</p>
+
+<p>Which gives you the practical question to ask about any gully crossing your alignment:
+<em>not how much can detach at the top, but how much loose material is lying in the channel
+between there and here?</em> A gully that has not run for thirty years is not a safe gully.
+It is a <strong>loaded</strong> gully — three decades of rockfall, bank collapse and
+landslide debris sitting in the bed waiting for a mobilising event. The quiet ones are the
+dangerous ones.</p>
+
+<h4>Reading a fan before you cross it</h4>
+
+<p>The single most useful skill here is recognising that you are standing on a debris fan
+at all — because a fan in the dry season is flat, well-drained, gently sloping, easy to
+build on, and often already settled. It is the most attractive ground in the valley and it
+is attractive for exactly the reason that should worry you: it was built by the events you
+are designing against.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>What you see</th><th>What it tells you</th></tr></thead>
+<tbody>
+<tr><td>A cone of ground splaying out where a steep tributary meets a main valley</td><td>You are on a fan. Everything under your feet was delivered by the process</td></tr>
+<tr><td>Boulders far larger than the present stream could ever move</td><td>Past flows. Their size is a rough gauge of the magnitude you must design for</td></tr>
+<tr><td>The stream sitting in a channel <em>above</em> the surrounding fan surface</td><td>Aggrading and prone to <em>avulsion</em> — it will jump its channel and take a new path across the fan, quite possibly through your alignment</td></tr>
+<tr><td>Multiple abandoned channels across the fan surface</td><td>It has jumped before. The active channel today is not where the next one will be</td></tr>
+<tr><td>Fresh, unweathered, unvegetated deposit</td><td>Recent activity — years, not centuries</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>What to do about it</h4>
+
+<p>In rough order of how well it works:</p>
+
+<ol>
+  <li><strong>Avoid the fan.</strong> Cross the tributary above the fan apex where the
+    channel is confined and you know where the flow will be, or below the fan toe. Costs
+    more in alignment; costs far less over fifty years. This is a session 20 decision, and
+    it is the one that actually matters.</li>
+  <li><strong>Let it pass.</strong> If you must cross the fan, design the crossing to
+    <em>convey</em> the flow rather than resist it — generous clear span, high soffit, no
+    piers in the channel if you can avoid them, and approaches that can be rebuilt cheaply.
+    A causeway or vented ford that the flow passes over may outlast a bridge that it
+    hits.</li>
+  <li><strong>Control the sediment.</strong> Check dams and debris basins upstream reduce
+    what arrives, but they fill. They are a maintenance commitment, not a structure. If
+    nobody is funded to clear them, they will be full when you need them.</li>
+  <li><strong>Resist it.</strong> Deflection walls and barriers. Last, and expensive, and
+    they must be designed for the impact of the snout plus boulder strike — not for
+    hydrostatic pressure.</li>
+</ol>
+
+<div class="caveat">
+<p><b>The design-life trap.</b> Debris flows on a given fan may recur at intervals of
+decades. A structure that has stood for thirty years on a fan has not been proven — it may
+simply not have been tested yet. Do not let "it has always been fine here" enter a design
+decision. On a fan, the absence of an event is evidence about the interval, not about the
+safety.</p>
+</div>
+
 <div class="box key">
   <span class="lbl">Judgment</span>
-  <p class="todo">To be written.</p>
+  <p>When your alignment crosses a steep tributary, stop and establish two things before
+  anything else: <em>am I on a fan</em>, and <em>how much loose material is stored in the
+  channel above me</em>. If the answers are yes and a lot, no amount of structural design
+  at the crossing will fix a bad alignment decision — go back and look at crossing above
+  the apex. And when you cannot avoid it, design to let the event through rather than to
+  hold it. The cheapest debris flow structure is the one the flow goes over.</p>
 </div>
+
 <div class="assign">
   <span class="lbl">Field assignment</span>
-  <p class="todo">To be written — 15 minutes, outside.</p>
+  <p>Find a place where a steep side stream joins a main valley near a road you know — from
+  memory, or on satellite imagery if you cannot get there. Then:</p>
+  <ol>
+    <li>Trace the fan outline. How far does the splay extend, and where does the road cross it?</li>
+    <li>Look for boulders in or beside the channel that today's stream plainly could not move.</li>
+    <li>Look for old channel scars across the fan surface — count them.</li>
+  </ol>
+  <p class="found"><b>What you probably found:</b> settlement on the fan, the road crossing
+  near the middle of it rather than at the apex, and at least one abandoned channel. That
+  combination — buildings, a mid-fan crossing, and evidence of avulsion — is the standard
+  Nepali valley-mouth situation, and it is why these events produce casualty figures out of
+  all proportion to their size.</p>
 </div>
+
 <div class="checkself">
   <span class="lbl">Check yourself</span>
-  <p class="todo">3–5 questions, tap to reveal.</p>
+  <p class="q">1 · Why does a debris flow deliver roughly twice the impact force of clear water at the same velocity, before boulders are counted?</p>
+  <p class="a"><span>Because impact pressure scales with density, and a debris flow runs at roughly 1.8–2.3 t/m³ against water's 1.0. Velocity squared does the rest — and the boulder strike is an additional, separate load case.</span></p>
+  <p class="q">2 · A gully above your alignment has not run in thirty years. Is that reassuring?</p>
+  <p class="a"><span>No — it is the opposite. Thirty quiet years means thirty years of rockfall, bank collapse and slide debris accumulating in the channel bed. It is a loaded gully. The stored material is what a future flow will entrain, and it sets the volume that arrives at your road.</span></p>
+  <p class="q">3 · You find the stream perched in a channel above the general fan surface. What does that predict?</p>
+  <p class="a"><span>Avulsion. The channel is aggrading, so it will eventually jump its banks and take a new course across the fan. Today's channel position is not a reliable guide to where the next flow will go — which means a crossing designed only for the present channel is designed for the wrong place.</span></p>
+  <p class="q">4 · Rank avoidance, conveyance, sediment control and resistance for a fan crossing, and say why the order is that way.</p>
+  <p class="a"><span>Avoid, convey, control, resist. Avoidance removes the problem instead of managing it; conveyance lets the event pass without asking a structure to survive impact; sediment control works but fills and so is a permanent maintenance commitment; resistance is the most expensive and must be designed for snout impact plus boulder strike. Each step down costs more and delivers less.</span></p>
+  <p class="q">5 · What is wrong with "this crossing has stood for thirty years, so it is fine"?</p>
+  <p class="a"><span>On a fan, recurrence intervals run to decades. Thirty years without an event says something about the interval, not about the structure's capacity. It has not been proven — it has not yet been tested.</span></p>
 </div>
 
 <h3 class="chap" id="s9">9 · Reading a hillside</h3>
-<p class="sesstime ui">Session 9 · core · <span class="todo-inline">reading time to be set</span></p>
+<p class="sesstime ui">Session 9 · core · 14 min</p>
+
+<p class="hook">A hillside that is about to fail almost always says so first. Not in
+instruments — in <strong>cracks, water and the way things lean</strong>. The signs are
+there for months, sometimes years, and they are free to read. What stops most engineers
+seeing them is not knowledge but habit: we arrive at a site to inspect the structure, and
+the structure is the one thing on the hillside that will not tell us anything. The ground
+around it is doing the talking.</p>
+
 <div class="box def">
   <span class="lbl">The idea</span>
-  <p>Tension cracks, seepage lines, tilted trees, hummocky ground, a spring that moved.</p>
+  <p>A moving slope leaves a signature you can read on foot, in an hour, with no equipment.
+  Learn the six signs and the order to look for them, and you will identify most problems
+  a season before they close the road.</p>
 </div>
-<p class="todo">Hook, body and figures — Phase 2.</p>
+
+<h4>Where to stand</h4>
+
+<p>Start from across the valley, not on the slope. Distance is the single most
+underrated instrument in this business — a slide that is invisible when you are standing
+in it is obvious from the opposite ridge. Look for the shape first: an
+<strong>amphitheatre</strong> in the hillside, a bulge in the mid-slope, ground that is
+hummocky where its neighbours are smooth, or a patch of different vegetation. Then walk it,
+and walk it <em>from the top down</em> — the crown tells you more than the toe, and it is
+the part everyone skips because the road is at the bottom.</p>
+
+<h4>The six signs</h4>
+
+<figure class="fig">
+<svg viewBox="0 0 640 330" role="img" aria-label="An annotated hillside showing crown cracks, a scarp, tilted trees, hummocky ground, seepage and a bulging toe above a road">
+  <!-- hill profile -->
+  <path d="M20 300 L120 300 L250 190 Q330 130 420 96 L620 80" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
+  <!-- the moving mass, shaded -->
+  <path d="M140 288 Q250 250 340 140 L420 100 Q330 140 250 196 L140 288 Z" fill="var(--orange-500)" opacity="0.16"/>
+
+  <!-- 1 crown cracks -->
+  <path d="M400 104 l-10 12 M418 98 l-9 12 M436 93 l-9 12" stroke="var(--orange-600)" stroke-width="3.5"/>
+  <text x="452" y="86" font-family="system-ui,sans-serif" font-size="15" font-weight="800" fill="var(--orange-600)">1 crown cracks</text>
+
+  <!-- 2 scarp -->
+  <path d="M340 138 L352 122 L366 128" fill="none" stroke="var(--orange-600)" stroke-width="3.5"/>
+  <text x="374" y="140" font-family="system-ui,sans-serif" font-size="15" font-weight="800" fill="var(--orange-600)">2 scarp</text>
+
+  <!-- 3 tilted trees -->
+  <g stroke="var(--ink)" stroke-width="2.5">
+    <path d="M266 190 l10 -22"/><path d="M240 210 l12 -21"/><path d="M296 168 l9 -22"/>
+  </g>
+  <text x="228" y="164" font-family="system-ui,sans-serif" font-size="15" font-weight="800" fill="var(--ink)">3 tilted trees</text>
+
+  <!-- 4 hummocky ground -->
+  <path d="M176 262 q14 -12 28 0 q14 -12 28 0 q14 -12 28 0" fill="none" stroke="var(--ink-2)" stroke-width="2.5"/>
+  <text x="150" y="248" font-family="system-ui,sans-serif" font-size="15" font-weight="800" fill="var(--ink)">4 hummocky</text>
+
+  <!-- 5 seepage -->
+  <circle cx="150" cy="286" r="5" fill="var(--orange-500)"/>
+  <circle cx="166" cy="291" r="4" fill="var(--orange-500)"/>
+  <circle cx="136" cy="292" r="4" fill="var(--orange-500)"/>
+  <text x="40" y="272" font-family="system-ui,sans-serif" font-size="15" font-weight="800" fill="var(--orange-600)">5 seepage</text>
+
+  <!-- 6 bulging toe + road -->
+  <path d="M120 300 L20 300" stroke="var(--ink)" stroke-width="6"/>
+  <path d="M124 296 q14 8 0 14" fill="none" stroke="var(--orange-600)" stroke-width="3.5"/>
+  <text x="120" y="326" font-family="system-ui,sans-serif" font-size="15" font-weight="800" fill="var(--orange-600)">6 bulging toe · road</text>
+</svg>
+<figcaption>The signature reads <b>from the crown down</b>. Tension cracks and the scarp at
+the top, disturbed ground and leaning vegetation through the body, water and a bulge at the
+toe — which is where your road is. By the time the toe bulges, the crown has been cracked
+for a long while.</figcaption>
+</figure>
+
+<p><strong>1 · Tension cracks at the crown.</strong> The first and most reliable sign.
+Arcuate cracks, roughly parallel to the contour, opening at the head of the moving mass.
+Measure the width and mark the date on a peg — a crack that is 20 mm wider next month is a
+slide with a velocity, which is a different object entirely from a crack. Crucially,
+<em>a crown crack is also a drain</em>: it delivers surface water straight to the slip
+surface, which is the mechanism from session 6. Sealing crown cracks is one of the highest
+value-per-rupee interventions in the whole subject.</p>
+
+<p><strong>2 · The scarp.</strong> A step in the ground where the mass has dropped away
+from what stayed put. Fresh scarps are bare and sharp-edged; older ones round off and grow
+vegetation. The height of the scarp is roughly the displacement so far.</p>
+
+<p><strong>3 · Things that lean.</strong> Trees, poles, walls, terrace risers. Read them
+carefully, because the direction tells you the mechanism:</p>
+
+<ul>
+  <li>Trees tilting <strong>backwards into the slope</strong> — rotational movement. The
+    mass has rotated on a curved surface, so its upper part tips back.</li>
+  <li>Trees tilting <strong>downslope</strong>, or bent at the base with a straightened
+    upper trunk — translational movement, or creep. The bend is a record: the tree kept
+    growing vertically while the ground moved under it.</li>
+</ul>
+
+<p><strong>4 · Disturbed ground surface.</strong> Hummocky, irregular ground where the
+adjacent slope is smooth. Terrace risers that have lost their line. Field boundaries that
+step. Irrigation channels that have gone out of grade — farmers notice this long before
+engineers do, which is the subject of the assignment below.</p>
+
+<p><strong>5 · Water where it was not.</strong> The most diagnostic sign of the six.
+Springs that have appeared, moved or dried up; damp ground that survives the dry season;
+a line of greener, ranker vegetation across a face. Movement disrupts the drainage paths
+inside the slope, so <em>a spring that has changed is a slope that has moved</em>. Note the
+elevation of any seepage line — it is a free measurement of where the water table meets
+the face.</p>
+
+<p><strong>6 · The bulging toe.</strong> Ground heaving, buckling or overriding at the
+bottom of the mass. Your road, if it is at the toe, will show it as a rising shoulder, a
+crest that will not stay level after repeated patching, a retaining wall leaning outward,
+or a drain that has lost its fall. <strong>A drain that keeps silting for no obvious reason
+is often a drain that is no longer level.</strong></p>
+
+<h4>Distinguishing the real thing from a scar</h4>
+
+<p>Not every bare patch is an active problem. Three questions sort it quickly:</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Ask</th><th>Active</th><th>Old / relict</th></tr></thead>
+<tbody>
+<tr><td>Are the edges sharp?</td><td>Sharp, bare, unweathered</td><td>Rounded, softened, vegetated</td></tr>
+<tr><td>Is the vegetation disturbed?</td><td>Trees tilted, roots exposed, fresh breaks</td><td>Mature growth standing straight <em>on</em> the deposit</td></tr>
+<tr><td>Do the man-made lines still run true?</td><td>Terraces, walls, channels, road crest offset</td><td>Everything straight, however old</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>That third row is the one to lean on. Human beings build straight lines and level
+channels; the ground does not. Anything straight that has stopped being straight is a
+displacement gauge somebody else installed for you, for free, years ago.</p>
+
+<div class="caveat">
+<p><b>One walk is a photograph, not a film.</b> Every sign here tells you a slope
+<em>has</em> moved. None of them, on a single visit, tells you whether it is moving
+<em>now</em> or how fast. That needs a second visit and a datum — painted marks across a
+crack, a peg line, a photograph from a fixed point with a fixed reference in frame. Five
+minutes on the first visit buys you a real answer on the second. Do it even when you are
+sure it is dormant.</p>
+</div>
+
 <div class="box key">
   <span class="lbl">Judgment</span>
-  <p class="todo">To be written.</p>
+  <p>Give yourself one rule: <em>never inspect a slope problem from the road alone.</em>
+  The road is at the toe, and the toe is the last part to speak. Walk to the crown. If you
+  do nothing else, seal what cracks you find there and mark them with a date — you will
+  have both reduced the driving mechanism and started a measurement, in an afternoon,
+  for the price of nothing. And ask the farmers. They have watched this hillside for forty
+  years and they will tell you exactly where the spring moved to.</p>
 </div>
+
 <div class="assign">
   <span class="lbl">Field assignment</span>
-  <p class="todo">To be written — 15 minutes, outside.</p>
+  <p>Pick a slope above or below a road you use — one you are mildly suspicious of. Walk it
+  from the crown down and record the six signs: present, absent, or uncertain. Then do the
+  two things that make the visit worth repeating:</p>
+  <ol>
+    <li>Paint a mark either side of any crack you find, note the gap in millimetres and
+      write the date on the rock.</li>
+    <li>Photograph the slope from a spot you can find again, with something permanent in
+      the frame.</li>
+  </ol>
+  <p>Then find someone who farms there and ask one question: <em>has any spring here
+  changed in your lifetime?</em></p>
+  <p class="found"><b>What you probably found:</b> that the farmer's answer was more
+  precise than anything you measured, and that the signs cluster — where you find one, you
+  find four. Slopes rarely give you a single ambiguous hint. When you genuinely can only
+  find one sign, it usually is nothing.</p>
 </div>
+
 <div class="checkself">
   <span class="lbl">Check yourself</span>
-  <p class="todo">3–5 questions, tap to reveal.</p>
+  <p class="q">1 · Why is a crown crack both a symptom and a cause?</p>
+  <p class="a"><span>It is a symptom because it marks the head of a mass that has already moved. It is a cause because it is an open drain, delivering surface water directly down to the slip surface — raising pore pressure and lowering the factor of safety. Sealing it treats the mechanism, not just the sign.</span></p>
+  <p class="q">2 · Trees on a slope are tilting backwards, into the hill. What does that tell you?</p>
+  <p class="a"><span>Rotational movement — the mass has rotated on a curved slip surface, so its upper portion tips back towards the slope. Downslope tilt, or a bent base with a straight upper trunk, indicates translational movement or creep instead.</span></p>
+  <p class="q">3 · A roadside drain keeps silting up and nobody can say why. What should you check?</p>
+  <p class="a"><span>Whether it is still level. Toe heave from a slope moving beneath the road can take a drain out of grade, and it will then silt indefinitely no matter how often it is cleaned. The silting is a displacement symptom, not a maintenance failure.</span></p>
+  <p class="q">4 · Which single sign is the most diagnostic of movement, and why?</p>
+  <p class="a"><span>Changed water — a spring that has appeared, moved or dried, or seepage that survives the dry season. Movement disrupts the internal drainage paths of a slope, so changed water is direct evidence that the mass has deformed, not merely that it once did.</span></p>
+  <p class="q">5 · What is the one thing a single site visit cannot tell you, and what does five minutes of work buy you?</p>
+  <p class="a"><span>It cannot tell you the rate — whether the slope is moving now, and how fast. Painting a datum across a crack, recording the gap with a date, and taking a photo from a findable fixed point converts your next visit into a real measurement of velocity.</span></p>
 </div>
 
 <h3 class="chap" id="s10">10 · The road as the cause</h3>
-<p class="sesstime ui">Session 10 · core · <span class="todo-inline">reading time to be set</span></p>
+<p class="sesstime ui">Session 10 · core · 16 min</p>
+
+<p class="hook">Fly over the Middle Hills and you can date the roads from the air. A track
+cut ten years ago is a thin brown line with a fan of bare ground spilling below it, and
+another one below that, and a gully forming where there was none. The hillside had stood
+for ten thousand years. Then it was cut, and within a decade it is coming apart —
+not because the monsoon changed, but because <strong>we changed the slope, and then we put
+the water in the wrong place.</strong> This is the most uncomfortable session in the book,
+and the most useful, because everything in it is within your gift.</p>
+
 <div class="box def">
   <span class="lbl">The idea</span>
-  <p>Cut slopes, spoil tipping, concentrated drainage. How a badly built road manufactures landslides for fifty years.</p>
+  <p>Most landslides along Nepal's hill roads were manufactured by the road. Four
+  mechanisms do nearly all of it — the cut, the spoil, the concentrated water and the
+  missing maintenance — and every one of them is a decision somebody made, not a natural
+  hazard that befell them.</p>
 </div>
-<p class="todo">Hook, body and figures — Phase 2.</p>
+
+<h4>Mechanism 1 — the cut</h4>
+
+<p>A cut removes support from the toe of everything above it. That is not a side effect;
+it is what a cut <em>is</em>. In session 6 terms you have reduced the resisting force
+while leaving the driving force untouched, so the factor of safety falls immediately and
+permanently. The slope may absorb it. On steep ground in weathered material, often it does
+not.</p>
+
+<p>Two aggravations turn a survivable cut into a failing one:</p>
+
+<ul>
+  <li><strong>Cutting too steep for the material.</strong> A face is stood up at the angle
+    the excavator can achieve rather than the angle the ground can hold. It survives the
+    dry season on matric suction — the false strength from session 6 — and fails in the
+    first heavy monsoon. The face was never stable; it was only unsaturated.</li>
+  <li><strong>Cutting across the dip.</strong> Where bedding, foliation or a major joint
+    set dips <em>out of</em> the face, a cut daylights those surfaces and creates a
+    ready-made translational failure. The same cut on the same hill, driven the other
+    way, would be sound. This is session 11's subject and it is worth knowing that the
+    difference between a stable and an unstable rock cut is often just which side of the
+    valley you are on.</li>
+</ul>
+
+<h4>Mechanism 2 — the spoil</h4>
+
+<p>This is the one that does the most damage and gets the least attention. Excavated
+material has to go somewhere, and the cheapest place is over the edge.</p>
+
+<p>Tipped spoil is loose, uncompacted, poorly graded material sitting at or beyond its
+angle of repose, on a slope that was already at equilibrium. It does three things at once:</p>
+
+<ol>
+  <li><strong>Loads the slope below</strong> — driving force up, on ground that had no
+    spare capacity.</li>
+  <li><strong>Buries the natural drainage</strong> — the small channels and seepage exits
+    that were quietly relieving pore pressure are smothered, so water backs up inside the
+    slope.</li>
+  <li><strong>Provides the ammunition for a debris flow</strong> — it is loose material
+    stored on a steep slope, directly above a channel. Session 8's loaded gully, delivered
+    to order.</li>
+</ol>
+
+<p>The results are the fans of bare ground below every dozer-cut track. The road took a
+metre of hillside and gave back a hundred metres of instability beneath it. And the failure
+usually appears <em>below</em> the road, which is why it gets recorded as a natural
+landslide and not as a construction defect.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 640 300" role="img" aria-label="The same hillside before a road, after a badly built road, and after a well built road">
+  <g font-family="system-ui,sans-serif">
+  <!-- BEFORE -->
+  <path d="M14 240 Q80 200 130 96" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
+  <path d="M20 250 q16 -6 30 2 q16 -6 30 2" fill="none" stroke="var(--ink-3)" stroke-width="2"/>
+  <text x="14" y="284" font-size="15" font-weight="800" fill="var(--ink)">Before</text>
+  <text x="14" y="34" font-size="13.5" fill="var(--ink-3)">in balance</text>
+
+  <!-- BAD -->
+  <path d="M220 240 Q252 214 268 168 L300 168 L300 150 Q316 120 336 96" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
+  <!-- steep cut face -->
+  <path d="M300 168 L300 150" stroke="var(--orange-600)" stroke-width="5"/>
+  <!-- spoil tipped below -->
+  <path d="M268 170 L232 236 L292 236 Z" fill="var(--orange-500)" opacity="0.5"/>
+  <!-- failure below -->
+  <path d="M236 238 Q226 258 214 272" fill="none" stroke="var(--orange-600)" stroke-width="3" stroke-dasharray="7 5"/>
+  <!-- water off the edge -->
+  <path d="M282 166 l-8 16" stroke="var(--orange-600)" stroke-width="3"/>
+  <path d="M272 188 l-2 -12 l10 4 z" fill="var(--orange-600)"/>
+  <text x="214" y="284" font-size="15" font-weight="800" fill="var(--orange-600)">Badly built</text>
+  <text x="214" y="34" font-size="13.5" fill="var(--ink-3)">steep cut · tipped spoil</text>
+  <text x="214" y="52" font-size="13.5" fill="var(--ink-3)">· water over the edge</text>
+
+  <!-- GOOD -->
+  <path d="M430 240 Q464 216 480 176 L488 168 L500 158 L512 158 L512 142 L520 134 L532 134 Q548 112 566 96" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
+  <!-- benched, flatter cut -->
+  <path d="M500 158 L512 142" stroke="var(--good-line)" stroke-width="4"/>
+  <!-- lined drain -->
+  <rect x="488" y="160" width="12" height="9" fill="none" stroke="var(--good-line)" stroke-width="2.5"/>
+  <!-- water led away, down a chute -->
+  <path d="M486 172 Q470 200 452 236" fill="none" stroke="var(--good-line)" stroke-width="3"/>
+  <path d="M452 244 l-6 -11 h12 z" fill="var(--good-line)"/>
+  <!-- balanced mass, no tipping -->
+  <text x="430" y="284" font-size="15" font-weight="800" fill="var(--good)">Built well</text>
+  <text x="430" y="34" font-size="13.5" fill="var(--ink-3)">benched · mass balanced</text>
+  <text x="430" y="52" font-size="13.5" fill="var(--ink-3)">· water taken to a channel</text>
+  </g>
+</svg>
+<figcaption>Same hillside, three histories. The middle one is not a cheaper version of the
+right-hand one — it is <b>a permanent liability created to save money once</b>. The
+difference is a flatter benched face, spoil retained rather than tipped, and a lined drain
+that carries water to a natural channel instead of over the edge.</figcaption>
+</figure>
+
+<h4>Mechanism 3 — concentrated water</h4>
+
+<p>Before the road, rain fell across the hillside and infiltrated or ran off diffusely — a
+thin sheet over a wide front, at low velocity, doing very little.</p>
+
+<p>A road is a <strong>collector</strong>. An impermeable or compacted surface plus a side
+drain gathers the runoff from a wide catchment and delivers it, concentrated and
+accelerated, to whichever point the drain happens to end. Nothing about that point was
+designed to receive it. So one of three things happens:</p>
+
+<ul>
+  <li>The water is discharged straight onto the slope below and cuts a gully, which
+    lengthens headward until it reaches the road and takes the shoulder.</li>
+  <li>The drain is unlined, so it leaks along its whole length and delivers the water
+    <em>into</em> the slope rather than across it — the pore pressure mechanism from session
+    6, installed deliberately.</li>
+  <li>The drain silts or blocks, overtops, and the water runs down the carriageway to find
+    the lowest point, usually a fill section or a hairpin, where it does the most damage.</li>
+</ul>
+
+<p>Look for this on any road you know: the failures are not spread evenly along it. They
+cluster at <strong>drain outlets, hairpins and fill sections</strong> — precisely the points
+where the road decides where water goes. That clustering is the fingerprint of a
+manufactured problem. A natural hazard would not know where your outlets are.</p>
+
+<h4>Mechanism 4 — the road that is never maintained</h4>
+
+<p>All of the above is survivable if somebody clears the drains before each monsoon. The
+distinctive Nepali failure of the last two decades is not bad design so much as
+<strong>construction without any provision for maintenance</strong> — thousands of
+kilometres of local track opened by dozer, often without survey, drainage or bio-engineering,
+and with no budget line for the annual work that would keep them alive.</p>
+
+<p>The pattern repeats: the track opens, the community gets access, the first monsoon takes
+sections of it, it is re-dozed, more spoil goes over the side, and the hillside degrades a
+step further each year. This sits behind the whole logic of the Green Roads approach in
+session 25, and it is worth saying plainly: <em>the alternative to a well-built road is
+usually not "no road" — it is a badly built road that will be re-cut every year.</em>
+Arguing for the standard is arguing for the cheaper option over any horizon longer than
+three years.</p>
+
+<div class="caveat">
+<p><b>Say the uncomfortable part.</b> When a slide closes a hill road, the report usually
+records rainfall. Rainfall was the trigger. If the cut was oversteepened, the spoil went
+over the edge and the drain discharged onto the slope, then the <em>cause</em> was the
+road, and the same rain would have done nothing to the untouched hillside beside it. It is
+worth being the person in the room who says so — not to assign blame, but because if the
+cause is recorded as rainfall, the reconstruction will repeat the mistake.</p>
+</div>
+
 <div class="box key">
   <span class="lbl">Judgment</span>
-  <p class="todo">To be written.</p>
+  <p>On any hill road you are responsible for, apply three tests before anything else.
+  <em>Where does the spoil go?</em> — if the answer is "over the side", you have a debris
+  source and a loaded slope, and no wall further down will fix it. <em>Where does every
+  drain end?</em> — walk to the outlet, physically, and see what receives the water; an
+  outlet discharging onto open hillside is a gully that has not started yet. <em>Who clears
+  these before the monsoon, and are they paid?</em> — if there is no answer, your drainage
+  design is a drawing, not a system. These three questions will find more risk in an
+  afternoon than a week of stability analysis.</p>
 </div>
+
 <div class="assign">
   <span class="lbl">Field assignment</span>
-  <p class="todo">To be written — 15 minutes, outside.</p>
+  <p>Take one kilometre of hill road you know well. Walk it, or drive it slowly, and mark
+  on a rough sketch:</p>
+  <ol>
+    <li>Every <strong>drain outlet</strong> — and for each, what receives the water. Lined
+      chute? Natural channel? Or open hillside?</li>
+    <li>Every place <strong>spoil</strong> has been pushed over the edge.</li>
+    <li>Every existing <strong>failure</strong>, above and below the road.</li>
+  </ol>
+  <p>Now overlay them. How many of the failures sit within fifty metres downhill of an
+  outlet or a spoil tip?</p>
+  <p class="found"><b>What you probably found:</b> most of them. That correlation is the
+  single most persuasive thing you can put in front of a client or a ward chair, because it
+  is their own road, drawn by you, in an afternoon — and it turns an argument about the
+  weather into an argument about three specific outlets.</p>
 </div>
+
 <div class="checkself">
   <span class="lbl">Check yourself</span>
-  <p class="todo">3–5 questions, tap to reveal.</p>
+  <p class="q">1 · In factor-of-safety terms, what does a cut do — and why is it permanent?</p>
+  <p class="a"><span>It removes toe support, cutting the resisting force while the driving force is unchanged, so the factor of safety drops immediately. It is permanent because the material is gone: unless you replace that support with a structure or a flatter geometry, the slope stays at the reduced factor of safety for the rest of its life.</span></p>
+  <p class="q">2 · Name the three separate harms done by tipping spoil over the edge.</p>
+  <p class="a"><span>It loads the slope below, increasing driving force on ground with no spare capacity. It buries the natural drainage paths that were relieving pore pressure. And it stockpiles loose material on a steep slope above a channel — ready ammunition for a debris flow.</span></p>
+  <p class="q">3 · Why do failures cluster at drain outlets, hairpins and fill sections rather than spreading evenly along a road?</p>
+  <p class="a"><span>Because those are the points where the road concentrates and discharges water. A natural hazard would have no reason to prefer them. The clustering is the fingerprint of a road-manufactured problem, not a rainfall-driven one.</span></p>
+  <p class="q">4 · A cut face has stood vertical through two dry seasons in silty material. Why is that not evidence of stability, and what happens in the monsoon?</p>
+  <p class="a"><span>It is standing on matric suction — apparent cohesion from partly saturated pores — not on real strength. Saturation removes it completely, and the face fails. The cut was oversteepened from the day it was made; the dry seasons simply hid it.</span></p>
+  <p class="q">5 · A report attributes a road closure to heavy rainfall. When is that description wrong, and why does it matter?</p>
+  <p class="a"><span>It is wrong whenever the untouched hillside beside the road survived the same rain. Then rainfall was the trigger and the road — the cut, the spoil, the outlet — was the cause. It matters because a closure recorded as rainfall gets rebuilt exactly as it was, and fails again.</span></p>
 </div>
 
 <h3 class="chap" id="s11">11 · Rock, not soil</h3>
-<p class="sesstime ui">Session 11 · core · <span class="todo-inline">reading time to be set</span></p>
+<p class="sesstime ui">Session 11 · core · 15 min</p>
+
+<p class="hook">Two cuts, same rock, same height, same contractor, on opposite sides of the
+same valley. One has stood for twenty years without a stone coming down. The other sheds
+blocks every monsoon and has swallowed three rounds of remedial work. Nothing in a soil
+mechanics textbook explains the difference, because the difference is not in the rock.
+<strong>It is in the direction the joints dip, relative to the way you cut the face.</strong>
+Rock does not fail because it is weak. It fails because it is <em>divided</em> — and the
+geometry of those divisions is the entire subject.</p>
+
 <div class="box def">
   <span class="lbl">The idea</span>
-  <p>Rock mass behaviour, planar and wedge failure, rockfall and what actually stops it.</p>
+  <p>In a rock cut, the strength of the rock is rarely the problem. What governs is the
+  orientation of the discontinuities — bedding, joints, foliation — relative to the face.
+  Get the geometry right and a weak rock will stand; get it wrong and a strong one will not.</p>
 </div>
-<p class="todo">Hook, body and figures — Phase 2.</p>
+
+<h4>The rock mass, not the rock</h4>
+
+<p>A hand sample tells you the strength of intact rock. A cut face is not intact rock — it
+is a <strong>rock mass</strong>: blocks separated by surfaces that have little or no tensile
+strength and often much lower friction than the rock itself. What matters about those
+surfaces is five things, and you can assess all five with a compass, a tape and an hour:</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Property</th><th>Why it matters</th></tr></thead>
+<tbody>
+<tr><td><strong>Orientation</strong> — dip and dip direction</td><td>Decides whether a block can move at all. The single most important property</td></tr>
+<tr><td><strong>Spacing</strong></td><td>Sets the block size, which decides whether you are managing boulders or gravel</td></tr>
+<tr><td><strong>Persistence</strong> — how far a joint continues</td><td>A short joint cannot form a whole failure surface; a persistent one can</td></tr>
+<tr><td><strong>Roughness &amp; infill</strong></td><td>Governs friction on the surface. A clay-filled joint may have a friction angle far below the rock's</td></tr>
+<tr><td><strong>Water</strong></td><td>Pressure in a joint pushes blocks apart and out. Same mechanism as session 6, acting on a plane instead of a slip circle</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>The three failure modes, and the one question that finds them</h4>
+
+<p>Before any calculation, ask one <strong>kinematic</strong> question — can the block
+physically get out? If the geometry does not permit movement, the mode is impossible
+regardless of strength.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 640 250" role="img" aria-label="Planar, wedge and toppling failure in a rock cut, plus the favourable case where joints dip into the face">
+  <g font-family="system-ui,sans-serif" stroke-linejoin="round" stroke-linecap="round">
+  <!-- PLANAR -->
+  <path d="M20 220 L20 60 L60 40" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
+  <path d="M20 220 L110 220" stroke="var(--ink-2)" stroke-width="3"/>
+  <path d="M22 108 L60 46" stroke="var(--orange-600)" stroke-width="3.5"/>
+  <path d="M34 120 L72 58 M46 132 L84 70" stroke="var(--ink-3)" stroke-width="1.6" stroke-dasharray="4 4"/>
+  <path d="M52 96 l22 32" stroke="var(--orange-600)" stroke-width="2.5"/>
+  <path d="M76 134 l-11 -3 l3 -10 z" fill="var(--orange-600)"/>
+  <text x="16" y="244" font-size="15" font-weight="800" fill="var(--ink)">Planar</text>
+  <text x="16" y="30" font-size="13" fill="var(--ink-3)">joint dips out</text>
+
+  <!-- WEDGE -->
+  <path d="M180 220 L180 60 L220 40" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
+  <path d="M180 220 L270 220" stroke="var(--ink-2)" stroke-width="3"/>
+  <path d="M182 112 L232 54 M182 76 L238 118" stroke="var(--orange-600)" stroke-width="3"/>
+  <path d="M212 96 l24 30" fill="none" stroke="var(--orange-600)" stroke-width="2.5"/>
+  <path d="M238 132 l-11 -3 l3 -10 z" fill="var(--orange-600)"/>
+  <text x="176" y="244" font-size="15" font-weight="800" fill="var(--ink)">Wedge</text>
+  <text x="176" y="30" font-size="13" fill="var(--ink-3)">two joints intersect</text>
+
+  <!-- TOPPLE -->
+  <path d="M340 220 L340 60 L380 40" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
+  <path d="M340 220 L430 220" stroke="var(--ink-2)" stroke-width="3"/>
+  <g stroke="var(--orange-600)" stroke-width="3">
+    <path d="M348 216 L360 60"/><path d="M368 216 L380 62"/><path d="M388 216 L400 64"/>
+  </g>
+  <path d="M400 82 A34 34 0 0 1 412 108" fill="none" stroke="var(--orange-600)" stroke-width="2.5"/>
+  <path d="M412 116 l-6 -11 h12 z" fill="var(--orange-600)"/>
+  <text x="336" y="244" font-size="15" font-weight="800" fill="var(--ink)">Topple</text>
+  <text x="336" y="30" font-size="13" fill="var(--ink-3)">steep, into the face</text>
+
+  <!-- FAVOURABLE -->
+  <path d="M500 220 L500 60 L540 40" fill="none" stroke="var(--ink-2)" stroke-width="3"/>
+  <path d="M500 220 L600 220" stroke="var(--ink-2)" stroke-width="3"/>
+  <g stroke="var(--good-line)" stroke-width="3">
+    <path d="M502 70 L560 128"/><path d="M502 106 L560 164"/><path d="M502 142 L560 200"/>
+  </g>
+  <text x="496" y="244" font-size="15" font-weight="800" fill="var(--good)">Favourable</text>
+  <text x="496" y="30" font-size="13" fill="var(--ink-3)">joints dip into the hill</text>
+  </g>
+</svg>
+<figcaption>The same rock, four geometries. In the first three the discontinuities let a
+block move; in the fourth they do not, and the face will stand at an angle that would be
+reckless in the others. <b>The favourable case is not stronger rock — it is the same rock,
+cut the other way.</b></figcaption>
+</figure>
+
+<p><strong>Planar sliding.</strong> A block slides on a single surface. It needs the
+surface to dip <em>out of</em> the face, in roughly the same direction as the face
+(conventionally within about 20°), and to dip <em>less steeply than the face</em> so that
+it daylights, but <em>more steeply than its own friction angle</em> so that it wants to
+move. Those three conditions together are the reason a cut on one side of a valley is fine
+and the same cut opposite is not.</p>
+
+<p><strong>Wedge sliding.</strong> Two joint sets intersect, and the wedge slides along the
+<em>line of intersection</em>. The test is the same as planar, applied to that line rather
+than to a plane. Wedges are common and easy to miss, because neither joint set on its own
+looks threatening — you have to think about where they cross.</p>
+
+<p><strong>Toppling.</strong> Steeply dipping joints running <em>into</em> the face create
+slender columns that rotate forward about their base. It is the mode people most often
+misread, because the joints dip into the hill, which looks favourable at a glance. Toppling
+frequently precedes a fall — a column rotates for years, then goes.</p>
+
+<div class="caveat">
+<p><b>Stereonets, honestly.</b> The formal tool is a stereographic projection, and if you
+have several joint sets and a curving alignment, use it — it will find combinations that
+inspection misses. But you do not need one to make the important decision. Standing at the
+face with a compass-clinometer, asking <em>does anything dip out of this face, at less than
+the face angle and more than about thirty degrees</em>, will catch the great majority of
+problems. The stereonet refines an answer; it does not replace looking.</p>
+</div>
+
+<h4>What actually holds a rock cut up</h4>
+
+<p>The remedies split by whether you are treating the <em>source</em> or the
+<em>consequence</em> — and unlike soil slopes, treating the consequence is often the correct
+engineering answer.</p>
+
+<ul>
+  <li><strong>Change the geometry.</strong> Flatten, or better, <em>re-orient</em>. A minor
+    alignment shift that changes the face direction relative to the joints can be worth more
+    than any amount of bolting. Cheapest at design stage, impossible afterwards — which is
+    the argument for doing the geological mapping before the alignment is fixed, not after.</li>
+  <li><strong>Bench.</strong> Berms break the face into shorter heights, catch falling
+    material, and give access for maintenance. Keep them wide enough to actually catch
+    something and to stand on; a 600 mm berm is a drawing convention, not a catch bench.</li>
+  <li><strong>Drain.</strong> Water pressure in joints is a driving force. Weep holes and
+    horizontal drains relieve it. Frequently omitted, because a rock face looks like it does
+    not need drainage.</li>
+  <li><strong>Reinforce.</strong> Rock bolts and dowels tie blocks back to intact mass;
+    anchors do the same at larger scale. They must cross the discontinuity and be long
+    enough to reach beyond it — a bolt that terminates inside the moving block does
+    nothing.</li>
+  <li><strong>Retain the surface.</strong> Mesh, shotcrete. Note the trade-off: shotcrete
+    stops small blocks and ravelling, but it also seals the face, so unless you provide
+    generous weep holes it can raise the very water pressure that drives the failure.</li>
+  <li><strong>Catch it.</strong> A catch ditch at the toe, a barrier or a net. For falls
+    especially, this is often the honest answer — cheaper, maintainable, and it does not
+    pretend to have fixed a face that will keep shedding blocks for the life of the road.</li>
+</ul>
+
 <div class="box key">
   <span class="lbl">Judgment</span>
-  <p class="todo">To be written.</p>
+  <p>Take a compass-clinometer to every rock cut you inspect and measure three or four
+  joints. It takes ten minutes and it is the difference between an opinion and an
+  assessment. Then ask the design-stage question that nobody asks late enough to matter:
+  <em>can the alignment be shifted or the face re-oriented</em> — because on rock, geometry
+  is bought once and bolts are bought forever. And when a face will keep shedding regardless,
+  say so and design the catch ditch properly. There is no shame in managing a fall you
+  cannot prevent; the shame is in spending the budget pretending to prevent it.</p>
 </div>
+
 <div class="assign">
   <span class="lbl">Field assignment</span>
-  <p class="todo">To be written — 15 minutes, outside.</p>
+  <p>Find a rock cut on a road you use — one with a visible joint pattern. From a safe
+  distance:</p>
+  <ol>
+    <li>Sketch the face, and draw on the main discontinuity sets as you see them.</li>
+    <li>For each set, judge whether it dips <strong>out of</strong> the face or
+      <strong>into</strong> it.</li>
+    <li>Decide which of the three modes — planar, wedge, topple — the geometry permits,
+      and whether the debris on the ground agrees with you.</li>
+  </ol>
+  <p class="found"><b>What you probably found:</b> that the talus at the toe told you the
+  answer before your sketch did. Block size and shape are a record of the mechanism —
+  slabs point to planar sliding, roughly triangular blocks to wedges, and long columnar
+  pieces to toppling. The ground has already run the analysis; you are checking its
+  working.</p>
 </div>
+
 <div class="checkself">
   <span class="lbl">Check yourself</span>
-  <p class="todo">3–5 questions, tap to reveal.</p>
+  <p class="q">1 · Two identical cuts in the same rock, opposite sides of a valley. One is stable, one is not. What is the most likely reason?</p>
+  <p class="a"><span>Joint or bedding orientation relative to the face. On one side the discontinuities dip into the hill and cannot release a block; on the other they dip out of the face and daylight in it. Same rock, opposite kinematics.</span></p>
+  <p class="q">2 · State the three conditions for planar sliding.</p>
+  <p class="a"><span>The surface must dip out of the face and roughly parallel to it (within about 20°); it must dip less steeply than the face, so that it daylights; and it must dip more steeply than its own friction angle, so that sliding is driven. All three, or there is no planar failure.</span></p>
+  <p class="q">3 · Why is toppling the mode most often misread?</p>
+  <p class="a"><span>Because its joints dip into the face, which is the classic signature of a favourable geometry. But where they are steep and closely spaced they form slender columns that rotate forward about their base. It looks safe at a glance and often precedes a fall.</span></p>
+  <p class="q">4 · A rock bolt is installed but the block still moves. Give the most likely design error.</p>
+  <p class="a"><span>The bolt did not extend far enough beyond the discontinuity into intact rock, so it was anchored within the moving block. A bolt only works if it crosses the surface and develops its anchorage in ground that is staying put.</span></p>
+  <p class="q">5 · Why can shotcreting a face sometimes make things worse?</p>
+  <p class="a"><span>It seals the face and prevents joint water from draining, raising the water pressure that drives block movement. It controls ravelling and small blocks but must be combined with generous weep holes or horizontal drains, or it converts a surface problem into a pressure problem.</span></p>
 </div>
 
 <h3 class="chap" id="s12">12 · Susceptibility on a map</h3>
-<p class="sesstime ui">Session 12 · <span class="todo-inline">reading time to be set</span></p>
+<p class="sesstime ui">Session 12 · 13 min</p>
+
+<p class="hook">Everything in this act so far has been an engineer's eye on one slope. But
+you cannot walk a district, and the people who decide where the road goes, where the school
+is built and where the settlement expands are not going to walk it either. They need it on
+a map. The trouble is that a landslide susceptibility map is the most
+<strong>confidently wrong</strong> document in the whole field: it looks authoritative, it
+is coloured red and green, and it is routinely used to answer a question it was never
+capable of answering.</p>
+
 <div class="box def">
   <span class="lbl">The idea</span>
-  <p>Turning terrain judgment into something a planner can act on.</p>
+  <p>Susceptibility, hazard and risk are three different maps answering three different
+  questions. Most maps in circulation are the first, most decisions need the third, and
+  almost nobody says which one they are holding.</p>
 </div>
-<p class="todo">Hook, body and figures — Phase 2.</p>
+
+<h4>The three questions</h4>
+
+<div class="tw">
+<table>
+<thead><tr><th>Map</th><th>Answers</th><th>Includes</th></tr></thead>
+<tbody>
+<tr><td><strong>Susceptibility</strong></td><td><em>Where</em> can it happen?</td><td>Terrain only — slope, geology, soil, land cover, past failures. <b>No time, no consequence</b></td></tr>
+<tr><td><strong>Hazard</strong></td><td><em>Where, how big, how often?</em></td><td>Susceptibility plus magnitude and probability — the return period</td></tr>
+<tr><td><strong>Risk</strong></td><td><em>What does it cost us?</em></td><td>Hazard plus what is exposed and how vulnerable it is</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The distinction is not academic. A steep, weak, badly drained hillside with nothing on it
+is <strong>highly susceptible and carries no risk at all</strong>. A gentler slope carrying
+the district's only hospital access may be moderately susceptible and be the most important
+thing on the map. If a ward chair asks "where should we not build?", susceptibility is a
+reasonable first answer. If a donor asks "where should we spend first?", susceptibility
+alone will send the money to the wrong valley.</p>
+
+<h4>How a susceptibility map is actually made</h4>
+
+<p>Whatever the software, every method does the same two things: assemble the factors that
+control instability, then decide how much each one counts.</p>
+
+<p><strong>The factors</strong> are the ones this act has been about — slope angle, aspect,
+geology and rock type, structural orientation, soil depth, land cover, distance to drainage,
+distance to faults and, decisively in Nepal, <strong>distance to roads</strong>. That last
+one is not a proxy for something else. It is session 10 showing up as a statistical variable.</p>
+
+<p><strong>The weighting</strong> falls into three families:</p>
+
+<ul>
+  <li><strong>Knowledge-driven</strong> — an experienced geologist assigns the weights.
+    Fast, cheap, works in data-poor districts, and stands or falls entirely on who did it.</li>
+  <li><strong>Data-driven</strong> — statistics against an inventory of past landslides:
+    which combinations of factors did failures actually occur on? Objective, and only as
+    good as the inventory.</li>
+  <li><strong>Physically based</strong> — an actual slope-stability calculation on a grid,
+    coupled to a groundwater model. Most rigorous, hungriest for data, and realistically
+    limited to small, well-characterised areas.</li>
+</ul>
+
+<p>All three depend on the same foundation: <strong>an inventory of past landslides.</strong>
+Without it the data-driven methods have nothing to learn from and the others have nothing to
+be checked against. The single most valuable thing a district engineer can contribute to
+this work is not a model — it is a properly located, properly dated record of what has
+already failed.</p>
+
+<h4>What these maps cannot do</h4>
+
+<p>Four limits, and you should be able to state them to a client without notes:</p>
+
+<ol>
+  <li><strong>They do not tell you when.</strong> A susceptibility map has no time axis at
+    all. "High susceptibility" does not mean "soon"; it means "if the trigger comes, here
+    is where".</li>
+  <li><strong>They are only as honest as the inventory.</strong> Inventories are usually
+    built from imagery and from reported events — so they over-record failures near roads
+    and settlements, where people are looking, and under-record remote ones. Feed that into
+    a statistical model and you get a map that has learned <em>where people live</em> as
+    much as where slopes fail.</li>
+  <li><strong>The scale is not negotiable.</strong> A map made at 1:50,000 has grid cells
+    tens of metres across and cannot say anything about your specific cut. Using a regional
+    map to clear an individual site is the most common misuse in circulation, and it is
+    exactly the misuse that gets an engineer's name onto a decision they never actually made.</li>
+  <li><strong>They go out of date, and Nepal's go out of date fast.</strong> Every new road
+    changes the input layer. A map made before a track was cut across a hillside is
+    describing a hillside that no longer exists.</li>
+</ol>
+
+<div class="caveat">
+<p><b>The colour problem.</b> A map with red zones invites people to read a boundary as a
+line between danger and safety. There is no such line — susceptibility is continuous, the
+class breaks were chosen by somebody, and a cell just inside "moderate" is
+indistinguishable from the cell next to it in "high". When you present one of these,
+say that out loud. If you do not, the map will be treated as a permit.</p>
+</div>
+
+<h4>Using it well</h4>
+
+<p>Used honestly, these maps are genuinely powerful, and the power is in
+<strong>screening</strong> — not in deciding. Three good uses:</p>
+
+<ul>
+  <li><strong>Corridor selection.</strong> Comparing two or three alignment options across a
+    district, before anybody surveys anything. This is the highest-value use by a distance,
+    because it is the stage where the decision is still cheap. Session 20's subject.</li>
+  <li><strong>Prioritising the walking.</strong> You cannot inspect four hundred kilometres.
+    You can inspect the forty that the map flags — which turns a hopeless task into a
+    week's work.</li>
+  <li><strong>Land use planning.</strong> Keeping new settlement and new public buildings
+    off the worst ground is the cheapest risk reduction available to anyone, and it needs
+    only a susceptibility map and the will to apply it. Session 32 returns to why the will
+    is the hard part.</li>
+</ul>
+
+<p>And one rule that keeps you out of trouble: <strong>a map narrows where you walk; it
+never replaces walking.</strong> Every site-specific decision needs somebody on the slope
+with the eye from session 9.</p>
+
 <div class="box key">
   <span class="lbl">Judgment</span>
-  <p class="todo">To be written.</p>
+  <p>When a susceptibility map is put in front of you, ask three questions before you look
+  at the colours. <em>What scale was it made at</em> — and is it being used at that scale?
+  <em>What inventory is it built on</em> — how complete, how old, and does it include the
+  roads that were cut since? <em>Is this susceptibility, hazard or risk</em> — because the
+  answer decides what question it can settle. If you cannot get those three answers, you
+  have a picture, not a map. And when you present one, name its limits in the same breath
+  as its findings; the alternative is that somebody treats your red line as a building
+  permit boundary.</p>
 </div>
+
 <div class="assign">
   <span class="lbl">Field assignment</span>
-  <p class="todo">To be written — 15 minutes, outside.</p>
+  <p>Find any hazard or susceptibility map covering ground you know well — a district
+  profile, a project report, a portal, anything to hand. Then:</p>
+  <ol>
+    <li>Find three places <strong>you personally know have failed</strong>. What class does
+      the map put them in?</li>
+    <li>Find one place the map calls high susceptibility that you know has been stable in
+      living memory. Why might the map think otherwise?</li>
+    <li>Check whether roads built in the last ten years appear in the input data at all.</li>
+  </ol>
+  <p class="found"><b>What you probably found:</b> broadly sensible agreement at the
+  regional scale, and at least one confident disagreement at the site scale — which is the
+  lesson. These maps are right about districts and unreliable about slopes. Your local
+  knowledge is worth more than the map at the scale you actually work.</p>
 </div>
+
 <div class="checkself">
   <span class="lbl">Check yourself</span>
-  <p class="todo">3–5 questions, tap to reveal.</p>
+  <p class="q">1 · A hillside is steep, weak, badly drained and completely uninhabited. High susceptibility or high risk?</p>
+  <p class="a"><span>High susceptibility, no meaningful risk. Risk requires exposure — something of value that can be harmed. Susceptibility describes the terrain alone; it says nothing about consequence and nothing about timing.</span></p>
+  <p class="q">2 · Why does "distance to roads" appear as a factor in Nepali susceptibility models?</p>
+  <p class="a"><span>Because roads cause landslides — the cut, the tipped spoil and the concentrated drainage from session 10. It is not a proxy for terrain; the statistics are picking up a real causal mechanism that human construction introduced.</span></p>
+  <p class="q">3 · How can an incomplete landslide inventory bias a data-driven map, and in which direction?</p>
+  <p class="a"><span>Inventories are compiled from imagery and reported events, so they over-record failures near roads and settlements where people are looking, and under-record remote ones. A model trained on that partly learns where people live rather than where slopes fail — inflating apparent susceptibility near infrastructure.</span></p>
+  <p class="q">4 · What is the most common misuse of a regional susceptibility map?</p>
+  <p class="a"><span>Using a map made at, say, 1:50,000 to clear or condemn an individual site. Its cells are tens of metres across and it carries no information at that resolution. It can narrow where you walk; it cannot substitute for a site inspection.</span></p>
+  <p class="q">5 · Someone points at the boundary of a red zone and asks whether the land just outside it is safe to build on. What do you say?</p>
+  <p class="a"><span>That there is no such boundary in reality — susceptibility is continuous and the class breaks were a human choice, so a cell just outside "high" is indistinguishable from one just inside. The map screens; it does not permit. That site needs someone to walk it.</span></p>
 </div>
+
 </section>
 
 <!-- ============================ WATER ============================ -->
