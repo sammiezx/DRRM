@@ -967,3 +967,86 @@ details.deep>summary .hint{
   details.deep>summary::before{content:"" ;background:none}
   details.deep{break-inside:auto}
 }
+
+/* ---------------- pending sessions ---------------- */
+/* An unwritten session should read as "not yet", not as "broken". One line,
+   plus the idea it will land — which is settled and worth seeing. */
+.chap.pending{color:var(--ink-3)}
+.pendingnote{
+  margin:14px 0 34px;padding:12px 14px;
+  border:1px dashed var(--line);border-radius:var(--r-md);
+  font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink-3);
+}
+.chap.pending + .sesstime .todo-inline{color:var(--accent);font-style:normal;font-weight:700}
+
+/* ---------------- start panel ---------------- */
+.startpanel{
+  margin:26px 0 34px;padding:18px 16px 8px;
+  border:1px solid var(--line);border-radius:var(--r-lg);
+  background:var(--bg-2);
+}
+.sp-top{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:14px}
+.sp-count{
+  margin:0;flex:1 1 200px;
+  font-family:var(--sans);font-size:13.5px;line-height:1.5;color:var(--ink-2);
+}
+.sp-count b{color:var(--ink)}
+.sp-continue[hidden]{display:none}
+.sp-continue{
+  flex:0 0 auto;max-width:100%;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 16px;border:0;border-radius:var(--r-sm);
+  background:var(--accent);color:#fff;cursor:pointer;
+  font-family:var(--sans);font-size:14px;font-weight:750;
+  text-align:left;
+}
+.sp-continue:hover{filter:brightness(1.08)}
+.sp-continue .lbl2{opacity:.85;font-weight:600}
+
+.sp-acts{list-style:none;margin:0;padding:0;counter-reset:spact}
+.sp-acts li{counter-increment:spact;border-top:1px solid var(--line)}
+.sp-acts li:first-child{border-top:0}
+.sp-acts a{
+  display:flex;align-items:center;gap:12px;
+  padding:13px 4px;text-decoration:none;color:var(--ink);
+  font-family:var(--sans);
+}
+.sp-acts a:hover{background:var(--bg-3)}
+.sp-acts .num{
+  flex:0 0 26px;height:26px;border-radius:7px;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--graphite-100);color:var(--graphite-700);
+  font-size:11.5px;font-weight:800;
+}
+.sp-acts .txt{flex:1 1 auto;min-width:0}
+.sp-acts .t{display:block;font-size:15px;font-weight:700;line-height:1.25}
+.sp-acts .m{display:block;margin-top:3px;font-size:12.5px;color:var(--ink-3)}
+.sp-acts .bar{
+  flex:0 0 56px;height:5px;border-radius:3px;background:var(--line);overflow:hidden;
+}
+.sp-acts .bar i{display:block;height:100%;background:var(--accent);border-radius:3px}
+.sp-acts li.none .bar i{background:var(--ink-3);opacity:.35}
+
+/* ---------------- contents drawer states ---------------- */
+nav.toc ul a.pend{color:var(--ink-3)}
+nav.toc ul a.pend::after{
+  content:"soon";
+  margin-left:7px;padding:1px 6px;border-radius:20px;
+  background:var(--bg-3);color:var(--ink-3);
+  font-size:10px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;
+  vertical-align:1px;
+}
+nav.toc ul a.done::before{
+  content:"\2713";
+  margin-right:6px;color:var(--good);font-weight:800;
+}
+nav.toc>ol>li>a .cnt{
+  margin-left:auto;padding-left:8px;
+  font-size:11px;font-weight:700;color:var(--ink-3);white-space:nowrap;
+}
+
+/* A pending banner should recede, not shout. */
+.part-banner.ftbanner.is-pending{
+  background:linear-gradient(145deg,var(--graphite-700),var(--graphite-900)) !important;
+  opacity:.75;
+}

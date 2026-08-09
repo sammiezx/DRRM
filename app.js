@@ -267,6 +267,147 @@ if (resetBtn) resetBtn.addEventListener('click', function () {
   if (mcqs[0]) mcqs[0].scrollIntoView({ block: 'start', behavior: 'smooth' });
 });
 
+/* ---------------- progress, start panel, contents states ---------------- */
+/* Reading state lives on his phone and nowhere else. No account, no server. */
+var PKEY = 'drrm-progress';
+var prog = { read: {}, last: null };
+try { prog = JSON.parse(localStorage.getItem(PKEY)) || prog; } catch (e) {}
+if (!prog.read) prog.read = {};
+function saveProg() { try { localStorage.setItem(PKEY, JSON.stringify(prog)); } catch (e) {} }
+
+/* Every session heading, in document order, with whether it is written yet. */
+var SESSIONS = $$('h3.chap').filter(function (h) { return /^s\d+$/.test(h.id); })
+  .map(function (h) {
+    return {
+      id: h.id,
+      el: h,
+      title: h.textContent.trim(),
+      pending: h.classList.contains('pending'),
+      act: h.closest('section.part')
+    };
+  });
+var READY = SESSIONS.filter(function (x) { return !x.pending; });
+
+function readCount() {
+  return READY.filter(function (x) { return prog.read[x.id]; }).length;
+}
+
+/* Mark a session read once its Check yourself block comes into view — that is
+   the end of the session, so reaching it means he actually got through it. */
+if (window.IntersectionObserver) {
+  var io = new IntersectionObserver(function (entries) {
+    var changed = false;
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      var h = en.target.closest('section.part') && en.target.getAttribute('data-for');
+      if (h && !prog.read[h]) { prog.read[h] = 1; changed = true; }
+    });
+    if (changed) { saveProg(); paintPanel(); paintToc(); }
+  }, { rootMargin: '0px 0px -25% 0px' });
+  READY.forEach(function (x) {
+    var el = x.el.nextElementSibling, stop = null;
+    while (el && !(el.tagName === 'H3' && el.classList.contains('chap'))) {
+      if (el.classList && el.classList.contains('checkself')) { stop = el; break; }
+      el = el.nextElementSibling;
+    }
+    if (stop) { stop.setAttribute('data-for', x.id); io.observe(stop); }
+  });
+}
+
+/* Contents drawer: show what is ready, what is read, and how far each act is. */
+function paintToc() {
+  SESSIONS.forEach(function (x) {
+    var a = toc.querySelector('a[href="#' + x.id + '"]');
+    if (!a) return;
+    a.classList.toggle('pend', x.pending);
+    a.classList.toggle('done', !x.pending && !!prog.read[x.id]);
+  });
+  $$('nav.toc > ol > li').forEach(function (li) {
+    var a = li.querySelector(':scope > a');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    var sec = href && document.querySelector(href);
+    if (!sec) return;
+    var mine = SESSIONS.filter(function (x) { return x.act === sec; });
+    if (!mine.length) return;
+    var ready = mine.filter(function (x) { return !x.pending; }).length;
+    var cnt = a.querySelector('.cnt');
+    if (!cnt) { cnt = document.createElement('span'); cnt.className = 'cnt'; a.appendChild(cnt); }
+    cnt.textContent = ready ? ready + '/' + mine.length : '';
+  });
+}
+
+/* The panel under the cover: where to start, and where he left off. */
+var spActs = $('#spActs'), spCount = $('#spCount'), spContinue = $('#spContinue');
+
+function nextUnread() {
+  var unread = READY.filter(function (x) { return !prog.read[x.id]; });
+  if (unread.length) return unread[0];
+  return READY.length ? READY[READY.length - 1] : null;
+}
+
+function paintPanel() {
+  if (!spActs) return;
+  spActs.innerHTML = '';
+  $$('main section.part').forEach(function (sec) {
+    var mine = SESSIONS.filter(function (x) { return x.act === sec; });
+    if (!mine.length) return;
+    var banner = sec.querySelector('.part-banner');
+    var k = banner && banner.querySelector('.k');
+    var h2 = banner && banner.querySelector('h2');
+    var ready = mine.filter(function (x) { return !x.pending; });
+    var read = ready.filter(function (x) { return prog.read[x.id]; }).length;
+
+    var li = document.createElement('li');
+    if (!ready.length) li.className = 'none';
+    var a = document.createElement('a');
+    a.href = '#' + sec.id;
+    a.innerHTML =
+      '<span class="num">' + (k ? k.textContent.replace(/^Act\s*/, '') : '') + '</span>' +
+      '<span class="txt"><span class="t"></span><span class="m"></span></span>' +
+      '<span class="bar"><i></i></span>';
+    a.querySelector('.t').textContent = h2 ? h2.textContent : sec.id;
+    a.querySelector('.m').textContent = ready.length
+      ? mine.length + ' sessions · ' + ready.length + ' ready' + (read ? ' · ' + read + ' read' : '')
+      : mine.length + ' sessions · being written';
+    a.querySelector('.bar i').style.width =
+      (ready.length ? Math.round(read / ready.length * 100) : 0) + '%';
+    li.appendChild(a);
+    spActs.appendChild(li);
+  });
+
+  if (spCount) {
+    spCount.innerHTML = '<b>' + SESSIONS.length + ' sessions</b> in five acts · <b>' +
+      READY.length + '</b> written so far · you have read <b>' + readCount() + '</b>';
+  }
+  if (spContinue) {
+    var nx = nextUnread();
+    if (nx) {
+      spContinue.hidden = false;
+      spContinue.innerHTML = '<span class="lbl2">' +
+        (readCount() ? 'Continue' : 'Start reading') + '</span> ' + nx.title;
+      spContinue.onclick = function () { location.hash = '#' + nx.id; };
+    } else {
+      spContinue.hidden = true;
+    }
+  }
+}
+/* An act with nothing written yet should look like it. */
+$$('main section.part').forEach(function (sec) {
+  var mine = SESSIONS.filter(function (x) { return x.act === sec; });
+  var banner = sec.querySelector('.part-banner');
+  if (!banner) return;
+  var anyReady = mine.some(function (x) { return !x.pending; });
+  if (!mine.length) {
+    // Fast Track and the Practice Kit hold no sessions; judge them by their own content
+    anyReady = !sec.querySelector('.pendingnote');
+  }
+  banner.classList.toggle('is-pending', !anyReady);
+});
+
+paintToc();
+paintPanel();
+
 /* ---------------- deep annex ---------------- */
 /* Printing must produce the whole document, not the collapsed version of it. */
 (function () {
@@ -437,15 +578,16 @@ fcBtn.addEventListener('click', function () {
 
 
 /* ---------------- bottom bar ---------------- */
-var bbToc = $('#bbToc'), bbSearch = $('#bbSearch'), bbCards = $('#bbCards'), bbFast = $('#bbFast');
+var bbToc = $('#bbToc'), bbSearch = $('#bbSearch'), bbCards = $('#bbCards'), bbFast = $('#bbContinue');
 if (bbToc)    bbToc.addEventListener('click', function () {
   body.classList.contains('nav-open') ? closeNav() : openNav();
 });
 if (bbSearch) bbSearch.addEventListener('click', openSearch);
 if (bbFast)   bbFast.addEventListener('click', function () {
   if (body.classList.contains('fcmode')) fcBtn.click();
-  var el = document.getElementById('p0');
-  if (el) el.scrollIntoView();
+  var nx = nextUnread();
+  if (nx) location.hash = '#' + nx.id;
+  else window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 if (bbCards)  bbCards.addEventListener('click', function () { fcBtn.click(); });
 
