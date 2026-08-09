@@ -7,10 +7,9 @@ written for a **practising road and highway engineer in Nepal**.
 
 📖 **[Read it here](https://sammiezx.github.io/DRRM/)**
 
-> **Status — Phase 1 (planning).** Structure, chassis and learning design are in place;
-> the sessions are empty shells. **[PLAN.md](PLAN.md)** — how it teaches.
-> **[SCOPE.md](SCOPE.md)** — what it covers and why.
-> Phase 2 writes the content, Phase 3 deploys.
+> **Status — Phase 2 (writing).** Live and deploying, with **12 of 32 sessions written**.
+> Act II complete; Act III in progress. The rest are empty shells.
+> **[PLAN.md](PLAN.md)** — how it teaches. **[SCOPE.md](SCOPE.md)** — what it covers and why.
 
 ---
 
@@ -53,6 +52,7 @@ Built mobile-first — it is designed to be read on a phone, standing on a site.
 
 - `index.html` + `style.css` + `app.js` — the handbook
 - `sw.js`, `manifest.webmanifest`, `icon.svg` — offline / add-to-home-screen support
+- `.github/workflows/pages.yml` — publishes the served files to `gh-pages` on every push to `main`
 - `PLAN.md` — the learning design: session list, assignments, practice, engagement
 - `SCOPE.md` — what this is, who it is for, and the editorial rules
 - `img/` — inline SVG figures
