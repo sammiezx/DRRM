@@ -1,7 +1,10 @@
-# Deploys the handbook to GitHub Pages.
+# Publishes the handbook to https://sammiezx.github.io/DRRM/
 #
-# `configure-pages` with enablement:true turns Pages on using the workflow's own
-# token, so the site goes live without anyone opening repo settings.
+# Deploys by pushing the served files to the gh-pages branch, which is what
+# Pages is configured to serve. The official configure-pages/deploy-pages route
+# is not usable here: enabling a Pages site needs admin rights that the
+# workflow's own GITHUB_TOKEN is not granted ("Resource not accessible by
+# integration"). Pushing a branch only needs contents: write, which it has.
 name: Deploy to GitHub Pages
 
 on:
@@ -10,9 +13,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 # Never let two deploys race; queue instead of cancelling a live one.
 concurrency:
@@ -22,18 +23,11 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
-      # Publish only what the site actually serves — not the planning documents,
-      # the working notes or the git history.
+      # Publish only what the site serves — the planning documents, working
+      # notes and git history stay in the repo but off the web.
       - name: Assemble site
         run: |
           mkdir -p _site
@@ -42,9 +36,14 @@ jobs:
           if [ -d img ] && [ -n "$(ls -A img)" ]; then cp -r img _site/; fi
           ls -la _site
 
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Push to gh-pages
+        run: |
+          cd _site
+          git init -q -b gh-pages
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Publish ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
