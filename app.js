@@ -267,6 +267,29 @@ if (resetBtn) resetBtn.addEventListener('click', function () {
   if (mcqs[0]) mcqs[0].scrollIntoView({ block: 'start', behavior: 'smooth' });
 });
 
+/* ---------------- deep annex ---------------- */
+/* Printing must produce the whole document, not the collapsed version of it. */
+(function () {
+  var deeps = $$('details.deep');
+  if (!deeps.length) return;
+  var wasOpen = [];
+  function openAll() {
+    wasOpen = deeps.map(function (d) { return d.open; });
+    deeps.forEach(function (d) { d.open = true; });
+  }
+  function restore() {
+    deeps.forEach(function (d, i) { d.open = wasOpen[i]; });
+  }
+  if (window.matchMedia) {
+    var mq = window.matchMedia('print');
+    var onChange = function (e) { e.matches ? openAll() : restore(); };
+    mq.addEventListener ? mq.addEventListener('change', onChange)
+                        : mq.addListener && mq.addListener(onChange);
+  }
+  window.addEventListener('beforeprint', openAll);
+  window.addEventListener('afterprint', restore);
+})();
+
 /* ---------------- check yourself ---------------- */
 /* Answers stay blurred until tapped: he has to produce the answer before he
    sees it. Recognition is not recall, and the blur is what forces the difference. */

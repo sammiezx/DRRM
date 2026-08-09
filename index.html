@@ -2513,6 +2513,248 @@ a fraction of its intended embedment three months earlier. Three practical conse
   <p class="a"><span>Because every other measure depends on somebody maintaining it for the structure's whole life, and you cannot control that. Founding depth requires nobody. It is the only scour defence that is not a maintenance commitment.</span></p>
 </div>
 
+<details class="deep" id="d17">
+<summary>Go deeper — regime scour, worked from discharge to founding level<span class="hint">≈ 20 min · at a desk</span></summary>
+<div class="deepbody">
+
+<h5>Lacey's regime theory, and why South Asia uses it</h5>
+
+<p>Lacey's approach starts from an observation about alluvial rivers in the Indian
+subcontinent: a river carrying a given discharge through a given bed material will, left
+alone, settle into a characteristic width, depth and slope — its <em>regime</em>. Depart
+from regime and the river works to return to it, and scour is one of the ways it does that.</p>
+
+<p>Two relations do the work. The regime wetted perimeter:</p>
+
+<div class="eq">P = 4.75 √Q
+<span class="where">P in metres, Q the design discharge in m³/s. For a wide shallow channel P is
+close enough to the surface width.</span></div>
+
+<p>and the regime scour depth, which is what you actually design to:</p>
+
+<div class="eq">d<sub>sm</sub> = 1.34 (q² / f)<sup>1/3</sup>
+<span class="where">d<sub>sm</sub> = mean regime scour depth below highest flood level, m ·
+q = discharge intensity = Q / effective waterway, m³/s per m ·
+f = Lacey's silt factor</span></div>
+
+<p>with the silt factor taken from the bed material:</p>
+
+<div class="eq">f = 1.76 √d<sub>50</sub>
+<span class="where">d<sub>50</sub> the mean particle diameter <b>in millimetres</b>. Units
+matter here and it is the commonest slip in the whole calculation.</span></div>
+
+<p>Read the exponents before you use them, because they contain the design lessons:</p>
+
+<ul>
+  <li><strong>d<sub>sm</sub> ∝ q<sup>2/3</sup>.</strong> Narrow the waterway and scour rises
+    — not linearly, but at the two-thirds power. This is the arithmetic behind session 17's
+    warning about shortening a bridge.</li>
+  <li><strong>d<sub>sm</sub> ∝ f<sup>−1/3</sup>.</strong> Coarse beds scour much less. A
+    gravel-bed hill river and a sand-bed Terai river are genuinely different problems, and
+    the same discharge gives very different depths.</li>
+  <li><strong>Nothing about pier width appears.</strong> Lacey is a <em>regime</em> method;
+    the effect of the pier enters only through a multiplying factor. That is a real
+    limitation, and it is why the debris-raft case at the end has to be handled another way.</li>
+</ul>
+
+<h5>The multiplying factors</h5>
+
+<p>d<sub>sm</sub> is a mean. Maximum scour at any particular point is obtained by
+multiplying it, with the factor depending on where you are in the river and what you have
+put in it. IRC bridge practice sets these out roughly as follows:</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Location</th><th>Factor × d<sub>sm</sub></th></tr></thead>
+<tbody>
+<tr><td>Straight reach</td><td>1.27</td></tr>
+<tr><td>Moderate bend</td><td>1.50</td></tr>
+<tr><td>Severe bend</td><td>1.75</td></tr>
+<tr><td>Right-angled bend, or severe swirls</td><td>2.00</td></tr>
+<tr><td><strong>Nose of a pier</strong></td><td><strong>2.00</strong></td></tr>
+<tr><td>Severe swirls / extreme conditions</td><td>up to 2.50</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="caveat"><b>Read these from the current code, not from here.</b> They are given so
+you recognise the shape of the calculation and can sanity-check a consultant's submission.
+The governing values are in the IRC bridge codes as adopted in Nepali practice, and they are
+revised. A design justified against a remembered factor is a design with a hole in it.</p>
+
+<div class="worked">
+<h6>Worked example · founding level for a bridge on a sand-bed river</h6>
+<div class="inner">
+
+<p><strong>The brief.</strong> A four-span bridge on a wide alluvial river as it leaves the
+foothills. You have a design discharge and a bed sample, and you need a founding level for
+the well foundations.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Given</th><th>Value</th><th>Where it came from</th></tr></thead>
+<tbody>
+<tr><td>Design discharge, Q (100-year)</td><td>1,200 m³/s</td><td>Session 14 — two methods, agreed within band</td></tr>
+<tr><td>Effective linear waterway, L</td><td>120 m</td><td>Total span less pier obstruction</td></tr>
+<tr><td>Bed material, d<sub>50</sub></td><td>0.30 mm</td><td>Sieve analysis, three bed samples</td></tr>
+<tr><td>Highest flood level, HFL</td><td>+412.60 m</td><td>Gauge record and flood marks</td></tr>
+<tr><td>Foundation type</td><td>Well</td><td></td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="step"><strong>Check whether you are constricting the river.</strong><br>
+P = 4.75 √Q = 4.75 × √1200 = 4.75 × 34.64 = <strong>164.5 m</strong><br>
+You are providing 120 m against a regime perimeter of 164.5 m — a waterway ratio of 0.73.
+This is a <em>constriction</em>, so contraction scour is real and the multiplied regime
+depth is doing genuine work. Note this before you go on: it is the number that will justify
+the foundation depth to whoever asks why it is so deep.</p>
+
+<p class="step"><strong>Discharge intensity.</strong><br>
+q = Q / L = 1200 / 120 = <strong>10.0 m³/s per m</strong></p>
+
+<p class="step"><strong>Silt factor.</strong><br>
+f = 1.76 √d<sub>50</sub> = 1.76 × √0.30 = 1.76 × 0.548 = <strong>0.96</strong><br>
+A fine sand. Expect deep scour.</p>
+
+<p class="step"><strong>Regime scour depth.</strong><br>
+d<sub>sm</sub> = 1.34 (q² / f)<sup>1/3</sup> = 1.34 × (100 / 0.96)<sup>1/3</sup>
+= 1.34 × (104.2)<sup>1/3</sup> = 1.34 × 4.70 = <strong>6.30 m</strong> below HFL</p>
+
+<p class="step"><strong>Maximum scour at the pier nose.</strong><br>
+Factor 2.00 for a pier nose:<br>
+d<sub>max</sub> = 2.00 × 6.30 = <strong>12.60 m</strong> below HFL<br>
+Maximum scour level = 412.60 − 12.60 = <strong>+400.00 m</strong></p>
+
+<p class="step"><strong>Grip length below maximum scour.</strong><br>
+For well foundations, practice requires a grip of not less than one third of the maximum
+scour depth below HFL:<br>
+grip = 12.60 / 3 = <strong>4.20 m</strong></p>
+
+<p class="step"><strong>Founding level.</strong><br>
+412.60 − 12.60 − 4.20 = <strong>+395.80 m</strong><br>
+That is <strong>16.8 m below HFL</strong>, and roughly 12–13 m below the bed you are
+standing on when you set out the works. If that feels excessive, re-read step 1 — you chose
+a waterway well below regime, and this is the bill.</p>
+
+<p class="ans"><b>Answer:</b> found the wells at <b>+395.80 m</b> — 12.60 m of scour plus
+4.20 m of grip below HFL — subject to the bearing stratum being reached at or below that
+level. If it is not, the well goes deeper; scour sets a <em>maximum</em> founding level, never
+a minimum.</p>
+
+<p class="src">Method: Lacey regime scour with IRC multiplying factors, as used in Nepali
+bridge practice. Discharge from session 14. Verify factors and grip requirements against
+the current code before use on a real structure.</p>
+</div>
+</div>
+
+<h5>Sensitivity — what actually moves the answer</h5>
+
+<p>Run the same calculation with one input changed at a time. This table is the argument to
+have with a client who wants a shorter bridge, and it is worth carrying.</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Change</th><th>q</th><th>d<sub>sm</sub></th><th>Pier scour</th><th>Founding level</th></tr></thead>
+<tbody>
+<tr><td><strong>Base case</strong> — L = 120 m, d<sub>50</sub> 0.30 mm</td><td>10.0</td><td>6.30 m</td><td>12.60 m</td><td>−16.80 m</td></tr>
+<tr><td>Waterway cut to <strong>90 m</strong> (−25 %)</td><td>13.3</td><td>7.63 m</td><td>15.25 m</td><td><strong>−20.3 m</strong></td></tr>
+<tr><td>Waterway widened to <strong>150 m</strong></td><td>8.0</td><td>5.43 m</td><td>10.86 m</td><td>−14.5 m</td></tr>
+<tr><td>Gravel bed instead, d<sub>50</sub> <strong>5 mm</strong> (f = 3.94)</td><td>10.0</td><td>3.94 m</td><td>7.88 m</td><td>−10.5 m</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Three things fall out of that table:</p>
+
+<ol>
+  <li><strong>Cutting the waterway by a quarter drove the founding level 3.5 m deeper.</strong>
+    Whether the shorter bridge is cheaper is now an arithmetic question, not an assumption —
+    and on a well foundation, 3.5 m of extra sinking through sand is not a small number.</li>
+  <li><strong>Bed material changed the answer more than anything else.</strong> Same
+    discharge, same waterway: 12.6 m in sand against 7.9 m in gravel. Which means the sieve
+    analysis is not a formality. A d<sub>50</sub> taken from a textbook table rather than
+    from the river is the largest available error in this whole calculation.</li>
+  <li><strong>Widening buys depth back cheaply.</strong> Going from 120 m to 150 m of
+    waterway saved 2.3 m of founding depth. Compare that against the cost of one more span
+    before assuming the shorter bridge wins.</li>
+</ol>
+
+<h5>Where Lacey stops: pier width and the debris raft</h5>
+
+<p>The regime method handles the pier through a blanket factor of 2.0, which means it cannot
+tell you what happens if the pier gets effectively wider. For that you need a local-scour
+formulation that carries pier width explicitly. The HEC-18 form used in American practice
+is:</p>
+
+<div class="eq">y<sub>s</sub> = 2.0 · K<sub>1</sub>K<sub>2</sub>K<sub>3</sub> · y<sub>1</sub><sup>0.35</sup> · a<sup>0.65</sup> · Fr<sub>1</sub><sup>0.43</sup>
+<span class="where">y<sub>s</sub> local scour depth · a pier width · y<sub>1</sub> approach
+depth · Fr<sub>1</sub> approach Froude number · K factors for nose shape, flow angle and bed
+condition</span></div>
+
+<p>The term to hold on to is <strong>a<sup>0.65</sup></strong>. Local scour goes with pier
+width to the power 0.65, so:</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>Effective pier width</th><th>Multiplier on local scour</th></tr></thead>
+<tbody>
+<tr><td>Clean pier, a</td><td>1.00</td></tr>
+<tr><td>Modest debris raft, 2a</td><td><strong>1.57</strong></td></tr>
+<tr><td>Substantial raft, 3a</td><td><strong>2.04</strong></td></tr>
+<tr><td>Heavy timber raft, 5a</td><td><strong>2.83</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<p>A 1.5 m pier that collects a 4.5 m raft of trees is scouring as though it were a three
+metre pier — roughly <strong>double</strong> the local scour it was designed for. On a
+Nepali river in monsoon that is not the worst case; it is the ordinary case. Two conclusions,
+both practical:</p>
+
+<ul>
+  <li>Rafting is a reason to prefer <strong>fewer, wider-spaced piers</strong> — or none.
+    Two piers that each collect a raft are worse than one that does.</li>
+  <li>Where the pier stays, the founding level should carry margin explicitly for rafting
+    rather than relying on the regime factor of 2.0 to have quietly covered it. It has not.</li>
+</ul>
+
+<h5>Checking the answer without the formulae</h5>
+
+<p>Three sanity checks worth doing every time, because arithmetic slips in this calculation
+are common and consequential:</p>
+
+<ol>
+  <li><strong>Is d<sub>sm</sub> plausible against the river?</strong> Regime scour depths on
+    Nepali rivers of this size land in the range of a few metres to about ten. A result of
+    0.6 m or 60 m means a units error — almost always d<sub>50</sub> entered in metres
+    instead of millimetres.</li>
+  <li><strong>Does the waterway ratio explain the depth?</strong> If you are near regime
+    width, expect modest scour. If your computed depth is large but your waterway is
+    generous, something is wrong.</li>
+  <li><strong>What do the neighbours say?</strong> Existing bridges on the same river are
+    data. If yours is founded five metres deeper or shallower than a comparable structure a
+    kilometre away, find out which of you is wrong before you build.</li>
+</ol>
+
+<h5>Sources and where to look next</h5>
+
+<ul>
+  <li><strong>IRC bridge codes</strong> as adopted in Nepali practice — the governing
+    multiplying factors, grip length requirements and foundation provisions. The authority
+    for anything in this annex.</li>
+  <li><strong>DoR bridge design standards and directives</strong> — Nepal-specific
+    requirements, return periods and submission expectations.</li>
+  <li><strong>HEC-18, <em>Evaluating Scour at Bridges</em></strong> (US FHWA) — the standard
+    reference for local scour, pier width effects, debris and countermeasure design. Freely
+    available and the best single text on the mechanism.</li>
+  <li>Lacey's original regime papers, if you want the derivation rather than the formulae.</li>
+</ul>
+
+</div>
+</details>
+
+
 <h3 class="chap" id="s18">18 · Training the river</h3>
 <p class="sesstime ui">Session 18 · core · <span class="todo-inline">reading time to be set</span></p>
 <div class="box def">

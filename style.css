@@ -875,3 +875,95 @@ figure.fig figcaption b{color:var(--ink-2)}
   background:transparent;color:var(--ink-2);
 }
 .caveat b{color:var(--ink)}
+
+/* ---------------- deep annex ---------------- */
+/* The spine stays a 15-minute read on a phone. Everything that needs a desk —
+   worked calculations, derivations, data tables, sources — lives in here,
+   collapsed by default so it never interrupts the read. */
+details.deep{
+  margin:26px 0 34px;
+  border:1px solid var(--graphite-400);border-radius:var(--r-md);
+  background:var(--bg-2);overflow:hidden;
+}
+details.deep>summary{
+  cursor:pointer;list-style:none;
+  padding:14px 16px;
+  font-family:var(--sans);font-weight:800;font-size:13.5px;
+  letter-spacing:.4px;color:var(--heading);
+  display:flex;align-items:center;gap:10px;
+  -webkit-tap-highlight-color:transparent;
+}
+details.deep>summary::-webkit-details-marker{display:none}
+details.deep>summary::before{
+  content:"+";
+  flex:0 0 22px;height:22px;border-radius:6px;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--graphite-700);color:var(--bg);
+  font-size:15px;font-weight:800;line-height:1;
+}
+details.deep[open]>summary::before{content:"\2212"}
+details.deep>summary:hover{background:var(--bg-3)}
+details.deep>summary .hint{
+  margin-left:auto;font-weight:600;font-size:12px;color:var(--ink-3);
+  letter-spacing:0;white-space:nowrap;
+}
+.deepbody{padding:4px 16px 18px;border-top:1px solid var(--line)}
+.deepbody h5{
+  margin:24px 0 8px;font-size:15.5px;color:var(--heading);
+  letter-spacing:.2px;
+}
+.deepbody h5:first-child{margin-top:18px}
+.deepbody>p:first-of-type{margin-top:10px}
+
+/* display equations */
+.eq{
+  margin:14px 0;padding:10px 14px;
+  background:var(--bg);border:1px solid var(--line);border-radius:var(--r-sm);
+  font-family:var(--sans);font-size:16px;text-align:center;overflow-x:auto;
+}
+.eq .where{
+  display:block;margin-top:6px;font-size:12.5px;color:var(--ink-3);text-align:left;
+}
+
+/* worked examples */
+.worked{
+  margin:20px 0;border:1px solid var(--orange-600);border-radius:var(--r-md);
+  overflow:hidden;background:var(--bg);
+}
+.worked>h6{
+  margin:0;padding:11px 14px;
+  background:var(--orange-600);color:#fff;
+  font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+.worked .inner{padding:14px}
+.worked table{margin:10px 0}
+.worked .step{
+  margin:0 0 14px;padding-left:34px;position:relative;
+  font-size:16px;line-height:1.6;
+}
+.worked .step::before{
+  content:counter(wstep);counter-increment:wstep;
+  position:absolute;left:0;top:2px;
+  width:23px;height:23px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--orange-100);color:var(--orange-600);
+  font-family:var(--sans);font-size:12px;font-weight:800;
+}
+.worked .inner{counter-reset:wstep}
+.worked .ans{
+  margin:16px 0 0;padding:11px 14px;
+  background:var(--orange-100);border-radius:var(--r-sm);
+  font-size:16.5px;
+}
+.worked .ans b{color:var(--orange-600)}
+.worked .src{
+  margin:10px 0 0;font-family:var(--sans);font-size:12.5px;color:var(--ink-3);
+}
+
+/* print: the annex is part of the document, so open it */
+@media print{
+  details.deep>.deepbody{display:block !important}
+  details.deep>summary::before{content:"" ;background:none}
+  details.deep{break-inside:auto}
+}
