@@ -169,7 +169,7 @@ function runSearch(q) {
   q = q.trim().toLowerCase();
   searchResults.innerHTML = '';
   if (q.length < 2) {
-    searchMeta.textContent = 'Type at least two letters. Try “soft storey”, “NBC 105”, “liquefaction”.';
+    searchMeta.textContent = 'Type at least two letters. Try “debris flow”, “scour”, “bio-engineering”.';
     return;
   }
   var idx = buildIndex();
@@ -270,12 +270,12 @@ if (resetBtn) resetBtn.addEventListener('click', function () {
 /* ---------------- flashcard decks ---------------- */
 const DECKS = {
   /* PHASE 2 — content. Deck names are provisional; shape is ["front","back"]. */
-  "Definitions":      [["placeholder","Deck content is written in Phase 2."]],
-  "Nepal hazards":    [["placeholder","Deck content is written in Phase 2."]],
-  "Codes & clauses":  [["placeholder","Deck content is written in Phase 2."]],
-  "Numbers":          [["placeholder","Deck content is written in Phase 2."]],
-  "Detailing rules":  [["placeholder","Deck content is written in Phase 2."]],
-  "Failure modes":    [["placeholder","Deck content is written in Phase 2."]]
+  "Definitions":         [["placeholder","Deck content is written in Phase 2."]],
+  "Nepal events":        [["placeholder","Deck content is written in Phase 2."]],
+  "Standards & clauses": [["placeholder","Deck content is written in Phase 2."]],
+  "Numbers":             [["placeholder","Deck content is written in Phase 2."]],
+  "Field indicators":    [["placeholder","Deck content is written in Phase 2."]],
+  "Failure modes":       [["placeholder","Deck content is written in Phase 2."]]
 };
 
 /* ---------------- flashcards ---------------- */

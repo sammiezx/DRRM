@@ -15,10 +15,11 @@ That single fact sets every editorial decision:
 | Because he is… | The book must… |
 |---|---|
 | A working engineer, not a student | Give **judgment**, not just definitions. "Here is how you decide", not "here are the four types" |
-| Already fluent in structures | Skip statics, RCC basics, and mechanics of materials. Start where DRRM starts |
+| A **road and highway** engineer, with water behind him | Put slopes, hydrology and the road itself at the centre. Buildings are a supporting session, not an act |
+| Already fluent in civil fundamentals | Skip statics, soil mechanics basics, open-channel first principles. Start where the hazard starts |
 | Reading on a phone, in gaps | Be mobile-first, offline, resumable. Never require a desktop |
-| Accountable for real buildings | Carry the **code clause numbers** and the **numbers you must not get wrong** |
-| Nepali, working under Nepali law | Be anchored in NBC, the DRRM Act 2074, and NDRRMA — not generic international theory |
+| Accountable for real alignments | Carry the **standards and clause numbers** and the **numbers you must not get wrong** |
+| Nepali, working under Nepali law | Be anchored in DoR and DoLI standards, the DRRM Act 2074 and NDRRMA — not generic international theory |
 
 **Tone.** Peer to peer. A senior engineer explaining to a colleague what he has learned
 the hard way. No lecturing, no exam-cramming voice, no padding.
@@ -27,30 +28,43 @@ the hard way. No lecturing, no exam-cramming voice, no padding.
 
 ## 2. The subject, stated exactly
 
-**Disaster Risk Reduction & Management, for the civil engineer who has to build things
-that survive.**
+**Disaster Risk Reduction & Management for the engineer who builds through unstable
+ground and moving water.**
 
-The centre of gravity is **the part of DRRM that only a civil engineer can do** —
-assessing whether a structure will stand, designing so it does, and strengthening it when
-it will not. Governance, policy and response are present, and present properly, but they
-are the frame around the engineering, not the subject.
+His career is **roads and highways**, with a water background. So the centre of gravity is
+not buildings — it is the DRRM that a highway engineer in Nepal actually practises:
+
+- **Slopes.** Landslide mechanics, terrain reading, rock and soil cut stability, and the
+  uncomfortable fact that badly built roads *manufacture* landslides.
+- **Water.** Catchment behaviour, design discharge, river morphology, flood and GLOF,
+  and scour — which destroys more Nepali bridges than earthquakes ever have.
+- **The road itself.** Alignment as the primary risk decision, drainage, cross-drainage,
+  retaining and breast walls, bio-engineering, Green Roads, bridges under hazard.
+
+This is also where Nepal genuinely leads the field: **bio-engineering and the Green Roads
+approach are Nepali contributions**, cited internationally. He is studying something his
+own country is good at, which is worth saying out loud.
 
 Weighting, roughly:
 
 ```
-Engineering practice  ██████████████████████████  ~60%
-Risk & hazard science ████████████                ~20%
-Governance / law / response / recovery ██████     ~20%
+Slopes, water, roads      ████████████████████████████  ~70%
+Hazard science & framing  ████████                      ~15%
+Governance / response / recovery ████████               ~15%
 ```
 
+**Buildings** get exactly one compressed session — load path, soft storey, NBC 105,
+retrofit basics. Enough to judge a school and hold an argument, not a second subject.
+This is a deliberate trade, and an easy one to reverse if he wants more.
+
 **Geography.** Nepal-first. Global frameworks (Sendai, UNDRR terminology) appear where they
-explain the Nepali system, not for their own sake. Every case study is one he can place on a
-map he knows: Gorkha 2015, Jajarkot 2023, Melamchi 2021, Thame 2024, the 1934 Bihar–Nepal
-earthquake.
+explain the Nepali system, not for their own sake. Every case is one he can place on a map
+he knows: Sunkoshi 2014, Melamchi 2021, Thame 2024, the Prithvi and Narayanghat–Mugling
+corridors, Gorkha 2015, Jajarkot 2023.
 
 **Language.** English, which is the working language of Nepali engineering practice and of
-every code he will open. Nepali terms are given where the field uses them
-(e.g. *bhukampa*, ward-level *LDMC*) but the book is in English.
+every standard he will open. Nepali terms are given where the field uses them, but the
+book is in English.
 
 ---
 
@@ -60,7 +74,8 @@ every code he will open. Nepali terms are given where the field uses them
 - Not a policy paper. If a chapter can't change what he does on site, it gets cut.
 - Not a general disaster-management textbook. Public health, humanitarian logistics and
   psychosocial response are named and bounded, not developed.
-- Not a substitute for the codes. It teaches him to read NBC 105:2020, it does not reprint it.
+- Not a structural engineering course. Buildings get one session, on purpose.
+- Not a substitute for the standards. It teaches him to read them; it does not reprint them.
 
 ---
 
@@ -76,10 +91,10 @@ The arc, in one line each:
 |---|---|---|
 | ★ | Fast Track | The whole argument in twenty minutes. Written last |
 | **I — The Ground** | 1–5 | Why this matters, before any engineering |
-| **II — Reading Buildings** | 6–12 | Learning to see a building's death before it happens |
-| **III — Making It Stand** | 13–21 | The craft. The longest act |
-| **IV — Strengthening What Stands** | 22–27 | Most buildings that will be here in twenty years are already here |
-| **V — Beyond the Building** | 28–32 | Where an engineer becomes useful to a whole community |
+| **II — Reading the Terrain** | 6–12 | Learning to see a slope fail before it does |
+| **III — Water** | 13–19 | Hydrology as a hazard discipline, not a textbook chapter |
+| **IV — The Road That Survives** | 20–27 | The craft. The longest act |
+| **V — Beyond the Alignment** | 28–32 | Where an engineer becomes useful to a whole district |
 | ≡ | Practice Kit | Checklists, numbers, question bank, glossary, sources. Reference, not reading |
 
 ## 5. How it will be built
@@ -99,18 +114,18 @@ in the family's hands.
 ### Figures
 
 Vision had 76 slide photographs to draw on. **DRRM has no source images** — so every figure
-will be **hand-authored inline SVG**: force flow through a frame, soft-storey collapse
-mechanism, band positions in a masonry wall, jacketing sections, the BETT-equivalent decision
-trees, hazard maps in schematic. This is better, not worse: they will be legible in dark mode,
-they will scale on a phone, they cost nothing to load, and there is no copyright question.
+will be **hand-authored inline SVG**: slope failure geometry, the forces in a cut, drainage
+sections, scour at a pier, gabion wall detail, bio-engineering planting layouts, the hazard
+cascade. This is better, not worse: they will be legible in dark mode, they will scale on a
+phone, they cost nothing to load, and there is no copyright question.
 
 ### Palette — the drawing office and the site
 
 Structure is drawn in **graphite** (`#31414c`), the way a drawing is. **Safety orange**
 (`#b8410a`) is the only chromatic colour in the book, and it means exactly one thing:
 *hazard*, or *look here*. Nothing else competes with it. Status colours follow site
-signage — green safe, amber caution, red restricted — which is also the tagging convention
-in session 30, so the colour language and the subject matter agree.
+signage — green safe, amber caution, red restricted — which is the convention on the
+work he already does, so the colour language and the subject matter agree.
 
 Full light and dark token sets are already in `style.css`.
 
@@ -146,11 +161,11 @@ url    https://sammiezx.github.io/DRRM/
 
 None are blocking — Phase 2 can start on the assumptions in brackets.
 
-1. **Depth on hydro-hazards.** Floods, GLOF and landslides get one session (3) plus a
-   share of 29. If his work is more water and highway than buildings, they are worth an
-   act of their own. *[Assumed: buildings-led, as scoped.]*
-2. **Any Nepali-language sections?** *[Assumed: English throughout.]*
-3. **Is he working toward anything specific** — a municipal role, a retrofit programme,
-   a licence upgrade? If so, those sessions get deepened. *[Assumed: general practice.]*
-4. **Pace.** The plan assumes two sessions a week, which is four months. If he wants it
-   faster, the acts are independent enough to reorder. *[Assumed: no deadline.]*
+1. **Strategic network or local roads?** DoR highway practice and DoLI/rural road practice
+   pull different ways — Green Roads and labour-based construction (session 25) matter
+   enormously for one and barely for the other. *[Assumed: both, session 25 leaning rural.]*
+2. **How much buildings, really?** Currently one compressed session. If he wants to be able
+   to sit on a school-safety committee it should be three. *[Assumed: one is enough.]*
+3. **Any Nepali-language sections?** *[Assumed: English throughout.]*
+4. **Pace.** The plan assumes two sessions a week — four months. The acts are independent
+   enough to reorder if he wants water or slopes first. *[Assumed: no deadline.]*
